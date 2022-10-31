@@ -11,16 +11,10 @@ main#connexion {
   background: rgba(255, 255, 255, 0.5);
   padding: 3rem;
   border-radius: 10px;
-  position: relative;
 }
 
-.login-card::before {
-  content: "";
-  position: absolute;
-  background: rgba(255, 255, 255, 0.15);
-  inset: 0;
-  transform: rotate(-5deg);
-  z-index: -1;
+.inscription {
+  margin-top: 10px;
 }
 
 .login-card-logo {
@@ -93,6 +87,14 @@ main#connexion {
   margin-bottom: 2rem;
 }
 
+.login-card-form .form-item-other-inscription {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
 .login-card-footer {
   margin-top: 1.5rem;
   font-size: calc(1rem * 0.8);
@@ -108,7 +110,6 @@ main#connexion {
   padding-left: calc(1rem * 3.5);
   border-radius: 100px;
   width: 100%;
-  /* transition: background 0.5s; */
 }
 
 .login-card input:focus {
@@ -129,7 +130,6 @@ main#connexion {
   text-transform: uppercase;
   letter-spacing: 2px;
   border: 0;
-  /* transform: background 0.5s; */
 }
 
 .login-card-form button:hover {

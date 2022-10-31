@@ -1,7 +1,7 @@
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
 <main id="connexion">
-  <div class="login-card-container">
+  <div class="login-card-container inscription">
     <div class="login-card">
       <div class="login-card-logo">
         <img src="<?= PATH_IMAGES ?>logo.png" alt="">
@@ -22,6 +22,16 @@
         <div class="form-item">
           <span class="form-item-icon material-symbols-outlined">lock</span>
           <input type="password" placeholder="Confirmer votre mot de passe" required name="" id="">
+        </div>
+        <div class="form-item-other-inscription">
+          <div class="checkbox">
+            <input type="checkbox" name="" id="newsLetter">
+            <label for="rememberMe">S'abonner à la newsletter.</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="" id="cgu" required>
+            <label for="rememberMe">Accepter le contrat d'utilisation.<a href="#">CGU</a></label>
+          </div>
         </div>
         <button type="submit">S'inscrire</button>
       </form>
