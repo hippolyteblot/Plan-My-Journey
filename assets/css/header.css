@@ -75,8 +75,7 @@ ul .right li + li a span {
   padding: 5px;
 }
 
-ul .right svg {
-  height: 25px;
+.material-symbols-outlined {
   margin-right: 10px;
 }
 

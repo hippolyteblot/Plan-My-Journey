@@ -1,0 +1,44 @@
+#background-img {
+  position: absolute;
+  background: url(../images/accueil-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: calc(100vh - 50px);
+  width: 100%;
+  z-index: -1;
+  filter: brightness(0.5);
+}
+
+main#accueil {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100vh - 50px);
+}
+
+main#accueil h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  padding-top: 10%;
+}
+
+main#accueil h2 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  padding-top: 50px;
+}
+
+main#accueil span {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 50px;
+}
