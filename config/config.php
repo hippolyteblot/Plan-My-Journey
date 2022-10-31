@@ -12,7 +12,7 @@ const BD_PWD = 'root';
 const LANG ='FR-fr';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
-const AUTEUR = 'Hippolyte Blot & Noah Heraud'; 
+const AUTEUR = 'Matéo Guenot & Noah Heraud & Hippolyte Blot'; 
 
 //dossiers racines du site
 define('PATH_CONTROLLERS','./controllers/');
