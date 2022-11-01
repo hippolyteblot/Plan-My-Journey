@@ -83,6 +83,12 @@ form {
 	height: 100%;
 	width: 100%;
 	border-radius: 20px;
+	z-index: 100;
+	background: inherit;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .svg {
 	margin-top: 10px;
