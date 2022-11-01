@@ -6,7 +6,7 @@
     <h1>Découvrer votre planning de rêve</h1>
     <h2>Utilisez notre moteur de recherche et trouvez votre journée de rêve en un clic</h2>
     <form action="index.php?page=query" method="post">
-      <div class="formItem item01"><input id="input01" type="text" name="search" placeholder="Rechercher un événement"></div>
+      <div class="formItem item01"><input id="input01" type="text" name="search" placeholder="    Saisissez votre destination"></div>
       <div class="formItem item02">
 
         <button id="input02" type="Submit">
