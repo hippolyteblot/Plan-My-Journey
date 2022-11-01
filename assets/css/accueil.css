@@ -104,3 +104,18 @@ form {
 	display: flex;
 	align-items: center;
 }
+@media (max-width: 1000px) {
+	.svg {
+		display: none;
+	}
+	form {
+		flex-direction: column;
+		margin-top: 100px;
+	}
+	.formItem {
+		margin-bottom: 20px;
+	}
+	#input02 {
+		height: 50px;
+	}
+}
