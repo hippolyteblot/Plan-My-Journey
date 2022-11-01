@@ -11,8 +11,6 @@
 
   <link rel="stylesheet" href="<?= PATH_CSS ?>reset.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>header.css" />
-  <link rel="stylesheet" href="<?= PATH_CSS ?>accueil.css">
-  <link rel="stylesheet" href="<?= PATH_CSS ?>connexion.css" />
   <script src="https://kit.fontawesome.com/f06f56c2b1.js" crossorigin="anonymous"></script>
   <script src="<?= PATH_SCRIPTS ?>script.js"></script>
 </head>

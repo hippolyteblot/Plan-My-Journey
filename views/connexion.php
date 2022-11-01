@@ -1,5 +1,9 @@
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
+<head>
+  <link rel="stylesheet" href="<?= PATH_CSS ?>connexion.css" />
+</head>
+
 <main id="connexion">
   <div class="login-card-container">
     <div class="login-card">

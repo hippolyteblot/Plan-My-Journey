@@ -1,4 +1,8 @@
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
+
+<head>
+  <link rel="stylesheet" href="<?= PATH_CSS ?>accueil.css">
+</head>
 <div id="background-img">
 </div>
 <main id="accueil">

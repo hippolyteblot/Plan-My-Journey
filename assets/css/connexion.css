@@ -19,7 +19,6 @@ main#connexion {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-
 }
 
 .login-card {
