@@ -29,7 +29,7 @@
         <button type="submit">Se connecter</button>
       </form>
       <div class="login-card-footer">
-        <div>Vous n'avez pas de compte ? <a href="#">Inscrivez-vous</a></div>
+        <div>Vous n'avez pas de compte ? <a href="?page=inscription">Inscrivez-vous</a></div>
       </div>
     </div>
     <div class="login-card-social">

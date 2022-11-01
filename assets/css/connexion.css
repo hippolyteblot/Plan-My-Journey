@@ -1,6 +1,9 @@
 main#connexion {
   min-height: calc(100vh - 50px);
-  background: linear-gradient(to right, #2c8e50, #4918c5);
+  /*background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,19 +11,19 @@ main#connexion {
 
 .login-card {
   width: 450px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.25);
   padding: 3rem;
   border-radius: 10px;
-  position: relative;
+  /* Glassmorphism */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
 }
 
-.login-card::before {
-  content: "";
-  position: absolute;
-  background: rgba(255, 255, 255, 0.15);
-  inset: 0;
-  transform: rotate(-5deg);
-  z-index: -1;
+.login-card {
+  margin-top: 10px;
 }
 
 .login-card-logo {
@@ -93,6 +96,14 @@ main#connexion {
   margin-bottom: 2rem;
 }
 
+.login-card-form .form-item-other-inscription {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
 .login-card-footer {
   margin-top: 1.5rem;
   font-size: calc(1rem * 0.8);
@@ -108,7 +119,6 @@ main#connexion {
   padding-left: calc(1rem * 3.5);
   border-radius: 100px;
   width: 100%;
-  /* transition: background 0.5s; */
 }
 
 .login-card input:focus {
@@ -129,7 +139,6 @@ main#connexion {
   text-transform: uppercase;
   letter-spacing: 2px;
   border: 0;
-  /* transform: background 0.5s; */
 }
 
 .login-card-form button:hover {

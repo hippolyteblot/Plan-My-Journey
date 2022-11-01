@@ -1,17 +1,35 @@
+@import url("http://fonts.cdnfonts.com/css/sf-pro-display");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: "SF Pro Display", sans-serif;
+  background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
 nav {
-  background-color: grey;
+  background-color: rgba(255, 255, 255, 0.25);
   height: 50px;
   width: 100%;
   position: fixed;
   top: 0;
   display: flex;
   align-items: center;
+  z-index: 100;
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
 }
 
 nav ul img {
