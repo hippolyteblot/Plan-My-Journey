@@ -1,44 +1,94 @@
 #background-img {
-  position: absolute;
-  background: url(../images/accueil-bg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: calc(100vh - 50px);
-  width: 100%;
-  z-index: -1;
-  filter: brightness(0.5);
+	position: absolute;
+	background: url(../images/accueil-bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: calc(100vh - 50px);
+	width: 100%;
+	z-index: -1;
+	filter: brightness(0.5);
 }
 
 main#accueil {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: calc(100vh - 50px);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: calc(100vh - 50px);
 }
 
 main#accueil h1 {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  padding-top: 10%;
+	font-size: clamp(2.2rem, 5vw, 4rem);
+	font-weight: 700;
+	color: #fff;
+	text-align: center;
+	padding-top: 10%;
 }
 
 main#accueil h2 {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: 500;
-  color: #fff;
-  text-align: center;
-  padding-top: 50px;
+	font-size: clamp(1.2rem, 3vw, 2rem);
+	font-weight: 500;
+	color: #fff;
+	text-align: center;
+	padding-top: 50px;
 }
 
 main#accueil span {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  font-weight: 400;
-  color: #fff;
-  text-align: center;
-  padding-bottom: 50px;
+	font-size: clamp(1rem, 2vw, 1.5rem);
+	font-weight: 400;
+	color: #fff;
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+form {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+	height: 50px;
+	width: 100%;
+	border-radius: 20px;
+}
+
+.item01 {
+	height: 100%;
+	width: 80%;
+}
+.item02 {
+	height: 100%;
+	width: 20%;
+}
+.item01 > input {
+	height: 100%;
+	width: 100%;
+}
+.item02 > div {
+	height: 100%;
+	width: 100%;
+}
+.formItem input {
+	z-index: 100;
+	background: inherit;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 20px;
+}
+#input02 {
+	height: 100%;
+	width: 100%;
+}
+#input01 {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.25);
+	height: 50px;
+	width: 100%;
+	display: flex;
+	align-items: center;
 }
