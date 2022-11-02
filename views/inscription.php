@@ -42,7 +42,7 @@
           </div>
           <div class="checkbox">
             <input type="checkbox" name="" id="cgu" required>
-            <label for="rememberMe">Accepter le contrat d'utilisation.<a href="#">CGU</a></label>
+            <label for="rememberMe">Accepter le contrat d'utilisation.<a target="_blank" href="?page=CGU">CGU</a></label>
           </div>
         </div>
         <?php include(PATH_VIEWS . 'alert.php'); ?>
