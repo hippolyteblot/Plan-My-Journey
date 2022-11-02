@@ -1,6 +1,3 @@
-<?php session_start() ?>
-<?php echo '<script>console.log("' . $_SESSION['email'] . '")</script>'; ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,6 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+  <link rel="stylesheet" href="<?= PATH_CSS ?>alert.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>reset.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>header.css" />
   <script src="https://kit.fontawesome.com/f06f56c2b1.js" crossorigin="anonymous"></script>

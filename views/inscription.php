@@ -45,6 +45,7 @@
             <label for="rememberMe">Accepter le contrat d'utilisation.<a href="#">CGU</a></label>
           </div>
         </div>
+        <?php include(PATH_VIEWS . 'alert.php'); ?>
         <button type="submit">S'inscrire</button>
       </form>
       <div class="login-card-footer">

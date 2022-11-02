@@ -1,4 +1,6 @@
 <?php
+// Initialisation de la session
+session_start();
 // Initialisation des paramètres du site
 require_once("config/config.php");
 

@@ -92,7 +92,6 @@ main#connexion {
   align-items: center;
   justify-content: space-between;
   font-size: calc(1rem * 0.8);
-  margin-bottom: 2rem;
 }
 
 .login-card-form .form-item-other-inscription {

@@ -1,0 +1,21 @@
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    /* Glassmorphism */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 3px solid rgba(255, 255, 255, 0.18);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    
+    border-color: rgba(255, 0, 0, 0.5);
+    color: #6e0a14;
+}

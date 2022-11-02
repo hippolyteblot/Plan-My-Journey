@@ -14,14 +14,14 @@
         <h1>Connexion</h1>
         <div>Connecter vous pour utiliser nos services.</div>
       </div>
-      <form action="" class="login-card-form">
+      <form method="POST" action="?page=connexion" class="login-card-form">
         <div class="form-item">
           <span class="form-item-icon material-symbols-outlined">mail</span>
-          <input type="text" placeholder="Entrer votre mail" required autofocus name="" id="">
+          <input type="text" placeholder="Entrer votre mail" required autofocus name="email" id="">
         </div>
         <div class="form-item">
           <span class="form-item-icon material-symbols-outlined">lock</span>
-          <input type="password" placeholder="Entrer votre mot de passe" required name="" id="">
+          <input type="password" placeholder="Entrer votre mot de passe" required name="password" id="">
         </div>
         <div class="form-item-other">
           <div class="checkbox">
@@ -30,6 +30,7 @@
           </div>
           <a href="#">Mots de passe oublié</a>
         </div>
+        <?php include_once(PATH_VIEWS . 'alert.php'); ?>
         <button type="submit">Se connecter</button>
       </form>
       <div class="login-card-footer">

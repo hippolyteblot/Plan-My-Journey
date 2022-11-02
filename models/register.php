@@ -15,6 +15,7 @@ function checkEmail($email)
 function checkValidity($firstname, $lastname, $email, $password, $confirmPassword)
 {
     $alert = [];
+    $alert['classAlert'] = 'danger';
 
     if (empty($firstname)) {
         $alert['messageAlert'] = 'Veuillez renseigner votre prénom';
@@ -28,9 +29,9 @@ function checkValidity($firstname, $lastname, $email, $password, $confirmPasswor
         $alert['messageAlert'] = 'Veuillez renseigner un email valide';
     }
     // Check if the email is already used
-    // else if (checkEmail($email)) {                               À FAIRE MARCHER
-    //     $alert['messageAlert'] = 'Cet email est déjà utilisé';
-    // } 
+    else if (checkEmail($email)) {                             
+        $alert['messageAlert'] = 'Cet email est déjà utilisé';
+    } 
     else if (empty($password)) {
         $alert['messageAlert'] = 'Veuillez renseigner votre mot de passe';
     } else if (empty($confirmPassword)) {
@@ -61,10 +62,12 @@ function register($firstname, $lastname, $email, $password, $confirmPassword, $n
         return $check;
     } else {
         $database = Connexion::getInstance()->getBdd();
-        $query = $database->prepare("INSERT INTO user (firstname, lastname, email, password, newsletter_subscription) VALUES (?, ?, ?, ?, ?)");
+        $query = $database->prepare("INSERT INTO user (firstname, lastname, email, password, newsletter_subscription, registration_date) VALUES (?, ?, ?, ?, ?, NOW())");
         $query->execute(array($firstname, $lastname, $email, password_hash($password, PASSWORD_DEFAULT), $newsletter));
-        $alert['messageAlert'] = 'Inscription réussie';
-        $alert['classAlert'] = 'success';
-        return $alert;
+        
+        $alert = [
+            'messageAlert' => 'Inscription réussie',
+            'classAlert' => 'success'
+        ];
     }
 }
