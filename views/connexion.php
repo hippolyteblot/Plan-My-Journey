@@ -25,7 +25,7 @@
         </div>
         <div class="form-item-other">
           <div class="checkbox">
-            <input type="checkbox" name="" id="rememberMe">
+            <input type="checkbox" name="rememberMe" id="rememberMe">
             <label for="rememberMe">Se souvenir de moi</label>
           </div>
           <a href="#">Mots de passe oublié</a>
@@ -58,4 +58,3 @@
 </main>
 
 <?php
-
