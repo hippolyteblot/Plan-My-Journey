@@ -2,8 +2,9 @@
 
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>account.css" />
+  <link rel="stylesheet" href="<?= PATH_CSS ?>modal.css" />
+  <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
 </head>
-
 <main id="account">
   <div class="profile-photo">
     <span>Voici ma photo de profil</span>
@@ -36,7 +37,7 @@
     </div>
     <div class="profile-preferences">
       <div class="profile-preferences-title">
-        <h2>Preferences</h2>
+        <h2>Préférences</h2>
       </div>
       <div class="profile-preferences-list">
         <ul>
@@ -46,8 +47,51 @@
         </ul>
       </div>
       <div class="profile-preferences-modify">
-        <a href="index.php?page=modifier"><span>Modifier</span></a>
+        <span id="myBtn">Modifier</span>
       </div>
+
+      
+
     </div>
   </div>
 </main>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Modification des préférences</h2>
+    </div>
+    <div class="modal-body">
+      <div class="categories">
+        <div class="category">
+          <h3>Restauration</h3>
+          <div class="category-list">
+            <p class="item">Restaurant</p>
+            <p class="item">Fast-food</p>
+            <p class="item">Snack</p>
+          </div>
+        </div>
+        <div class="category">
+          <h3>Activités</h3>
+          <div class="category-list">
+            <?php
+            foreach ($primaryTypes as $primaryType) {
+              echo '<p class="item">' . $primaryType['primary_type_name'] . '</p>';
+            }
+            ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <!-- validation button -->
+      <span id="validate-modif-pref">Valider</span>
+    </div>
+  </div>
+
+</div>
