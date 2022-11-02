@@ -4,6 +4,8 @@ require_once(PATH_MODELS . 'login.php');
 
 require_once(PATH_MODELS . 'Connexion.php');
 
+include_once(PATH_CONTROLLERS . 'cookieconnect.php');
+
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
