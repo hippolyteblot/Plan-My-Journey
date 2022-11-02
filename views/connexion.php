@@ -12,7 +12,7 @@
       </div>
       <div class="login-card-header">
         <h1>Connexion</h1>
-        <div>Connecter vous pour utiliser nos services.</div>
+        <div>Connectez vous pour utiliser nos services.</div>
       </div>
       <form method="POST" action="?page=connexion" class="login-card-form">
         <div class="form-item">
@@ -28,7 +28,7 @@
             <input type="checkbox" name="rememberMe" id="rememberMe">
             <label for="rememberMe">Se souvenir de moi</label>
           </div>
-          <a href="#">Mots de passe oublié</a>
+          <a href="#">Mot de passe oublié</a>
         </div>
         <?php include_once(PATH_VIEWS . 'alert.php'); ?>
         <button type="submit">Se connecter</button>

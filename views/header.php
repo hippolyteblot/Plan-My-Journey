@@ -18,6 +18,7 @@
 <body>
   <nav>
     <ul class="header-nav">
+
       <div class="left">
         <li><a href="index.php"><img src="<?= PATH_IMAGES ?>logo.png" alt="logo"></a></li>
         <li><span>Plan My Journey</span></li>
