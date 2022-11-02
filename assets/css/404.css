@@ -1,7 +1,7 @@
 #titleErr {
-	font-weight: bold;
+	font-size: 3rem;
 	color: rgb(6, 6, 6);
-	text-shadow: 0 0 10px rgb(31, 29, 29);
+	text-shadow: 0 0 5px rgb(31, 29, 29);
 	margin: 0;
 	padding: 0;
 	text-align: center;
@@ -16,4 +16,7 @@ main {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+body {
+	background-color: rgb(145, 198, 214);
 }
