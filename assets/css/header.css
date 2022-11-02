@@ -1,146 +1,141 @@
 @import url("http://fonts.cdnfonts.com/css/sf-pro-display");
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: "SF Pro Display", sans-serif;
-	background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+  font-family: "SF Pro Display", sans-serif;
+  background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 nav {
-	background-color: rgba(255, 255, 255, 0.25);
-	height: 50px;
-	width: 100%;
-	position: fixed;
-	top: 0;
-	display: flex;
-	align-items: center;
-	z-index: 100;
+  background-color: rgba(255, 255, 255, 0.25);
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 100;
 
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
-	border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 nav ul img {
-	width: 50px;
-	height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .right,
 .left {
-	width: auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 ul {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	margin: 0 10px 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 li {
-	height: 50px;
-	list-style: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
-	color: black;
-	text-decoration: none;
-	margin: 10px;
+  color: black;
+  text-decoration: none;
+  margin: 10px;
 }
 
 ul li span {
-	font-size: 25px;
-	font-weight: 600;
-}
-
-ul .right li + li {
-	margin-left: clamp(10px, 5vw, 20px);
+  font-size: 25px;
+  font-weight: 600;
 }
 
 ul .right li a {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-ul .right li + li a span {
-	color: white;
-	text-decoration: none;
-	font-size: 20px;
-	margin: 10px;
+ul .right li + li a span.btn {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 10px;
 
-	background-color: black;
-	border-radius: 25px;
-	padding: 5px;
+  background-color: black;
+  border-radius: 25px;
+  padding: 5px 15px;
 }
 
 .material-symbols-outlined {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* Burger Menu */
 #check {
-	display: none;
+  display: none;
 }
 
 ul label {
-	display: none;
+  display: none;
 }
 
 nav i {
-	color: black;
-	font-size: 22px;
-	cursor: pointer;
+  color: black;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 @media (max-width: 700px) {
-	ul label {
-		display: block;
-		cursor: pointer;
-	}
+  ul label {
+    display: block;
+    cursor: pointer;
+  }
 
-	nav ul .right {
-		position: fixed;
-		top: 50px;
-		left: -100%;
-		height: 100vh;
-		width: 100%;
-		display: block;
-		text-align: center;
-		background-color: grey;
-		transition: 0.3s;
-		border-top: black 2px solid;
-	}
-	#check:checked ~ .right {
-		left: 0%;
-	}
-	nav ul .right li {
-		margin-top: 40px;
-	}
-	nav ul .right li a {
-		font-size: 20px;
-	}
+  nav ul .right {
+    position: fixed;
+    top: 50px;
+    left: -100%;
+    height: 100vh;
+    width: 100%;
+    display: block;
+    text-align: center;
+    background-color: grey;
+    transition: 0.3s;
+    border-top: black 2px solid;
+  }
+  #check:checked ~ .right {
+    left: 0%;
+  }
+  nav ul .right li {
+    margin-top: 40px;
+  }
+  nav ul .right li a {
+    font-size: 20px;
+  }
 
-	ul .right li + li a span {
-		color: black;
-		background-color: grey;
-		font-size: 25px;
-	}
+  ul .right li + li a span {
+    color: black;
+    background-color: grey;
+    font-size: 25px;
+  }
 }
