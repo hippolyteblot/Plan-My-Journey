@@ -1,5 +1,7 @@
 <?php
 
+include_once(PATH_MODELS . 'Connexion.php');
+
 // Check if there is an account with the email and the password
 function checkAccount($email, $password) {
     $database = Connexion::getInstance()->getBdd();

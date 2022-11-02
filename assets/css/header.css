@@ -8,10 +8,12 @@
 
 body {
   font-family: "SF Pro Display", sans-serif;
-  background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);
+  background: url(../images/bg.jpg);
+  /*background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 
 }
 
