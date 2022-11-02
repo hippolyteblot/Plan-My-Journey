@@ -33,7 +33,7 @@ nav {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-nav ul img {
+nav ul.header-nav img {
   width: 50px;
   height: 50px;
 }
@@ -46,14 +46,14 @@ nav ul img {
   justify-content: center;
 }
 
-ul {
+ul.header-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-li {
+ul.header-nav li {
   height: 50px;
   list-style: none;
   display: flex;
@@ -67,18 +67,18 @@ a {
   margin: 10px;
 }
 
-ul li span {
+ul.header-nav li span {
   font-size: 25px;
   font-weight: 600;
 }
 
-ul .right li a {
+ul.header-nav .right li a {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-ul .right li + li a span.btn {
+ul.header-nav .right li + li a span.btn {
   color: white;
   text-decoration: none;
   font-size: 20px;
@@ -98,7 +98,7 @@ ul .right li + li a span.btn {
   display: none;
 }
 
-ul label {
+ul.header-nav label {
   display: none;
 }
 
@@ -109,12 +109,12 @@ nav i {
 }
 
 @media (max-width: 700px) {
-  ul label {
+  ul.header-nav label {
     display: block;
     cursor: pointer;
   }
 
-  nav ul .right {
+  nav ul.header-nav .right {
     position: fixed;
     top: 50px;
     left: -100%;
@@ -129,14 +129,14 @@ nav i {
   #check:checked ~ .right {
     left: 0%;
   }
-  nav ul .right li {
+  nav ul.header-nav .right li {
     margin-top: 40px;
   }
-  nav ul .right li a {
+  nav ul.header-nav .right li a {
     font-size: 20px;
   }
 
-  ul .right li + li a span {
+  ul.header-nav .right li + li a span {
     color: black;
     background-color: grey;
     font-size: 25px;

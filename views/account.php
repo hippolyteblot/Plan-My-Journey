@@ -6,22 +6,32 @@
 
 <main id="account">
   <div class="profile-photo">
-
+    <span>Voici ma photo de profil</span>
   </div>
   <div class="profile-information">
     <div class="profile-name">
-      <h1><?= $user['first_name'] . ' ' . $user['last_name'] ?></h1>
+      <h1>Bonjour <?= $user['firstname'] . ' ' . $user['lastname'] ?></h1>
+    </div>
+    <div class="profile-disconnect">
+      <a href="index.php?page=disconnect"><span>Se déconnecter</span></a>
     </div>
     <div class="profile-parameters">
-      <h2>Paramètres</h2>
-      <div class="profile-email">
-        <p><?= $user['email'] ?></p>
+      <div class="profile-parameters-title">
+        <h2>Paramètres</h2>
       </div>
-      <div class="profile-phone">
-        <p><?= $user['phone'] ?></p>
+      <div class="profile-parameters-list">
+        <li class="profile-firstname">
+          <p><?= $user['firstname'] ?></p>
+        </li>
+        <li class="profile-lastname">
+          <p><?= $user['lastname'] ?></p>
+        </li>
+        <li class="profile-email">
+          <p><?= $user['email'] ?></p>
+        </li>
       </div>
-      <div class="profile-firstname">
-        <p><?= $user['first_name'] ?></p>
+      <div class="profile-parameters-modify">
+        <a href="index.php?page=modifier"><span>Modifier</span></a>
       </div>
     </div>
     <div class="profile-preferences">
@@ -30,15 +40,14 @@
       </div>
       <div class="profile-preferences-list">
         <ul>
-          <li>Preference 1</li>
-          <li>Preference 2</li>
-          <li>Preference 3</li>
-          <li>Preference 4</li>
-          <li>Preference 5</li>
+          <li>Restaurant</li>
+          <li>Loisir</li>
+          <li>Je ne sais pas</li>
         </ul>
       </div>
-
+      <div class="profile-preferences-modify">
+        <a href="index.php?page=modifier"><span>Modifier</span></a>
+      </div>
     </div>
-
   </div>
 </main>
