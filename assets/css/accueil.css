@@ -98,7 +98,7 @@ form {
 	display: block;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: bottom center, 50%, 50%;
+	height: 30px;
 }
 /* button {
 	display: flex;
