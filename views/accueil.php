@@ -15,14 +15,11 @@
       <div class="formItem item02">
 
         <button id="input02" type="Submit">
-          <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-          <div class="svg">
-
-          </div>
+          <span class="material-symbols-outlined">
+            search
+          </span>
 
         </button>
-
-
       </div>
   </div>
   <span>
