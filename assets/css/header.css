@@ -31,7 +31,6 @@ nav {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-
 }
 
 nav ul img {
@@ -52,7 +51,6 @@ ul {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 0 10px 0 10px;
 }
 
 li {
@@ -74,17 +72,13 @@ ul li span {
   font-weight: 600;
 }
 
-ul .right li + li {
-  margin-left: clamp(10px, 5vw, 20px);
-}
-
 ul .right li a {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-ul .right li + li a span {
+ul .right li + li a span.btn {
   color: white;
   text-decoration: none;
   font-size: 20px;
@@ -92,7 +86,7 @@ ul .right li + li a span {
 
   background-color: black;
   border-radius: 25px;
-  padding: 5px;
+  padding: 5px 15px;
 }
 
 .material-symbols-outlined {
