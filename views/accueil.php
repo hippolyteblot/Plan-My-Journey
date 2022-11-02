@@ -2,6 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>accueil.css">
+  <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
 </head>
 <div id="background-img">
 </div>

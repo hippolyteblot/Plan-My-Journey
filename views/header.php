@@ -1,3 +1,6 @@
+<?php session_start() ?>
+<?php echo '<script>console.log("' . $_SESSION['email'] . '")</script>'; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,7 +15,6 @@
   <link rel="stylesheet" href="<?= PATH_CSS ?>reset.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>header.css" />
   <script src="https://kit.fontawesome.com/f06f56c2b1.js" crossorigin="anonymous"></script>
-  <script src="<?= PATH_SCRIPTS ?>script.js"></script>
 </head>
 
 <body>
@@ -27,14 +29,23 @@
         <i class="fas fa-chevron-circle-down"></i>
       </label>
       <div class="right">
+        <?php if (isset($_SESSION['email'])) { ?>
+          <li><a href="index.php?page=parcours">
+              <span class="material-symbols-outlined">signpost</span>
+              <span>Mes parcours</span>
+            </a></li>
+        <?php } ?>
         <li>
           <a href="#">
-            <span class="material-symbols-outlined">
-              share
-            </span><span>Découvrir</span>
+            <span class="material-symbols-outlined">share</span>
+            <span>Découvrir</span>
           </a>
         </li>
-        <li><a href="index.php?page=connexion"><span>Connectez-vous</span></a></li>
+        <?php if (isset($_SESSION['email'])) { ?>
+          <li><a href="index.php?page=account"><span class="btn">Mon compte</span></a></li>
+        <?php } else { ?>
+          <li><a href="index.php?page=connexion"><span class="btn">Connectez-vous</span></a></li>
+        <?php } ?>
       </div>
     </ul>
   </nav>
