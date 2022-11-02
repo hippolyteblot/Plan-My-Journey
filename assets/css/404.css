@@ -1,3 +1,4 @@
+@import url("http://fonts.cdnfonts.com/css/sf-pro-display");
 #titleErr {
 	font-size: 3rem;
 	color: rgb(6, 6, 6);
@@ -6,17 +7,62 @@
 	padding: 0;
 	text-align: center;
 	margin-top: 10%;
-	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-	margin-bottom: 15vh;
+	font-family: "SF Pro Display", sans-serif;
+	margin-bottom: 7vh;
 }
 
 main {
-	height: 98vh;
-	width: 98vw;
+	height: 40vh;
+	width: 50vw;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
+
+	margin-top: calc(50vh - 20vh);
+	border-radius: 20px;
+	z-index: 100;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	padding-left: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
 }
 body {
-	background-color: rgb(145, 198, 214);
+	background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+.container {
+	height: 33px;
+	width: 150px;
+	background-color: rgb(147, 188, 236);
+	border-radius: 20px;
+}
+.leftArrow {
+	width: 33px;
+	height: 33px;
+	display: block;
+	margin-left: 10px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: bottom center, 50%, 50%;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='400.004px' height='400.004px' viewBox='0 0 400.004 400.004' style='enable-background:new 0 0 400.004 400.004;' xml:space='preserve'%3E%3Cg%3E%3Cpath d='M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757 c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072 c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315 C400.004,190.438,392.251,182.686,382.688,182.686z'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A");
+}
+a {
+	text-decoration: none;
+}
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: row;
+}
+.button p {
+	all: unset;
+	text-decoration: none;
+	color: rgb(1, 14, 155);
+	font-size: 1.5rem;
+	font-family: "SF Pro Display", sans-serif;
 }
