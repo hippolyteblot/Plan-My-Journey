@@ -2,6 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>connexion.css" />
+  <script defer src="<?= PATH_SCRIPTS ?>inscription.js"></script>
 </head>
 
 <main id="connexion">
@@ -15,25 +16,25 @@
         <div>Inscrivez-vous pour utiliser nos services.</div>
       </div>
       <form action="" class="login-card-form" method="POST">
-        <div class="form-item">
+        <div class="form-item item01">
           <span class="form-item-icon material-symbols-outlined">person</span>
           <input type="text" placeholder="Entrer votre prénom" required autofocus name="firstname">
         </div>
-        <div class="form-item">
+        <div class="form-item item02">
           <span class="form-item-icon material-symbols-outlined">person</span>
           <input type="text" placeholder="Entrer votre nom" required autofocus name="lastname">
         </div>
-        <div class="form-item">
+        <div class="form-item item03">
           <span class="form-item-icon material-symbols-outlined">mail</span>
-          <input type="text" placeholder="Entrer votre mail" required autofocus name="email">
+          <input id="email" type="text" placeholder="Entrer votre mail" required autofocus name="email">
         </div>
-        <div class="form-item">
+        <div class="form-item item04">
           <span class="form-item-icon material-symbols-outlined">lock</span>
-          <input type="password" placeholder="Entrer votre mot de passe" required name="password">
+          <input id="password1" type="password" placeholder="Entrer votre mot de passe" required name="password">
         </div>
-        <div class="form-item">
+        <div class="form-item item05">
           <span class="form-item-icon material-symbols-outlined">lock</span>
-          <input type="password" placeholder="Confirmer votre mot de passe" required name="confirmPassword">
+          <input id="password2" type="password" placeholder="Confirmer votre mot de passe" required name="confirmPassword">
         </div>
         <div class="form-item-other-inscription">
           <div class="checkbox">
