@@ -1,12 +1,10 @@
 var items = document.querySelectorAll(".item");
 
 for (var i = 0; i < items.length; i++) {
-  items[i].addEventListener("click", function() {
+  items[i].addEventListener("click", function () {
     this.classList.toggle("selected");
   });
 }
-
-
 
 // Get the modal
 var modal2 = document.getElementById("myModal2");
@@ -18,17 +16,36 @@ var btn2 = document.getElementById("myBtn2");
 var span2 = document.getElementsByClassName("close2")[0];
 
 // When the user clicks the button, open the modal
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
-
+// btn2.onclick = function () {
+//   modal2.style.display = "block";
+// };
 
 function openModal(id) {
-  document.querySelectorAll(".category-modal").forEach(function(modal) {
+  document.querySelectorAll(".category-modal").forEach(function (modal) {
     modal.style.display = "none";
   });
   document.getElementById("modal-" + id).style.display = "block";
 }
 function closeModal(id) {
+  if (id == "pref") {
+    var selectedItems = document.querySelectorAll(".item.selected");
+    var selectedItemsArray = [];
+    for (var i = 0; i < selectedItems.length; i++) {
+      selectedItemsArray.push(selectedItems[i].innerHTML);
+    }
+    window.location.href =
+      "/index.php?page=account&setPreferences=" + selectedItemsArray.join(",");
+
+    var unSelectedItems = document.querySelectorAll(".item:not(.selected)");
+    var unSelectedItemsArray = [];
+    for (var i = 0; i < unSelectedItems.length; i++) {
+      unSelectedItemsArray.push(unSelectedItems[i].innerHTML);
+    }
+    window.location.href =
+      "/index.php?page=account&setPreferences=" +
+      selectedItemsArray.join(",") +
+      "&unSetPreferences=" +
+      unSelectedItemsArray.join(",");
+  }
   document.getElementById("modal-" + id).style.display = "none";
 }

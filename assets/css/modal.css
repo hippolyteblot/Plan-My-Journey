@@ -1,192 +1,216 @@
-
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .modal-side {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    right: 0;
-    top: 0;
-    width: 50%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0); /* Black w/ opacity */
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-right-radius: 10px;
-    overflow: hidden;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  right: 0;
+  top: 0;
+  width: 50%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0); /* Black w/ opacity */
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
 }
 
 .modal-side .modal-content {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    /* corner top-right */
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-right-radius: 10px;
-    background-color: rgba(0, 0, 0, 0);
-    -webkit-animation-name: animateside;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animateside;
-    animation-duration: 0.4s
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  /* corner top-right */
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-animation-name: animateside;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animateside;
+  animation-duration: 0.4s;
 }
 .modal-body {
-    width: 45%;
+  width: 45%;
 }
 .modal-side .modal-body {
-    width: 100%;
+  width: 100%;
 }
 
 /* Modal Content */
 .modal-content {
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.6);
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    border-radius: 10px;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    display: flex;
-    flex-direction: column;
-    /* Glassmorphism */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  display: flex;
+  flex-direction: column;
+  /* Glassmorphism */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 @keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 /* Add Animation */
 @-webkit-keyframes animateside {
-    from {right:-300px; opacity:0} 
-    to {right:0; opacity:1}
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
 }
 
 @keyframes animateside {
-    from {right:-300px; opacity:0}
-    to {right:0; opacity:1}
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
 }
 
 /* The Close Button */
 .close {
-    color: black;
-    float: right;
-    font-size: 35px;
-    font-weight: bold;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: black;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal-header {
-    padding: 10px
+  padding: 10px;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+}
 
 .modal-footer {
-    padding: 2px 16px;
-    margin: 10px;
+  padding: 2px 16px;
+  margin: 10px;
 }
 
 .categories {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .category {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 10px;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .category-list {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .category-list p {
-    margin: 3px;
-    margin-left: 5px;
-    margin-right: 5px;
-    
-    padding: 5px;
-    background-color: rgba(0,0,0,0);
-    border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+  margin: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
 }
 
 .category-list .selected {
-    box-shadow: none;
-    background-color: rgb(48, 98, 249);
-    color: white;
-    animation: selected 0.25s;
+  box-shadow: none;
+  background-color: black;
+  color: white;
+  animation: selected 0.25s;
 }
 
 #validate-modif-pref {
-    font-size: 22px;
-    border: 2px solid black;
-    border-radius: 20px;
-    padding: 3px 6px;
-    cursor: pointer;
+  font-size: 22px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 3px 6px;
+  cursor: pointer;
 }
 .item {
-    border: 1px solid rgba(0,0,0,5);
+  border: 1px solid rgba(0, 0, 0, 5);
 }
 
 @keyframes selected {
-    0% {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        background-color: rgba(0,0,0,0);
-        color: black;
-    }
-    100% {
-        box-shadow: none;
-        background-color: rgb(48, 98, 249);
-        color: white
-    }
+  0% {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+  }
+  100% {
+    box-shadow: none;
+    background-color: black;
+    color: white;
+  }
 }

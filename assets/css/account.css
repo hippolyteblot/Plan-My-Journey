@@ -37,6 +37,7 @@ main#account {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  height: max-content;
   width: 40vw;
   background: rgba(255, 255, 255, 0.25);
   padding: 1.5rem;
@@ -102,5 +103,26 @@ main#account {
 .profile-parameters-modify span:hover,
 .profile-preferences-modify span:hover {
   background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+}
+
+.profile-preferences-type {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#test {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#test p {
+  font-size: clamp(10px, 2vw, 15px);
+  background-color: black;
+  color: white;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
   cursor: pointer;
 }

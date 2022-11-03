@@ -13,6 +13,36 @@ if (isset($_SESSION['email'])) {
   );
   $primaryTypes = getPrimaryTypes();
   $categories = getCategories();
+
+  // TEST DE LA FONCTION getPreferences()
+  $preferences = array();
+  $preferences = getPreferences($user['email']);
+
+  // TEST DE LA FONCTION unSetPreferences()
+  if (isset($_GET['unSetPreferences'])) {
+    $unSetPreferences = array();
+    $unSetPreferences = $_GET['unSetPreferences'];
+    $unSetPreferences = explode(',', $unSetPreferences);
+
+    foreach ($unSetPreferences as $unSetPreference) {
+      unSetPreferences($user['email'], $unSetPreference);
+    }
+  }
+
+  // TEST DE LA FONCTION setPreferences()
+  if (isset($_GET['setPreferences'])) {
+    $preferencesByGET = array();
+    $preferencesByGET = $_GET['setPreferences'];
+    $preferenceByGET = explode(',', $preferencesByGET);
+
+    foreach ($preferenceByGET as $preference) {
+      setPreferences($user['email'], $preference);
+    }
+
+    header('Location: index.php?page=account');
+  }
+
+
   require_once(PATH_VIEWS . 'account.php');
 } else {
   header('Location: index.php?page=connexion');
