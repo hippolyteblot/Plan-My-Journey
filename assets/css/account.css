@@ -92,7 +92,7 @@ main#account {
 .profile-disconnect span,
 .profile-parameters-modify span,
 .profile-preferences-modify span {
-  margin: 10px;
+  margin: 5px;
   border: 2px solid black;
   border-radius: 25px;
   padding: 3px 6px;

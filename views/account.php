@@ -47,7 +47,7 @@
         </ul>
       </div>
       <div class="profile-preferences-modify">
-        <span id="myBtn">Modifier</span>
+        <span onclick="openModal('pref')">Modifier</span>
       </div>
 
       
@@ -57,12 +57,12 @@
 </main>
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="modal-pref" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
-      <span class="close">&times;</span>
+      <span class="close" onclick="closeModal('pref')">&times;</span>
       <h2>Modification des préférences</h2>
     </div>
     <div class="modal-body">
@@ -70,28 +70,59 @@
         <div class="category">
           <h3>Restauration</h3>
           <div class="category-list">
-            <p class="item">Restaurant</p>
-            <p class="item">Fast-food</p>
-            <p class="item">Snack</p>
+            <div class="profile-preferences-modify">
+              <span>Restaurants asiatiques</span>
+              <span>Restaurants européens</span>
+            </div>
           </div>
         </div>
         <div class="category">
           <h3>Activités</h3>
+
           <div class="category-list">
             <?php
-            foreach ($primaryTypes as $primaryType) {
-              echo '<p class="item">' . $primaryType['primary_type_name'] . '</p>';
+            foreach ($categories as $category) {
+              echo '<div class="profile-preferences-modify">
+                  <span onclick="openModal(' . $category['category_id'] . ')">' . $category['category_name'] . '</span>
+                </div>';
             }
             ?>
-          </div>
         </div>
       </div>
     </div>
 
     <div class="modal-footer">
       <!-- validation button -->
-      <span id="validate-modif-pref">Valider</span>
+      <span id="validate-modif-pref" onclick="closeModal('pref')">Valider</span>
     </div>
+    <?php
+    foreach ($categories as $category) {
+      ?>
+      <div class="modal-side category-modal" id="modal-<?=$category["category_id"]?>">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close" onclick="closeModal(<?=$category['category_id']?>)">&times;</span>
+            <h2>Liste des préférences liées au terme : <?=$category["category_name"]?></h2>
+          </div>
+          <div class="modal-body">
+            <h3>Sélectionnez vos préférences</h3>
+            <div class="category">
+              <div class="category-list">
+              <?php
+              foreach ($primaryTypes as $primaryType) {
+                if ($primaryType['category_id'] == $category['category_id']) {
+                  echo '<p class="item">' . $primaryType['primary_type_name'] . '</p>';
+                }
+              }
+              ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+    }
+    ?>
   </div>
 
 </div>

@@ -13,6 +13,42 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+.modal-side {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    right: 0;
+    top: 0;
+    width: 50%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0); /* Black w/ opacity */
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-side .modal-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    /* corner top-right */
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-animation-name: animateside;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animateside;
+    animation-duration: 0.4s
+}
+.modal-body {
+    width: 45%;
+}
+.modal-side .modal-body {
+    width: 100%;
+}
 
 /* Modal Content */
 .modal-content {
@@ -46,6 +82,17 @@
 @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
+}
+
+/* Add Animation */
+@-webkit-keyframes animateside {
+    from {right:-300px; opacity:0} 
+    to {right:0; opacity:1}
+}
+
+@keyframes animateside {
+    from {right:-300px; opacity:0}
+    to {right:0; opacity:1}
 }
 
 /* The Close Button */
@@ -86,7 +133,7 @@
 }
 .category {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     margin: 10px;
     border-radius: 10px;
@@ -108,7 +155,7 @@
     
     padding: 5px;
     background-color: rgba(0,0,0,0);
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     cursor: pointer;
 }
@@ -123,8 +170,12 @@
 #validate-modif-pref {
     font-size: 22px;
     border: 2px solid black;
-    border-radius: 25px;
+    border-radius: 20px;
     padding: 3px 6px;
+    cursor: pointer;
+}
+.item {
+    border: 1px solid rgba(0,0,0,5);
 }
 
 @keyframes selected {

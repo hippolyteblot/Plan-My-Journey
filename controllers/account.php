@@ -12,6 +12,7 @@ if (isset($_SESSION['email'])) {
     'email' => $_SESSION['email']
   );
   $primaryTypes = getPrimaryTypes();
+  $categories = getCategories();
   require_once(PATH_VIEWS . 'account.php');
 } else {
   header('Location: index.php?page=connexion');
