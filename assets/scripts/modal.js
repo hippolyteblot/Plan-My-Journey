@@ -2,7 +2,13 @@ var items = document.querySelectorAll(".item");
 
 for (var i = 0; i < items.length; i++) {
   items[i].addEventListener("click", function () {
-    this.classList.toggle("selected");
+    if (this.classList.contains("selected")) {
+      this.classList.add("unselected");
+      this.classList.remove("selected");
+    } else {
+      this.classList.remove("unselected");
+      this.classList.add("selected");
+    }
   });
 }
 
@@ -36,7 +42,7 @@ function closeModal(id) {
     window.location.href =
       "?page=account&setPreferences=" + selectedItemsArray.join(",");
 
-    var unSelectedItems = document.querySelectorAll(".item:not(.selected)");
+    var unSelectedItems = document.querySelectorAll(".item.unselected");
     var unSelectedItemsArray = [];
     for (var i = 0; i < unSelectedItems.length; i++) {
       unSelectedItemsArray.push(unSelectedItems[i].innerHTML);
