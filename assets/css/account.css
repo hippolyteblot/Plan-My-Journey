@@ -10,8 +10,26 @@ main#account {
   align-items: center;
   justify-content: center;
   height: 150px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  padding-top: 100px;
+  z-index: 1;
   width: 100%;
+}
+.profile-photo img {
+  border-radius: 50%;
+  
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .profile-information {
@@ -20,8 +38,16 @@ main#account {
   grid-template-rows: 1fr 2fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  border-top: 2px solid black;
+  border: 2px solid black;
   width: 100%;
+  padding-bottom: 40px;
+
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
 }
 
 .profile-name,

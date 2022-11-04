@@ -8,7 +8,7 @@
 </head>
 <main id="account">
   <div class="profile-photo">
-    <span>Voici ma photo de profil</span>
+    <img src="<?= PATH_IMAGES ?>account.png" alt="Photo de profil" whidth="200" height="200" />
   </div>
   <div class="profile-information">
     <div class="profile-name">
