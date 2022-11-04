@@ -23,10 +23,14 @@ if (isset($_SESSION['email'])) {
   if (isset($_GET['setPreferences'])) {
     $preferencesByGET = array();
     $preferencesByGET = $_GET['setPreferences'];
-    $preferenceByGET = explode(',', $preferencesByGET);
+    echo 'preferencesByGET : i' . $preferencesByGET . 'i<br>';
 
-    foreach ($preferenceByGET as $preference) {
-      setPreferences($user['email'], $preference);
+    // If number of chars is > 1
+    if(strlen($preferencesByGET) > 0) {
+      $preferencesByGET = explode(',', $preferencesByGET);
+      foreach ($preferencesByGET as $preference) {
+        setPreferences($user['email'], $preference);
+      }
     }
 
     header('Location: index.php?page=account');
