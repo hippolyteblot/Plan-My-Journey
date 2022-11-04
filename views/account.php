@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="<?= PATH_CSS ?>account.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>modal.css" />
   <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
+
 </head>
 <main id="account">
   <div class="profile-photo">

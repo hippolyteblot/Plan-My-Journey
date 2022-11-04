@@ -1,4 +1,7 @@
 <?php
+
+$pageName = "Inscription";
+
 require_once(PATH_MODELS . 'register.php');
 
 

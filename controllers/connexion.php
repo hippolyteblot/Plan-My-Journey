@@ -1,4 +1,5 @@
 <?php
+$pageName = "Connexion";
 
 require_once(PATH_MODELS . 'login.php');
 

@@ -107,6 +107,9 @@ nav i {
   font-size: 22px;
   cursor: pointer;
 }
+.left a {
+  display: flex;
+}
 
 @media (max-width: 700px) {
   ul.header-nav label {

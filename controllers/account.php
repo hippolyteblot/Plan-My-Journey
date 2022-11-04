@@ -1,5 +1,7 @@
 <?php
 
+$pageName = "Mon compte";
+
 require_once(PATH_MODELS . 'account.php');
 require_once(PATH_MODELS . 'preferences.php');
 
