@@ -18,16 +18,6 @@ if (isset($_SESSION['email'])) {
   $preferences = array();
   $preferences = getPreferences($user['email']);
 
-  // TEST DE LA FONCTION unSetPreferences()
-  if (isset($_GET['unSetPreferences'])) {
-    $unSetPreferences = array();
-    $unSetPreferences = $_GET['unSetPreferences'];
-    $unSetPreferences = explode(',', $unSetPreferences);
-
-    foreach ($unSetPreferences as $unSetPreference) {
-      unSetPreferences($user['email'], $unSetPreference);
-    }
-  }
 
   // TEST DE LA FONCTION setPreferences()
   if (isset($_GET['setPreferences'])) {
@@ -42,6 +32,16 @@ if (isset($_SESSION['email'])) {
     header('Location: index.php?page=account');
   }
 
+  // TEST DE LA FONCTION unSetPreferences()
+  if (isset($_GET['unSetPreferences'])) {
+    $unSetPreferences = array();
+    $unSetPreferences = $_GET['unSetPreferences'];
+    $unSetPreferences = explode(',', $unSetPreferences);
+
+    foreach ($unSetPreferences as $unSetPreference) {
+      unSetPreferences($user['email'], $unSetPreference);
+    }
+  }
 
   require_once(PATH_VIEWS . 'account.php');
 } else {
