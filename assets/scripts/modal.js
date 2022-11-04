@@ -34,7 +34,7 @@ function closeModal(id) {
       selectedItemsArray.push(selectedItems[i].innerHTML);
     }
     window.location.href =
-      "/index.php?page=account&setPreferences=" + selectedItemsArray.join(",");
+      "?page=account&setPreferences=" + selectedItemsArray.join(",");
 
     var unSelectedItems = document.querySelectorAll(".item:not(.selected)");
     var unSelectedItemsArray = [];
@@ -42,7 +42,7 @@ function closeModal(id) {
       unSelectedItemsArray.push(unSelectedItems[i].innerHTML);
     }
     window.location.href =
-      "/index.php?page=account&setPreferences=" +
+      "?page=account&setPreferences=" +
       selectedItemsArray.join(",") +
       "&unSetPreferences=" +
       unSelectedItemsArray.join(",");
