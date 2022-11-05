@@ -25,12 +25,14 @@ function getCategories()
 function getPreferences($user)
 {
     $db = Connexion::getInstance()->getBdd();
-    $query = $db->prepare('SELECT primary_preferences.primary_type_id FROM primary_preferences 
-    INNER JOIN primary_type ON primary_type.primary_type_name = primary_preferences.primary_type_id 
+    $query = $db->prepare('SELECT * FROM primary_preferences 
+    INNER JOIN primary_type ON primary_type.primary_type_id = primary_preferences.primary_type_id 
     INNER JOIN user ON user.user_id = primary_preferences.user_id
+    INNER JOIN type_membership ON type_membership.type_id = primary_type.primary_type_id
+    INNER JOIN type_category ON type_category.category_id = type_membership.category_id
     WHERE user.email = ?');
     $query->execute(array($user));
-    $result = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+    $result = $query->fetchAll();
     $query->closeCursor();
     return $result;
 }
@@ -43,7 +45,7 @@ function setPreferences($user, $preferences)
         $query->execute(array($user));
         $userId = $query->fetch();
         $userId = $userId['user_id'];
-        $query = $db->prepare('INSERT INTO primary_preferences (user_id, primary_type_id) VALUES (?, ?)');
+        $query = $db->prepare('INSERT INTO primary_preferences (user_id, primary_type_id) VALUES (?, ?)'); // A corriger
         $query->execute(array($userId, $preferences));
         $query->closeCursor();
     }
@@ -67,7 +69,7 @@ function preferencesIn($user, $preference)
 {
     $db = Connexion::getInstance()->getBdd();
     $query = $db->prepare('SELECT primary_preferences.primary_type_id FROM primary_preferences
-    INNER JOIN primary_type ON primary_type.primary_type_name = primary_preferences.primary_type_id
+    INNER JOIN primary_type ON primary_type.primary_type_id = primary_preferences.primary_type_id
     INNER JOIN user ON user.user_id = primary_preferences.user_id
     WHERE user.email = ? AND primary_preferences.primary_type_id = ?');
     $query->execute(array($user, $preference));

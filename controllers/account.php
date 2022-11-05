@@ -20,12 +20,16 @@ if (isset($_SESSION['email'])) {
   $preferences = array();
   $preferences = getPreferences($user['email']);
 
+  // Array of the primary type name
+  $preferencesId = array();
+  foreach ($preferences as $preference) {
+    array_push($preferencesId, $preference['primary_type_id']);
+  }
 
   // TEST DE LA FONCTION setPreferences()
   if (isset($_GET['setPreferences'])) {
     $preferencesByGET = array();
     $preferencesByGET = $_GET['setPreferences'];
-    echo 'preferencesByGET : i' . $preferencesByGET . 'i<br>';
 
     // If number of chars is > 1
     if(strlen($preferencesByGET) > 0) {
@@ -47,6 +51,7 @@ if (isset($_SESSION['email'])) {
     foreach ($unSetPreferences as $unSetPreference) {
       unSetPreferences($user['email'], $unSetPreference);
     }
+    header('Location: index.php?page=account');
   }
 
   require_once(PATH_VIEWS . 'account.php');

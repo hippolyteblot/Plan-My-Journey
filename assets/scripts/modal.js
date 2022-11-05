@@ -36,17 +36,23 @@ function closeModal(id) {
   if (id == "pref") {
     var selectedItems = document.querySelectorAll(".item.selected");
     var selectedItemsArray = [];
+
+    var unSelectedItems = document.querySelectorAll(".item.unselected");
+    var unSelectedItemsArray = [];
+
+    for (var i = 0; i < unSelectedItems.length; i++) {
+      unSelectedItemsArray.push(unSelectedItems[i].getAttribute("value"));
+    }
     for (var i = 0; i < selectedItems.length; i++) {
-      selectedItemsArray.push(selectedItems[i].innerHTML);
+      // If note in unselected array
+      if (unSelectedItemsArray.indexOf(selectedItems[i].getAttribute("value")) == -1) {
+        selectedItemsArray.push(selectedItems[i].getAttribute("value"));
+      }
     }
     window.location.href =
       "?page=account&setPreferences=" + selectedItemsArray.join(",");
 
-    var unSelectedItems = document.querySelectorAll(".item.unselected");
-    var unSelectedItemsArray = [];
-    for (var i = 0; i < unSelectedItems.length; i++) {
-      unSelectedItemsArray.push(unSelectedItems[i].innerHTML);
-    }
+    
     window.location.href =
       "?page=account&setPreferences=" +
       selectedItemsArray.join(",") +

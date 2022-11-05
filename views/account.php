@@ -19,17 +19,17 @@
     </div>
     <div class="profile-parameters">
       <div class="profile-parameters-title">
-        <h2>Paramètres</h2>
+        <h2>Informations</h2>
       </div>
       <div class="profile-parameters-list">
         <li class="profile-firstname">
-          <p><?= $user['firstname'] ?></p>
+          <h3>Prénom : <?= $user['firstname'] ?></h3>
         </li>
         <li class="profile-lastname">
-          <p><?= $user['lastname'] ?></p>
+          <h3>Nom : <?= $user['lastname'] ?></h3>
         </li>
         <li class="profile-email">
-          <p><?= $user['email'] ?></p>
+          <h3>E-mail : <?= $user['email'] ?></h3>
         </li>
       </div>
       <div class="profile-parameters-modify">
@@ -43,14 +43,29 @@
       <div class="profile-preferences-list">
         <ul>
           <li>
-            <p>Restaurant</p>
+            <h3>Restaurant</h3>
+            <span class="pref-list">
+              <?php 
+              foreach ($preferences as $preference) {
+                if($preference['structure_type'] == 'R') {
+                  echo "<p>".$preference['primary_type_name'] . "</p>";
+                }
+              }
+              ?>
+                
+            </span>
           </li>
           <li>
-            <p>Activités</p>
-            <span id="test">
-              <?php foreach ($preferences as $preference) : ?>
-                <p><?= $preference; ?></p>
-              <?php endforeach; ?>
+          <h3>Activités</h3>
+            <span class="pref-list">
+              <?php 
+              foreach ($preferences as $preference) {
+                if($preference['structure_type'] == 'A') {
+                  echo "<p>".$preference['primary_type_name'] . "</p>";
+                }
+              }
+              ?>
+                
             </span>
           </li>
         </ul>
@@ -80,8 +95,13 @@
           <h3>Restauration</h3>
           <div class="category-list">
             <div class="profile-preferences-modify profile-preferences-type">
-              <span>Restaurants asiatiques</span>
-              <span>Restaurants européens</span>
+            <?php
+              foreach ($categories as $category) {
+                if ($category['structure_type'] == 'R') {
+                  echo '<span onclick="openModal(' . $category['category_id'] . ')">' . $category['category_name'] . '</span>';
+                }
+              }
+              ?>
             </div>
           </div>
         </div>
@@ -92,7 +112,9 @@
             <div class="profile-preferences-modify profile-preferences-type">
               <?php
               foreach ($categories as $category) {
-                echo '<span onclick="openModal(' . $category['category_id'] . ')">' . $category['category_name'] . '</span>';
+                if ($category['structure_type'] == 'A') {
+                  echo '<span onclick="openModal(' . $category['category_id'] . ')">' . $category['category_name'] . '</span>';
+                }
               }
               ?>
             </div>
@@ -120,10 +142,10 @@
                   <?php
                   foreach ($primaryTypes as $primaryType) {
                     if ($primaryType['category_id'] == $category['category_id']) {
-                      if (in_array($primaryType['primary_type_name'], $preferences)) {
-                        echo '<p class="item selected">' . $primaryType['primary_type_name'] . '</p>';
+                      if (in_array($primaryType['primary_type_id'], $preferencesId)) {
+                        echo '<p class="item selected" value="' . $primaryType['primary_type_id'] . '">' . $primaryType['primary_type_name'] . '</p>';
                       } else {
-                        echo '<p class="item">' . $primaryType['primary_type_name'] . '</p>';
+                        echo '<p class="item" value="' . $primaryType['primary_type_id'] . '">' . $primaryType['primary_type_name'] . '</p>';
                       }
                     }
                   }

@@ -137,12 +137,12 @@ h1 {
   flex-wrap: wrap;
 }
 
-#test {
+.pref-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-#test p {
+.pref-list p {
   font-size: clamp(10px, 2vw, 15px);
   background-color: black;
   color: white;
