@@ -23,8 +23,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $_SESSION['email'] = $email;
         $_SESSION['firstname'] = $alert['firstname'];
         $_SESSION['lastname'] = $alert['lastname'];
-        header('Location: index.php?page=accueil');
+        header('Location: index.php?page=home');
     }
 }
 
-require_once(PATH_VIEWS . $page . '.php');
+require_once(PATH_VIEWS . 'login.php');

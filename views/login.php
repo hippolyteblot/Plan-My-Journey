@@ -1,7 +1,7 @@
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
 <head>
-  <link rel="stylesheet" href="<?= PATH_CSS ?>connexion.css" />
+  <link rel="stylesheet" href="<?= PATH_CSS ?>login.css" />
 </head>
 
 <main id="connexion">
@@ -14,7 +14,7 @@
         <h1>Connexion</h1>
         <div>Connectez vous pour utiliser nos services.</div>
       </div>
-      <form method="POST" action="?page=connexion" class="login-card-form">
+      <form method="POST" action="?page=login" class="login-card-form">
         <div class="form-item">
           <span class="form-item-icon material-symbols-outlined">mail</span>
           <input type="text" placeholder="Entrer votre mail" required autofocus name="email" id="">
@@ -34,7 +34,7 @@
         <button type="submit">Se connecter</button>
       </form>
       <div class="login-card-footer">
-        <div>Vous n'avez pas de compte ? <a href="?page=inscription">Inscrivez-vous</a></div>
+        <div>Vous n'avez pas de compte ? <a href="?page=register">Inscrivez-vous</a></div>
       </div>
     </div>
     <div class="login-card-social">

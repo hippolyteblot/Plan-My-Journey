@@ -50,7 +50,7 @@
         <button type="submit">S'inscrire</button>
       </form>
       <div class="login-card-footer">
-        <div>Vous avez déjà un compte ? <a href="?page=connexion">Connectez-vous</a></div>
+        <div>Vous avez déjà un compte ? <a href="?page=login">Connectez-vous</a></div>
       </div>
     </div>
     <div class="login-card-social">

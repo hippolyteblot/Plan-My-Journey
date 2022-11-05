@@ -9,9 +9,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+  <!-- icon of the website -->
+  <link rel="icon" href="<?= PATH_IMAGES ?>logo.png" />
+  <!-- For ios -->
+  <link rel="apple-touch-icon" href="<?= PATH_IMAGES ?>logo.png" />
+
   <link rel="stylesheet" href="<?= PATH_CSS ?>alert.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>reset.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>header.css" />
+  
   <script src="https://kit.fontawesome.com/f06f56c2b1.js" crossorigin="anonymous"></script>
 </head>
 
@@ -45,7 +51,7 @@
         <?php if (isset($_SESSION['email'])) { ?>
           <li><a href="index.php?page=account"><span class="btn">Mon compte</span></a></li>
         <?php } else { ?>
-          <li><a href="index.php?page=connexion"><span class="btn">Connectez-vous</span></a></li>
+          <li><a href="index.php?page=login"><span class="btn">Connectez-vous</span></a></li>
         <?php } ?>
       </div>
     </ul>

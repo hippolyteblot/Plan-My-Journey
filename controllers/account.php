@@ -34,5 +34,5 @@ if (isset($_SESSION['email'])) {
 
   require_once(PATH_VIEWS . 'account.php');
 } else {
-  header('Location: index.php?page=connexion');
+  header('Location: index.php?page=login');
 }

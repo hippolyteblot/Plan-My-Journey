@@ -21,10 +21,10 @@ if (isset($_POST['firstname'])) {
   $alert = register($firstname, $lastname, $email, $password, $confirmPassword, $newsletter);
 
   if (isset($alert['messageAlert'])) {
-    require_once(PATH_VIEWS . $page . '.php');
+    require_once(PATH_VIEWS . 'register.php');
   } else {
-    header('Location: index.php?page=connexion');
+    header('Location: index.php?page=login');
   }
 } else {
-  require_once(PATH_VIEWS . $page . '.php');
+  require_once(PATH_VIEWS . 'register.php');
 }
