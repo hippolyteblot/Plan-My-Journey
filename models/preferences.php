@@ -41,11 +41,8 @@ function setPreferences($user, $preferences)
 {
     if (!preferencesIn($user, $preferences)) {
         $db = Connexion::getInstance()->getBdd();
-        $query = $db->prepare('SELECT user_id FROM user WHERE email = ?');
-        $query->execute(array($user));
-        $userId = $query->fetch();
-        $userId = $userId['user_id'];
-        $query = $db->prepare('INSERT INTO primary_preferences (user_id, primary_type_id) VALUES (?, ?)'); // A corriger
+        $userId = getUserId($user);
+        $query = $db->prepare('INSERT INTO primary_preferences (user_id, primary_type_id) VALUES (?, ?)');
         $query->execute(array($userId, $preferences));
         $query->closeCursor();
     }
@@ -55,10 +52,7 @@ function unSetPreferences($user, $preferences)
 {
     if (preferencesIn($user, $preferences)) {
         $db = Connexion::getInstance()->getBdd();
-        $query = $db->prepare('SELECT user_id FROM user WHERE email = ?');
-        $query->execute(array($user));
-        $userId = $query->fetch();
-        $userId = $userId['user_id'];
+        $userId = getUserId($user);
         $query = $db->prepare('DELETE FROM primary_preferences WHERE user_id = ? AND primary_type_id = ?');
         $query->execute(array($userId, $preferences));
         $query->closeCursor();
@@ -80,4 +74,15 @@ function preferencesIn($user, $preference)
     } else {
         return false;
     }
+}
+
+function getUserId($user)
+{
+    $db = Connexion::getInstance()->getBdd();
+    $query = $db->prepare('SELECT user_id FROM user WHERE email = ?');
+    $query->execute(array($user));
+    $userId = $query->fetch();
+    $userId = $userId['user_id'];
+    $query->closeCursor();
+    return $userId;
 }
