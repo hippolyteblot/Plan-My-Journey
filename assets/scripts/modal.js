@@ -34,10 +34,10 @@ function openModal(id) {
 }
 function closeModal(id) {
   if (id == "pref") {
-    var selectedItems = document.querySelectorAll(".item.selected");
+    var selectedItems = document.querySelectorAll(".item.selected.primary");
     var selectedItemsArray = [];
 
-    var unSelectedItems = document.querySelectorAll(".item.unselected");
+    var unSelectedItems = document.querySelectorAll(".item.unselected.primary");
     var unSelectedItemsArray = [];
 
     for (var i = 0; i < unSelectedItems.length; i++) {
@@ -49,15 +49,35 @@ function closeModal(id) {
         selectedItemsArray.push(selectedItems[i].getAttribute("value"));
       }
     }
-    window.location.href =
-      "?page=account&setPreferences=" + selectedItemsArray.join(",");
+    
+    var selectedSecondaryItems = document.querySelectorAll(".item.selected.secondary");
+    var selectedSecondaryItemsArray = [];
+
+    var unSelectedSecondaryItems = document.querySelectorAll(".item.unselected.secondary");
+    var unSelectedSecondaryItemsArray = [];
+
+    for (var i = 0; i < unSelectedSecondaryItems.length; i++) {
+      unSelectedSecondaryItemsArray.push(unSelectedSecondaryItems[i].getAttribute("value"));
+    }
+    for (var i = 0; i < selectedSecondaryItems.length; i++) {
+      // If note in unselected array
+      if (unSelectedSecondaryItemsArray.indexOf(selectedSecondaryItems[i].getAttribute("value")) == -1) {
+        selectedSecondaryItemsArray.push(selectedSecondaryItems[i].getAttribute("value"));
+      }
+    }
+
 
     
     window.location.href =
       "?page=account&setPreferences=" +
       selectedItemsArray.join(",") +
       "&unSetPreferences=" +
-      unSelectedItemsArray.join(",");
+      unSelectedItemsArray.join(",") +
+      "&setSecondaryPreferences=" +
+      selectedSecondaryItemsArray.join(",") +
+      "&unSetSecondaryPreferences=" +
+      unSelectedSecondaryItemsArray.join(",");
+
   }
   document.getElementById("modal-" + id).style.display = "none";
 }

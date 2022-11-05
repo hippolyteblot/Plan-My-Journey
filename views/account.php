@@ -46,9 +46,14 @@
             <h3>Restaurant</h3>
             <span class="pref-list">
               <?php 
-              foreach ($preferences as $preference) {
+              foreach ($primaryPreferences as $preference) {
                 if($preference['structure_type'] == 'R') {
                   echo "<p>".$preference['primary_type_name'] . "</p>";
+                }
+              }
+              foreach ($secondaryPreferences as $preference) {
+                if($preference['structure_type'] == 'R') {
+                  echo "<p>".$preference['secondary_type_name'] . "</p>";
                 }
               }
               ?>
@@ -59,9 +64,14 @@
           <h3>Activités</h3>
             <span class="pref-list">
               <?php 
-              foreach ($preferences as $preference) {
+              foreach ($primaryPreferences as $preference) {
                 if($preference['structure_type'] == 'A') {
                   echo "<p>".$preference['primary_type_name'] . "</p>";
+                }
+              }
+              foreach ($secondaryPreferences as $preference) {
+                if($preference['structure_type'] == 'A') {
+                  echo "<p>".$preference['secondary_type_name'] . "</p>";
                 }
               }
               ?>
@@ -142,10 +152,20 @@
                   <?php
                   foreach ($primaryTypes as $primaryType) {
                     if ($primaryType['category_id'] == $category['category_id']) {
-                      if (in_array($primaryType['primary_type_id'], $preferencesId)) {
-                        echo '<p class="item selected" value="' . $primaryType['primary_type_id'] . '">' . $primaryType['primary_type_name'] . '</p>';
+                      if (in_array($primaryType['primary_type_id'], $primaryPreferencesId)) {
+                        echo '<p class="item selected primary" value="' . $primaryType['primary_type_id'] . '">' . $primaryType['primary_type_name'] . '</p>';
                       } else {
-                        echo '<p class="item" value="' . $primaryType['primary_type_id'] . '">' . $primaryType['primary_type_name'] . '</p>';
+                        echo '<p class="item primary" value="' . $primaryType['primary_type_id'] . '">' . $primaryType['primary_type_name'] . '</p>';
+                      }
+                    }
+                  }
+
+                  foreach ($secondaryTypes as $secondaryType) {
+                    if ($secondaryType['category_id'] == $category['category_id']) {
+                      if (in_array($secondaryType['secondary_type_id'], $secondaryPreferencesId)) {
+                        echo '<p class="item selected secondary" value="' . $secondaryType['secondary_type_id'] . '">' . $secondaryType['secondary_type_name'] . '</p>';
+                      } else {
+                        echo '<p class="item secondary" value="' . $secondaryType['secondary_type_id'] . '">' . $secondaryType['secondary_type_name'] . '</p>';
                       }
                     }
                   }
