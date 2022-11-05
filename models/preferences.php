@@ -155,3 +155,79 @@ function secondaryPreferencesIn($user, $preference)
         return false;
     }
 }
+
+function getPrimaryPreferencesId($primaryPreferences) {
+    $primaryPreferencesId = array();
+    foreach ($primaryPreferences as $primaryPreference) {
+        array_push($primaryPreferencesId, $primaryPreference['primary_type_id']);
+    }
+    return $primaryPreferencesId;
+}
+
+function getSecondaryPreferencesId($secondaryPreferences) {
+    $secondaryPreferencesId = array();
+    foreach ($secondaryPreferences as $secondaryPreference) {
+        array_push($secondaryPreferencesId, $secondaryPreference['secondary_type_id']);
+    }
+    return $secondaryPreferencesId;
+}
+
+function managePreferencesUpdate($user) {
+
+    $reload = false;
+    if (isset($_GET['setPreferences'])) {
+        $reload = true;
+        $preferencesByGET = array();
+        $preferencesByGET = $_GET['setPreferences'];
+    
+        // If number of chars is > 1
+        if(strlen($preferencesByGET) > 0) {
+            $preferencesByGET = explode(',', $preferencesByGET);
+            foreach ($preferencesByGET as $preference) {
+                setPrimaryPreferences($user['email'], $preference);
+            }
+        }
+
+    }
+    
+    if (isset($_GET['unSetPreferences'])) {
+        $reload = true;
+        $unSetPreferences = array();
+        $unSetPreferences = $_GET['unSetPreferences'];
+        $unSetPreferences = explode(',', $unSetPreferences);
+    
+        foreach ($unSetPreferences as $unSetPreference) {
+            unSetPrimaryPreferences($user['email'], $unSetPreference);
+        }
+    }
+    
+    if (isset($_GET['setSecondaryPreferences'])) {
+        $reload = true;
+        $secondaryPreferencesByGET = array();
+        $secondaryPreferencesByGET = $_GET['setSecondaryPreferences'];
+    
+        // If number of chars is > 1
+        if(strlen($secondaryPreferencesByGET) > 0) {
+            $secondaryPreferencesByGET = explode(',', $secondaryPreferencesByGET);
+            foreach ($secondaryPreferencesByGET as $secondaryPreference) {
+                setSecondaryPreferences($user['email'], $secondaryPreference);
+            }
+        }
+
+    }
+    
+    if (isset($_GET['unSetSecondaryPreferences'])) {
+        $reload = true;
+        $unSetSecondaryPreferences = array();
+        $unSetSecondaryPreferences = $_GET['unSetSecondaryPreferences'];
+        $unSetSecondaryPreferences = explode(',', $unSetSecondaryPreferences);
+    
+        foreach ($unSetSecondaryPreferences as $unSetSecondaryPreference) {
+            unSetSecondaryPreferences($user['email'], $unSetSecondaryPreference);
+        }
+    }
+
+    if ($reload) {
+        header('Location: index.php?page=account');
+    }
+}
