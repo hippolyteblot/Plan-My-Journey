@@ -3,10 +3,10 @@
 const DEBUG = true; // production : false; dev : true
 
 // Accès base de données
-const BD_HOST = 'localhost';
+const BD_HOST = '35.181.153.68';
 const BD_DBNAME = 'plan_my_journey';
 const BD_USER = 'root';
-const BD_PWD = 'root';
+const BD_PWD = 'Planmyjourney';
 
 // Langue du site
 const LANG = 'FR-fr';
