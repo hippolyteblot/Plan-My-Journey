@@ -92,6 +92,7 @@ form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 #input02 span {
 	margin-top: 50px;
@@ -112,6 +113,9 @@ form {
 	width: 100%;
 	display: flex;
 	align-items: center;
+	color: #fff;
+	font-size: 1.2rem;
+	padding-left: 30px;
 }
 @media (max-width: 920px) {
 	.svg {
