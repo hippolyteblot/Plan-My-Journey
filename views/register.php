@@ -1,8 +1,8 @@
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
 <head>
-  <link rel="stylesheet" href="<?= PATH_CSS ?>connexion.css" />
-  <script defer src="<?= PATH_SCRIPTS ?>inscription.js"></script>
+  <link rel="stylesheet" href="<?= PATH_CSS ?>login.css" />
+  <script defer src="<?= PATH_SCRIPTS ?>register.js"></script>
 </head>
 
 <main id="connexion">
