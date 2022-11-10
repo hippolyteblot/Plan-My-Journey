@@ -22,12 +22,21 @@
         </button>
       </div>
     </form>
+    <div class="formItem item03">
+
+      <button id="input03">
+        <span class="material-symbols-outlined">
+          settings
+        </span>
+
+      </button>
+    </div>
     <br />
     <?php include_once(PATH_VIEWS . 'alert.php'); ?>
   </div>
-  <span>
-    Swipe up !
-  </span>
+  <div>
+    param
+  </div>
 </main>
 
 <?php //require_once(PATH_VIEWS . 'footer.php'); 
