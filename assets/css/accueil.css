@@ -104,7 +104,33 @@ form {
 	align-items: center;
 	justify-content: center;
 } */
-
+#input03 {
+	height: 100%;
+	width: 100%;
+	border-radius: 20px;
+	z-index: 100;
+	background: inherit;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	padding-left: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+#input03 span {
+	margin-top: 50px;
+	margin-right: 30px;
+	margin-left: 10px;
+}
+.item03 {
+	height: 50px;
+	width: 50px;
+	margin-left: calc(50% - 25px);
+	margin-top: 50px;
+}
 #input01 {
 	height: 100%;
 	width: 100%;
@@ -118,9 +144,6 @@ form {
 	padding-left: 30px;
 }
 @media (max-width: 920px) {
-	.svg {
-		display: none;
-	}
 	form {
 		flex-direction: column;
 		margin-top: 100px;
