@@ -16,7 +16,7 @@ if (!isset($_SESSION['email'])) {
         $_SESSION['email'] = $email;
         $_SESSION['firstname'] = $alert['firstname'];
         $_SESSION['lastname'] = $alert['lastname'];
-        header('Location: index.php?page=accueil');
+        header('Location: index.php?page=home');
       }
     }
   }
