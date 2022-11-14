@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>login.css" />
   <script defer src="<?= PATH_SCRIPTS ?>register.js"></script>
+  <script defer src="<?= PATH_SCRIPTS ?>form.js"></script>
 </head>
 
 <main id="connexion">
@@ -30,11 +31,13 @@
         </div>
         <div class="form-item item04">
           <span class="form-item-icon material-symbols-outlined">lock</span>
-          <input id="password1" type="password" placeholder="Entrer votre mot de passe" required name="password">
+          <input id="password" type="password" placeholder="Entrer votre mot de passe" required name="password">
+          <span class="form-item-icon-left material-symbols-outlined" id="password-visibility" onclick="visibility('password')">visibility_off</span>
         </div>
         <div class="form-item item05">
           <span class="form-item-icon material-symbols-outlined">lock</span>
-          <input id="password2" type="password" placeholder="Confirmer votre mot de passe" required name="confirmPassword">
+          <input id="password_confirm" type="password" placeholder="Confirmer votre mot de passe" required name="confirmPassword">
+          <span class="form-item-icon-left material-symbols-outlined" id="password-confirm-visibility" onclick="visibility('confirmPassword')">visibility_off</span>
         </div>
         <div class="form-item-other-inscription">
           <div class="checkbox">

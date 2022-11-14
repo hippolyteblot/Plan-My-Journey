@@ -2,6 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>login.css" />
+  <script defer src="<?= PATH_SCRIPTS ?>form.js"></script>
 </head>
 
 <main id="connexion">
@@ -21,7 +22,8 @@
         </div>
         <div class="form-item">
           <span class="form-item-icon material-symbols-outlined">lock</span>
-          <input type="password" placeholder="Entrer votre mot de passe" required name="password" id="">
+          <input type="password" placeholder="Entrer votre mot de passe" required name="password" id="password">
+          <span class="form-item-icon-left material-symbols-outlined" id="password-visibility" onclick="visibility('password')">visibility_off</span>
         </div>
         <div class="form-item-other">
           <div class="checkbox">

@@ -3,7 +3,9 @@
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>account.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>modal.css" />
+  <link rel="stylesheet" href="<?= PATH_CSS ?>form.css" />
   <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
+  <script src="<?= PATH_SCRIPTS ?>form.js" defer></script>
 
 </head>
 <main id="account">

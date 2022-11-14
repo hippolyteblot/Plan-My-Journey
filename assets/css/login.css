@@ -81,6 +81,14 @@ main#connexion {
   opacity: 0.4;
 }
 
+.form-item-icon-left {
+  position: absolute;
+  top: 0.82rem;
+  right: 1.4rem;
+  font-size: 1.3rem;
+  opacity: 0.4;
+}
+
 .login-card-form .checkbox {
   display: flex;
   align-items: center;
