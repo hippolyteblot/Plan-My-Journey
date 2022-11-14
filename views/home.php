@@ -34,9 +34,6 @@
     <br />
     <?php include_once(PATH_VIEWS . 'alert.php'); ?>
   </div>
-  <div>
-    param
-  </div>
 </main>
 
 <?php //require_once(PATH_VIEWS . 'footer.php'); 

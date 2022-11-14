@@ -32,6 +32,7 @@ function openModal(id) {
   });
   document.getElementById("modal-" + id).style.display = "block";
 }
+
 function closeModal(id) {
   if (id == "pref") {
     var selectedItems = document.querySelectorAll(".item.selected.primary");
