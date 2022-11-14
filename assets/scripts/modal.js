@@ -45,29 +45,42 @@ function closeModal(id) {
     }
     for (var i = 0; i < selectedItems.length; i++) {
       // If note in unselected array
-      if (unSelectedItemsArray.indexOf(selectedItems[i].getAttribute("value")) == -1) {
+      if (
+        unSelectedItemsArray.indexOf(selectedItems[i].getAttribute("value")) ==
+        -1
+      ) {
         selectedItemsArray.push(selectedItems[i].getAttribute("value"));
       }
     }
-    
-    var selectedSecondaryItems = document.querySelectorAll(".item.selected.secondary");
+
+    var selectedSecondaryItems = document.querySelectorAll(
+      ".item.selected.secondary"
+    );
     var selectedSecondaryItemsArray = [];
 
-    var unSelectedSecondaryItems = document.querySelectorAll(".item.unselected.secondary");
+    var unSelectedSecondaryItems = document.querySelectorAll(
+      ".item.unselected.secondary"
+    );
     var unSelectedSecondaryItemsArray = [];
 
     for (var i = 0; i < unSelectedSecondaryItems.length; i++) {
-      unSelectedSecondaryItemsArray.push(unSelectedSecondaryItems[i].getAttribute("value"));
+      unSelectedSecondaryItemsArray.push(
+        unSelectedSecondaryItems[i].getAttribute("value")
+      );
     }
     for (var i = 0; i < selectedSecondaryItems.length; i++) {
       // If note in unselected array
-      if (unSelectedSecondaryItemsArray.indexOf(selectedSecondaryItems[i].getAttribute("value")) == -1) {
-        selectedSecondaryItemsArray.push(selectedSecondaryItems[i].getAttribute("value"));
+      if (
+        unSelectedSecondaryItemsArray.indexOf(
+          selectedSecondaryItems[i].getAttribute("value")
+        ) == -1
+      ) {
+        selectedSecondaryItemsArray.push(
+          selectedSecondaryItems[i].getAttribute("value")
+        );
       }
     }
 
-
-    
     window.location.href =
       "?page=account&setPreferences=" +
       selectedItemsArray.join(",") +
@@ -77,7 +90,33 @@ function closeModal(id) {
       selectedSecondaryItemsArray.join(",") +
       "&unSetSecondaryPreferences=" +
       unSelectedSecondaryItemsArray.join(",");
-
   }
   document.getElementById("modal-" + id).style.display = "none";
+}
+
+function visibility(input) {
+  // Toggle the visibility of input #password
+  if (input == "password") {
+    var inputPass = document.getElementById("password");
+    var passVisibility = document.getElementById("password-visibility");
+    if (inputPass.type === "password") {
+      inputPass.type = "text";
+      passVisibility.innerHTML = "visibility";
+    } else {
+      inputPass.type = "password";
+      passVisibility.innerHTML = "visibility_off";
+    }
+  } else if (input == "confirmPassword") {
+    var inputConf = document.getElementById("password_confirm");
+    var passVisibilityConf = document.getElementById(
+      "password-confirm-visibility"
+    );
+    if (inputConf.type === "password") {
+      inputConf.type = "text";
+      passVisibilityConf.innerHTML = "visibility";
+    } else {
+      inputConf.type = "password";
+      passVisibilityConf.innerHTML = "visibility_off";
+    }
+  }
 }

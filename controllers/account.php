@@ -17,6 +17,42 @@ if (isset($_SESSION['email'])) {
   $secondaryTypes = getSecondaryTypes();
   $categories = getCategories();
 
+  // Informations
+  if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email'])) {
+    $firstname = htmlspecialchars($_POST['firstname']);
+    $lastname = htmlspecialchars($_POST['lastname']);
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
+    $passwordConfirm = htmlspecialchars($_POST['password_confirm']);
+    $alert = array();
+
+    if (empty($firstname) || empty($lastname) || empty($email)) {
+      $alert['empty'] = "Tous les champs doivent être remplis";
+    }
+
+    if (!empty($password) || !empty($passwordConfirm)) {
+      if ($password != $passwordConfirm) {
+        $alert['password'] = "Les mots de passe ne correspondent pas";
+      } elseif (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) { // A faire marcher
+        $alert['password'] = "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre";
+      }
+    }
+
+
+    if (empty($alert)) {
+      $result = updateAccount($firstname, $lastname, $email, $password);
+      if ($result) {
+        echo '<script>alert("Vos informations ont bien été modifiées")</script>';
+        $_SESSION['firstname'] = $firstname;
+        $_SESSION['lastname'] = $lastname;
+        $_SESSION['email'] = $email;
+        // header('Location: index.php?page=account');
+      } else {
+        $alert['email'] = "Cet email est déjà utilisé";
+      }
+    }
+  }
+
   // TEST DE LA FONCTION getPreferences()
   $primaryPreferences = array();
   $primaryPreferences = getPrimaryPreferences($user['email']);

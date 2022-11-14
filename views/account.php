@@ -33,7 +33,7 @@
         </li>
       </div>
       <div class="profile-parameters-modify">
-        <a href="index.php?page=modifier"><span>Modifier</span></a>
+        <span onclick="openModal('information')">Modifier</span>
       </div>
     </div>
     <div class="profile-preferences">
@@ -45,37 +45,37 @@
           <li>
             <h3>Restaurant</h3>
             <span class="pref-list">
-              <?php 
+              <?php
               foreach ($primaryPreferences as $preference) {
-                if($preference['structure_type'] == 'R') {
-                  echo "<p>".$preference['primary_type_name'] . "</p>";
+                if ($preference['structure_type'] == 'R') {
+                  echo "<p>" . $preference['primary_type_name'] . "</p>";
                 }
               }
               foreach ($secondaryPreferences as $preference) {
-                if($preference['structure_type'] == 'R') {
-                  echo "<p>".$preference['secondary_type_name'] . "</p>";
+                if ($preference['structure_type'] == 'R') {
+                  echo "<p>" . $preference['secondary_type_name'] . "</p>";
                 }
               }
               ?>
-                
+
             </span>
           </li>
           <li>
-          <h3>Activités</h3>
+            <h3>Activités</h3>
             <span class="pref-list">
-              <?php 
+              <?php
               foreach ($primaryPreferences as $preference) {
-                if($preference['structure_type'] == 'A') {
-                  echo "<p>".$preference['primary_type_name'] . "</p>";
+                if ($preference['structure_type'] == 'A') {
+                  echo "<p>" . $preference['primary_type_name'] . "</p>";
                 }
               }
               foreach ($secondaryPreferences as $preference) {
-                if($preference['structure_type'] == 'A') {
-                  echo "<p>".$preference['secondary_type_name'] . "</p>";
+                if ($preference['structure_type'] == 'A') {
+                  echo "<p>" . $preference['secondary_type_name'] . "</p>";
                 }
               }
               ?>
-                
+
             </span>
           </li>
         </ul>
@@ -89,6 +89,60 @@
     </div>
   </div>
 </main>
+
+<div id="modal-information" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="closeModal('information')">&times;</span>
+      <h2>Modifier mes informations</h2>
+    </div>
+    <div class="modal-body">
+      <form action="index.php?page=account" method="post" class="form" id="form">
+        <div class="form-group">
+          <label for="firstname">Prénom</label>
+          <div class="form-item">
+            <span class="form-item-icon material-symbols-outlined">person</span>
+            <input type="text" name="firstname" id="firstname" value="<?= $user['firstname'] ?>" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Nom</label>
+          <div class="form-item">
+            <span class="form-item-icon material-symbols-outlined">person</span>
+            <input type="text" name="lastname" id="lastname" value="<?= $user['lastname'] ?>" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <div class="form-item">
+            <span class="form-item-icon material-symbols-outlined">email</span>
+            <input type="email" name="email" id="email" value="<?= $user['email'] ?>" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Nouveau mot de passe</label>
+          <div class="form-item">
+            <span class="form-item-icon material-symbols-outlined">lock</span>
+            <input type="password" name="password" id="password" />
+            <span class="form-item-icon-left material-symbols-outlined" id="password-visibility" onclick="visibility('password')">visibility_off</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password_confirm">Confirmer le mot de passe</label>
+          <div class="form-item">
+            <span class="form-item-icon material-symbols-outlined">lock</span>
+            <input type="password" name="password_confirm" id="password_confirm" />
+            <span class="form-item-icon-left material-symbols-outlined" id="password-confirm-visibility" onclick="visibility('confirmPassword')">visibility_off</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" name="submit" value="Modifier" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- The Modal -->
 <div id="modal-pref" class="modal">
@@ -105,7 +159,7 @@
           <h3>Restauration</h3>
           <div class="category-list">
             <div class="profile-preferences-modify profile-preferences-type">
-            <?php
+              <?php
               foreach ($categories as $category) {
                 if ($category['structure_type'] == 'R') {
                   echo '<span onclick="openModal(' . $category['category_id'] . ')">' . $category['category_name'] . '</span>';
