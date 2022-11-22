@@ -13,6 +13,7 @@ const LANG = 'FR-fr';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'Matéo Guenot & Noah Heraud & Hippolyte Blot';
+const MAIL = 'planmyjourney@gmail.com';
 
 //dossiers racines du site
 define('PATH_CONTROLLERS', './controllers/');

@@ -30,7 +30,7 @@
             <input type="checkbox" name="rememberMe" id="rememberMe">
             <label for="rememberMe">Se souvenir de moi</label>
           </div>
-          <a href="#">Mot de passe oublié</a>
+          <a href="?page=forgotPassword">Mot de passe oublié</a>
         </div>
         <?php include_once(PATH_VIEWS . 'alert.php'); ?>
         <button type="submit">Se connecter</button>

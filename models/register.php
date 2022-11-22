@@ -29,10 +29,9 @@ function checkValidity($firstname, $lastname, $email, $password, $confirmPasswor
         $alert['messageAlert'] = 'Veuillez renseigner un email valide';
     }
     // Check if the email is already used
-    else if (checkEmail($email)) {                             
+    else if (checkEmail($email)) {
         $alert['messageAlert'] = 'Cet email est déjà utilisé';
-    } 
-    else if (empty($password)) {
+    } else if (empty($password)) {
         $alert['messageAlert'] = 'Veuillez renseigner votre mot de passe';
     } else if (empty($confirmPassword)) {
         $alert['messageAlert'] = 'Veuillez confirmer votre mot de passe';
@@ -41,7 +40,7 @@ function checkValidity($firstname, $lastname, $email, $password, $confirmPasswor
     }
 
     // Check if the password has a minimum of 8 characters, 1 uppercase, 1 lowercase and 1 number
-    // else if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {   À FAIRE MARCHER
+    // else if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
     //     $alert['messageAlert'] = 'Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre';
     // }
     return $alert;
@@ -64,7 +63,7 @@ function register($firstname, $lastname, $email, $password, $confirmPassword, $n
         $database = Connexion::getInstance()->getBdd();
         $query = $database->prepare("INSERT INTO user (firstname, lastname, email, password, newsletter_subscription, registration_date) VALUES (?, ?, ?, ?, ?, NOW())");
         $query->execute(array($firstname, $lastname, $email, password_hash($password, PASSWORD_DEFAULT), $newsletter));
-        
+
         $alert = [
             'messageAlert' => 'Inscription réussie',
             'classAlert' => 'success'
