@@ -8,8 +8,7 @@
 
 body {
   font-family: "SF Pro Display", sans-serif;
-  background: url(../images/bg.jpg);
-  /*background: url(https://www.itl.cat/pngfile/big/84-846755_samsung-galaxy-note-5-wallpapers-69-background-pictures.jpg);*/
+  background: url(../images/background.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -27,7 +26,8 @@ nav {
   align-items: center;
   z-index: 100;
 
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -62,7 +62,7 @@ ul.header-nav li {
 }
 
 a {
-  color: black;
+  color: white;
   text-decoration: none;
   margin: 10px;
 }
@@ -89,9 +89,6 @@ ul.header-nav .right li + li a span.btn {
   padding: 5px 15px;
 }
 
-.material-symbols-outlined {
-  margin-right: 10px;
-}
 
 /* Burger Menu */
 #check {

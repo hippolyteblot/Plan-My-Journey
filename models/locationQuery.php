@@ -2,10 +2,9 @@
 
 function getCandidates($locationName)
 {
-    $key = "AIzaSyDsSWpa4y-dsYA7BBA-I4xJq60be0qAHUI";
     $locationName = str_replace(' ', '+', $locationName);
 
-    $query = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" . $locationName . "&inputtype=textquery&fields=formatted_address,name,geometry,type&key=" . $key;
+    $query = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" . $locationName . "&inputtype=textquery&fields=formatted_address,name,geometry,type&key=" . KEY;
 
     $result = file_get_contents($query);
 

@@ -39,7 +39,6 @@ main#accueil span {
 	font-weight: 400;
 	color: #fff;
 	text-align: center;
-	padding-bottom: 50px;
 }
 
 form {
@@ -55,11 +54,10 @@ form {
 
 .item01 {
 	height: 100%;
-	width: 80%;
+	width: 90%;
 }
 .item02 {
 	height: 100%;
-	width: 20%;
 }
 .item01 > input {
 	height: 100%;
@@ -72,31 +70,31 @@ form {
 .formItem input {
 	z-index: 100;
 	background: inherit;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	border-radius: 20px;
+
+	background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
 }
 #input02 {
+	width: 60px;
 	height: 100%;
-	width: 100%;
 	border-radius: 20px;
-	z-index: 100;
+	z-index: 50;
 	background: inherit;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
-	padding-left: 20px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
+
+	background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-}
-#input02 span {
-	margin-top: 50px;
-	margin-right: 30px;
 }
 
 /* button {
@@ -110,20 +108,19 @@ form {
 	border-radius: 20px;
 	z-index: 100;
 	background: inherit;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	
+	/* Glassmorphism */
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
 	backdrop-filter: blur(8px);
 	-webkit-backdrop-filter: blur(8px);
-	padding-left: 20px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 20px;
+	
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-}
-#input03 span {
-	margin-top: 50px;
-	margin-right: 30px;
-	margin-left: 10px;
 }
 .item03 {
 	height: 50px;

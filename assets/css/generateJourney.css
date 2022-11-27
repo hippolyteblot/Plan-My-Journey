@@ -1,0 +1,117 @@
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.step-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.change-step {
+    /* btn circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: none;
+    border: none;
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    box-shadow: none;
+    background: none;
+    margin: 10px;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.5s ease;
+    /* Inverse color */
+    filter: invert(0.8);
+}
+.change-step:hover {
+    /* Unset everything */
+    background: unset;
+    box-shadow: unset;
+    border: unset;
+    backdrop-filter: unset;
+}
+
+.arrow-right {
+    transform: rotate(90deg);
+}
+.arrow-left {
+    transform: rotate(-90deg);
+}
+.step-infos {
+    display: none;
+}
+.step-infos.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+.rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+.journey-button {
+    width: fit-content;
+    padding: 10px;
+}
+.button-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 10px;
+}
+
+.vertical-line {
+    border-left: 3px solid #ffffff;
+    height: auto;
+    margin: 10px;
+}
+/* add a circle at the top and bottom of the vertical line 
+.vertical-line::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin: 10px;
+}*/
+
+.straight {
+    position: relative;
+    height: 12px;
+    min-height: 12px;
+    width: 12px;
+    background: white;
+    border-radius: 50%;
+    margin-left: -18px;
+}
+.hidden {
+    opacity: 0;
+}

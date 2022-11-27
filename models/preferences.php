@@ -1,5 +1,7 @@
 <?php
 
+require_once(PATH_MODELS . 'Connexion.php');
+
 function getPrimaryTypes()
 {
     $db = $database = Connexion::getInstance()->getBdd();

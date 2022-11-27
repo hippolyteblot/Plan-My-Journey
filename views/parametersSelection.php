@@ -11,7 +11,7 @@
     <h1>Quel genre de parcours voulez-vous ?</h1>
   <div class="glass">
     
-    <form action="" method="post">
+    <form action="?page=preferencesSelection" method="post">
         <div class="formItem">
             <h2>Lieux selectionné : </h2>
             <select name="lieux" id="lieux">
@@ -65,7 +65,7 @@
             <div class="formItem">
                 <h2 for="type">Continuer ?</h2>
                 <div class="type inputGroup">
-                    <button type="submit" name="submit" id="submit">Valider</button>
+                    <button type="submit" name="submitParameters" id="submit">Valider</button>
                 </div>
             </div>
             

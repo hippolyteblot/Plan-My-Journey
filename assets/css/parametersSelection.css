@@ -5,7 +5,7 @@ main#accueil {
 	justify-content: space-between;
 	align-items: center;
     margin-top: 80px;
-    color: black;
+    color: white;
 }
 
 .glass {
@@ -14,10 +14,11 @@ main#accueil {
 
     margin-top: 20px;
     /* Glassmorphism */
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px;
 }
 h1 {
@@ -48,30 +49,37 @@ h2 {
     width: fit-content;
 }
 input {
+    color : white;
     border-radius: 5px;
     border: none;
     padding: 5px;
     margin: 5px;
     font-size: 20px;
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px;
 }
 select {
+    color: white;
     width: 100%;
     border-radius: 5px;
-    border: none;
     padding: 5px;
     margin: 5px;
     font-size: 20px;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px;
 }
 input[type=checkbox] {
@@ -87,6 +95,7 @@ input[type=checkbox] {
     justify-content: space-between;
 }
 button {
+    color: white;
     width: 100%;
     border-radius: 5px;
     border: none;
@@ -94,18 +103,29 @@ button {
     margin: 5px;
     font-size: 20px;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px;
+
     transition: all 0.3s ease;
     cursor: pointer;
 }
 button:hover {
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.47);
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px;
 }
+
+/* Color of the clock is white */
+input[type="time"]::-webkit-calendar-picker-indicator{
+    filter: invert(100%) sepia(95%) saturate(0%) hue-rotate(151deg) brightness(106%) contrast(105%);
+  }
