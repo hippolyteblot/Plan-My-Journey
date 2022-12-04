@@ -3,7 +3,7 @@ require_once(PATH_MODELS . 'Connexion.php');
 
 function insertStepInDatabase($step) {
     $db = $database = Connexion::getInstance()->getBdd();
-    if(alreadyExist($step)) {
+    if(stepAlreadyExist($step)) {
         return true;
     }
     $rating;
@@ -24,7 +24,7 @@ function insertStepInDatabase($step) {
     return $result;
 }
 
-function alreadyExist($step) {
+function stepAlreadyExist($step) {
     $db = $database = Connexion::getInstance()->getBdd();
 
     $query = $db->prepare('SELECT * FROM step WHERE step_id = ?');
@@ -32,4 +32,54 @@ function alreadyExist($step) {
     $result = $query->fetchAll();
     $query->closeCursor();
     return $result;
+}
+
+function insertNewPlaceInDatabase($place) {
+    $db = $database = Connexion::getInstance()->getBdd();
+    if(placeAlreadyExist($place)) {
+        return true;
+    }
+    $query = $db->prepare('INSERT INTO place (place_name, place_fullname, place_lat, place_lng) VALUES (?, ?, ?, ?)');
+    $result = $query->execute([
+        $place["name"],
+        $place["formatted_address"],
+        $place["geometry"]["location"]["lat"],
+        $place["geometry"]["location"]["lng"]
+    ]);
+    return $db->lastInsertId();
+}
+
+function placeAlreadyExist($place) {
+    $db = $database = Connexion::getInstance()->getBdd();
+
+    $query = $db->prepare('SELECT * FROM place WHERE place_fullname = ?');
+    $query->execute([$place["formatted_address"]]);
+    $result = $query->fetchAll();
+    $query->closeCursor();
+    return $result;
+}
+
+function insertNewJourneyInDatabase($journeySchema, $placeId, $userEmail, $budget, $title, $description) {
+    $db = $database = Connexion::getInstance()->getBdd();
+    $userId = getUserId($userEmail);
+    $query = $db->prepare('INSERT INTO journey (user_id, place_id, journey_start, journey_end, journey_budget, description, title, creation_date) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())');
+    $result = $query->execute([
+        $userId,
+        $placeId,
+        $journeySchema[0]["start"],
+        $journeySchema[count($journeySchema) - 1]["end"],
+        $budget,
+        $description,
+        $title
+    ]);
+}
+
+function getUserId($userEmail) {
+    $db = $database = Connexion::getInstance()->getBdd();
+
+    $query = $db->prepare('SELECT user_id FROM user WHERE email = ?');
+    $query->execute([$userEmail]);
+    $result = $query->fetchAll();
+    $query->closeCursor();
+    return $result[0]["user_id"];
 }

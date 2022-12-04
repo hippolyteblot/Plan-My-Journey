@@ -14,7 +14,7 @@
     <form action="?page=preferencesSelection" method="post">
         <div class="formItem">
             <h2>Lieux selectionné : </h2>
-            <select name="lieux" id="lieux">
+            <select name="place" id="lieux">
                 <?php
                 foreach ($_SESSION['candidates'] as $place) {
                     echo "<option value='".$place['formatted_address']."'>".$place['formatted_address']."</option>";

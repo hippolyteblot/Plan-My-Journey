@@ -171,14 +171,10 @@ function getCandidates($journeySchema, $activities, $restaurants, $location) {
         }
     }
 
-    // Save it as json localy
-    $fp = fopen('journeySchemaExemple.json', 'w');
-    fwrite($fp, json_encode($journeySchema));
-    fclose($fp);
-
     return $journeySchema;
 }
 
+// Get data from local (for testing)
 function getCandidatesFromJSON($filePath) {
     $journeySchema = json_decode(file_get_contents($filePath), true);
     return $journeySchema;
