@@ -13,10 +13,10 @@ try {
   //Server settings
   $mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
   $mail->isSMTP();                                            // Send using SMTP
-  $mail->Host       = 'localhost';                    // Set the SMTP server to send through
+  $mail->Host       = 'smtp.zoho.com';                    // Set the SMTP server to send through
   $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-  // $mail->Username   = ' ';                     // SMTP username
-  // $mail->Password   = ' ';                               // SMTP password
+  $mail->Username   = 'planmyjourney3@gmail.com';                     // SMTP username
+  $mail->Password   = '&Xfhcy#9RTc@Q$6M';                               // SMTP password
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
   $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
@@ -25,7 +25,7 @@ try {
 
   //Recipients
   $mail->setFrom('no-reply@planmyjourney.com'); // Email de l'expéditeur
-  $mail->addAddress(' ');     // Email du destinataire
+  $mail->addAddress('mateo.guenot20@gmail.com');     // Email du destinataire
 
   // Content
   $mail->isHTML(true);
@@ -34,7 +34,7 @@ try {
   $mail->AltBody = 'Salut salut'; // Contenu du mail sans HTML
 
   $mail->send();
-  echo 'Message has been sent';
+  echo '<script>alert("Message has been sent")</script>';
 } catch (Exception $e) {
   echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

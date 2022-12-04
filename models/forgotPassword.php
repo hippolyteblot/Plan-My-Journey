@@ -22,6 +22,7 @@ function sendMail($email)
         'messageAlert' => "Un mail vous a été envoyé pour réinitialiser votre mot de passe.",
         'classAlert' => "success"
       ];
+      require_once(PATH_CONTROLLERS . 'mail.php');
       $token = password_hash($token, PASSWORD_DEFAULT);
       $id = $user['user_id'];
       $db = Connexion::getInstance()->getBdd();
