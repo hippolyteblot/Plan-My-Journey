@@ -29,12 +29,12 @@
                 <div class="time inputGroup">
                     <div class="timeItem">
                         <label for="timeFrom">De </label>
-                        <input type="time" name="timeFrom" id="timeFrom" value="00:00">
+                        <input type="time" name="timeFrom" id="timeFrom" value="10:00">
                     </div>
                     
                     <div class="timeItem">
                         <label for="timeTo">A </label>
-                        <input type="time" name="timeTo" id="timeTo" value="23:59">
+                        <input type="time" name="timeTo" id="timeTo" value="18:00">
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ main#account {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: white;
 }
 
 .profile-photo {
@@ -14,16 +15,11 @@ main#account {
   padding-top: 100px;
   z-index: 1;
   width: 100%;
+  border-radius: 50%;
 }
 .profile-photo img {
   border-radius: 50%;
-  
-  /* Glassmorphism */
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-
+  filter: invert(1);
 }
 
 h1 {
@@ -35,19 +31,11 @@ h1 {
 .profile-information {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr 3fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  border: 2px solid black;
   width: 100%;
   padding-bottom: 40px;
-
-  /* Glassmorphism */
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
 }
 
 .profile-name,
@@ -65,13 +53,8 @@ h1 {
   align-items: flex-start;
   height: max-content;
   width: 40vw;
-  background: rgba(255, 255, 255, 0.25);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .profile-name {

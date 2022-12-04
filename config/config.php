@@ -17,7 +17,8 @@ const LANG = 'FR-fr';
 const AUTEUR = 'Matéo Guenot & Noah Heraud & Hippolyte Blot';
 
 // Clé privé de l'API Google
-const KEY = "AIzaSyDsSWpa4y-dsYA7BBA-I4xJq60be0qAHUI";
+//const KEY = "AIzaSyDsSWpa4y-dsYA7BBA-I4xJq60be0qAHUI"; // <- Hippo
+const KEY = "AIzaSyBAbAVbxk-8sF-HlDk92YeQ9wop5tH6yyc"; // <- Noah
 
 //dossiers racines du site
 define('PATH_CONTROLLERS', './controllers/');

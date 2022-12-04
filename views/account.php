@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="<?= PATH_CSS ?>account.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>modal.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>form.css" />
+  <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css" />
   <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
   <script src="<?= PATH_SCRIPTS ?>form.js" defer></script>
 
@@ -12,14 +13,14 @@
   <div class="profile-photo">
     <img src="<?= PATH_IMAGES ?>account.png" alt="Photo de profil" whidth="200" height="200" />
   </div>
-  <div class="profile-information">
+  <div class="profile-information glass">
     <div class="profile-name">
       <h1>Bonjour <?= $user['firstname'] . ' ' . $user['lastname'] ?></h1>
     </div>
     <div class="profile-disconnect">
       <a href="index.php?page=disconnect"><span>Se déconnecter</span></a>
     </div>
-    <div class="profile-parameters">
+    <div class="profile-parameters glass">
       <div class="profile-parameters-title">
         <h2>Informations</h2>
       </div>
@@ -38,7 +39,7 @@
         <span onclick="openModal('information')">Modifier</span>
       </div>
     </div>
-    <div class="profile-preferences">
+    <div class="profile-preferences glass">
       <div class="profile-preferences-title">
         <h2>Préférences</h2>
       </div>

@@ -12,9 +12,13 @@
 <div id="background-img">
 </div>
 <main id="accueil">
-    <h1>Voici votre parcours touristique à <?= $_SESSION['candidates'][0]['formatted_address'] ?> !</h1>
+    
     <div class="glass">
-    <form action="?page=preferencesSelection" method="post">
+        <h1>Voici votre parcours touristique à <?= $_SESSION['candidates'][0]['formatted_address'] ?> !</h1>
+    <form action="?page=saveJourney" method="post">
+        <?php
+        $_SESSION['journeySchema'] = $journeySchema;
+        ?>
         <div style="display: flex">
         <div class="vertical-line"></div>
         <div style="display: flex; flex-direction: column; width: 100%">
@@ -32,15 +36,17 @@
                     <div class="change-step arrow-left"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
 
                     <article class="step">
-                        <h2><?= $step["name"] ?></h2>
+                        <h2><?= $step["name"] ?> - <?= $step["start"] . " à " . $step["end"] ?></h2>
                         <div class="candidates">
                             <div class="step-infos active">
-                                <p><?= $step["candidates"][0]["name"] ?></p>
+                                <p"><?= $step["candidates"][0]["name"] ?></p>
                                 <p><?= $step["candidates"][0]["vicinity"] ?></p>
+                                
+
                                 <span class="rating">
                                 <?php
                                     if(isset($step["candidates"][0]["rating"])) {
-                                        echo $step["candidates"][0]["rating"] . " ";
+                                        echo "<p name='step_rate_0' value='".$step["candidates"][0]["rating"]."'>" . $step["candidates"][0]["rating"] . " ";
                                         
                                         for($j = 0; $j < 5; $j++) {
                                             if($j < $step["candidates"][0]["rating"]) {
@@ -56,19 +62,19 @@
                                     } else {
                                         echo "Pas de notation";
                                     }
-                                    ?>
+                                ?>
                                 </span>
                             </div>
                             <?php
                             for($i = 1; $i < count($step["candidates"]); $i++) {
                                 ?>
-                                <div class="step-infos">
+                                <div class="step-infos" value="<?=$step["candidates"][$i]["place-id"]?>">
                                     <p><?= $step["candidates"][$i]["name"] ?></p>
                                     <p><?= $step["candidates"][$i]["vicinity"] ?></p>
                                     <span class="rating">
                                         <?php
                                         if(isset($step["candidates"][$i]["rating"])) {
-                                            echo $step["candidates"][$i]["rating"] . " ";
+                                            echo "<p name='step_rate_$i' value='".$step["candidates"][$i]["rating"]."'>" . $step["candidates"][$i]["rating"] . " ";
                                             
                                             for($j = 0; $j < 5; $j++) {
                                                 if($j < $step["candidates"][$i]["rating"]) {
@@ -110,3 +116,5 @@
     <br />
   </div>
 </main>
+
+
