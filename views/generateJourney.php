@@ -1,12 +1,13 @@
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 
 <head>
-  <link rel="stylesheet" href="<?= PATH_CSS ?>parametersSelection.css">
-  <link rel="stylesheet" href="<?= PATH_CSS ?>generateJourney.css">
-  <link rel="stylesheet" href="<?= PATH_CSS ?>notation.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
-  <script defer src="<?= PATH_SCRIPTS ?>step.js"></script>
+    <link rel="stylesheet" href="<?= PATH_CSS ?>parametersSelection.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>generateJourney.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>notation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>step.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>generateJourney.js"></script>
 
 </head>
 <div id="background-img">
@@ -41,7 +42,7 @@
                             <div class="step-infos active">
                                 <p"><?= $step["candidates"][0]["name"] ?></p>
                                 <p><?= $step["candidates"][0]["vicinity"] ?></p>
-                                
+                                <input type="hidden" name="candidate-id" value="<?= $step["candidates"][0]["place_id"] ?>">                             
 
                                 <span class="rating">
                                 <?php
@@ -71,6 +72,8 @@
                                 <div class="step-infos" value="<?=$step["candidates"][$i]["place-id"]?>">
                                     <p><?= $step["candidates"][$i]["name"] ?></p>
                                     <p><?= $step["candidates"][$i]["vicinity"] ?></p>
+                                    <input type="hidden" name="candidate-id" value="<?= $step["candidates"][$i]["place_id"] ?>">
+                                    
                                     <span class="rating">
                                         <?php
                                         if(isset($step["candidates"][$i]["rating"])) {
@@ -110,7 +113,7 @@
     <div class="button-container">
             <button id="re-generate" class="journey-button">Re-générer</button>
             <button type="submit" class="journey-button">Partager</button>
-            <button type="submit" class="journey-button">Enregistrer</button>
+            <button id="save-journey" type="submit" class="journey-button">Enregistrer</button>
         </div>
     </form>
     <br />

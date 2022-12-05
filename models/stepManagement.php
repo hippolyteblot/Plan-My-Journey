@@ -72,6 +72,7 @@ function insertNewJourneyInDatabase($journeySchema, $placeId, $userEmail, $budge
         $description,
         $title
     ]);
+    return $db->lastInsertId();
 }
 
 function getUserId($userEmail) {
@@ -82,4 +83,27 @@ function getUserId($userEmail) {
     $result = $query->fetchAll();
     $query->closeCursor();
     return $result[0]["user_id"];
+}
+
+function linkSteptoJourney($journeyId, $stepId, $iSelected) {
+    $db = $database = Connexion::getInstance()->getBdd();
+    if(stepAlreadyLinked($journeyId, $stepId)) {
+        return true;
+    }
+    $query = $db->prepare('INSERT INTO compose (journey_id, step_id, isSelected) VALUES (?, ?, ?)');
+    $result = $query->execute([
+        $journeyId,
+        $stepId,
+        $iSelected
+    ]);
+}
+
+function stepAlreadyLinked($journeyId, $stepId) {
+    $db = $database = Connexion::getInstance()->getBdd();
+
+    $query = $db->prepare('SELECT * FROM compose WHERE journey_id = ? AND step_id = ?');
+    $query->execute([$journeyId, $stepId]);
+    $result = $query->fetchAll();
+    $query->closeCursor();
+    return $result;
 }

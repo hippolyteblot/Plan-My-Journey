@@ -5,9 +5,6 @@ require_once(PATH_MODELS . 'preferences.php');
 
 if(isset($_POST['submitParameters'])) {
 
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
     $selectedPlace = null;
     foreach($_SESSION["candidates"] as $place){
         // If the formatted address is not in the database
