@@ -43,7 +43,7 @@
             </a></li>
         <?php } ?>
         <li>
-          <a href="#">
+          <a href="index.php?page=discover">
             <span class="material-symbols-outlined">share</span>
             <span>Découvrir</span>
           </a>
