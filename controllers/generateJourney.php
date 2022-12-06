@@ -16,3 +16,7 @@ $journeySchema = buildSchema($_SESSION['parameters']['start'], $_SESSION['parame
 $journeySchema = getCandidatesFromJSON("journeySchemaExemple.json");
 
 require_once(PATH_VIEWS . 'generateJourney.php');
+
+// Display all err
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);

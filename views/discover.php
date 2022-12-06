@@ -1,21 +1,20 @@
 <?php require_once(PATH_VIEWS . 'header.php');
 
-?>
+?> 
 
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>discover.css">
 </head>
 <div id="corps">
     <h1>Discover</h1>
-    <?php foreach ($journey_id as $journey) { 
-        echo $journey['journey_id'];
+    <?php foreach ($journey_id as $journey) {
         ?>
     <div id="container">
         <div class=globalJourney>
         <div class="journeyPost">
             <div class="image">
                 <h2>
-                <?= $loc[1]; ?>
+                    <?= $journey['place_name'] ?>
                 </h2>
                 <img src="<?= PATH_IMAGES ?>accueil-bg.jpg" alt="photo du parcours"> <!-- image du parcours -->
             </div>
@@ -30,7 +29,7 @@
                 <div class="steps">
                     <ul>
                         <?php 
-                            foreach ($etape as $step) {
+                            foreach ($journey['steps'] as $step) {
                                 foreach($step as $ste) {
                                     ?> <li> <?php
                                     echo $ste['step_name'];
