@@ -15,6 +15,7 @@ class GoogleMap {
           constructor(position, map, text) {
             super();
             this.div = null;
+            this.html = null;
             this.position = position;
             this.text = text;
             this.setMap(map);
@@ -25,6 +26,16 @@ class GoogleMap {
             this.div.style.position = "absolute";
             this.div.innerHTML = this.text;
             this.getPanes().overlayImage.appendChild(this.div);
+            let test = false;
+            this.div.addEventListener("click", () => {
+              if (!test) {
+                this.div.innerHTML = this.html;
+                test = true;
+              } else {
+                this.div.innerHTML = this.text;
+                test = false;
+              }
+            });
           }
           draw() {
             let position = this.getProjection().fromLatLngToDivPixel(
@@ -35,6 +46,22 @@ class GoogleMap {
           }
           onRemove() {
             this.div.parentNode.removeChild(this.div);
+          }
+
+          activate() {
+            if (this.div !== null) {
+              this.div.classList.add("is-active");
+            }
+          }
+
+          deactivate() {
+            if (this.div !== null) {
+              this.div.classList.remove("is-active");
+            }
+          }
+
+          setContent(html) {
+            this.html = html;
           }
         };
         this.map = new google.maps.Map(element);
@@ -47,6 +74,7 @@ class GoogleMap {
     let point = new google.maps.LatLng(lat, lng);
     let marker = new this.textMarker(point, this.map, text);
     this.bounds.extend(point);
+    return marker;
   }
 
   centerMap() {
@@ -68,10 +96,27 @@ if (map !== null) {
 
 function addMark() {
   let mapG = new GoogleMap();
+  let activateMarker = null;
   mapG.load(map).then(() => {
     let items = document.querySelectorAll(".active");
     items.forEach((item) => {
-      mapG.addMarker(item.dataset.lat, item.dataset.lng, item.dataset.text);
+      let marker = mapG.addMarker(
+        item.dataset.lat,
+        item.dataset.lng,
+        item.dataset.text
+      );
+      marker.setContent(item.innerHTML);
+      item.addEventListener("mouseover", function () {
+        marker.activate();
+        if (activateMarker) {
+          activateMarker.deactivate();
+        }
+        activateMarker = marker;
+      });
+      item.addEventListener("mouseout", function () {
+        marker.deactivate();
+        activateMarker = null;
+      });
     });
     mapG.centerMap();
   });
