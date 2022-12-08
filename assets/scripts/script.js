@@ -6,3 +6,4 @@ window.onload = function () {
 		searchBtn.innerHTML = "Rechercher";
 	}
 };
+

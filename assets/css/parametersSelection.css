@@ -49,7 +49,7 @@ h2 {
     width: fit-content;
 }
 input {
-    color : white;
+    color: white;
     border-radius: 5px;
     border: none;
     padding: 5px;
@@ -85,6 +85,27 @@ select {
 input[type=checkbox] {
     width: 20px;
     height: 20px;
+}
+button {
+    cursor: pointer;
+}
+textarea {
+    color: black;
+    font-family: 'SF Pro Display', sans-serif;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    font-size: 20px;
+    
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
 }
 #options {
     display: flex;

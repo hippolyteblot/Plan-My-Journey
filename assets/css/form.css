@@ -60,3 +60,17 @@ label {
   font-size: 1.3rem;
   opacity: 0.4;
 }
+
+.group-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(10px, 1vw, 20px);
+}
+
+.black-text {
+  color: black;
+  width: fit-content;
+  padding: 10px;
+  margin: 10px;
+}

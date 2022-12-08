@@ -59,10 +59,10 @@ function placeAlreadyExist($place) {
     return $result;
 }
 
-function insertNewJourneyInDatabase($journeySchema, $placeId, $userEmail, $budget, $title, $description) {
+function insertNewJourneyInDatabase($journeySchema, $placeId, $userEmail, $budget, $title, $description, $public) {
     $db = $database = Connexion::getInstance()->getBdd();
     $userId = getUserId($userEmail);
-    $query = $db->prepare('INSERT INTO journey (user_id, place_id, journey_start, journey_end, journey_budget, description, title, creation_date) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())');
+    $query = $db->prepare('INSERT INTO journey (user_id, place_id, journey_start, journey_end, journey_budget, description, title, creation_date, public) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)');
     $result = $query->execute([
         $userId,
         $placeId,
@@ -70,7 +70,8 @@ function insertNewJourneyInDatabase($journeySchema, $placeId, $userEmail, $budge
         $journeySchema[count($journeySchema) - 1]["end"],
         $budget,
         $description,
-        $title
+        $title,
+        $public
     ]);
     return $db->lastInsertId();
 }
@@ -85,24 +86,26 @@ function getUserId($userEmail) {
     return $result[0]["user_id"];
 }
 
-function linkSteptoJourney($journeyId, $stepId, $iSelected) {
+function linkSteptoJourney($journeyId, $stepId, $iSelected, $start, $end) {
     $db = $database = Connexion::getInstance()->getBdd();
-    if(stepAlreadyLinked($journeyId, $stepId)) {
+    if(stepAlreadyLinked($journeyId, $stepId, $start, $end)) {
         return true;
     }
-    $query = $db->prepare('INSERT INTO compose (journey_id, step_id, isSelected) VALUES (?, ?, ?)');
+    $query = $db->prepare('INSERT INTO compose (journey_id, step_id, start, end, isSelected) VALUES (?, ?, ?, ?, ?)');
     $result = $query->execute([
         $journeyId,
         $stepId,
+        $start,
+        $end,
         $iSelected
     ]);
 }
 
-function stepAlreadyLinked($journeyId, $stepId) {
+function stepAlreadyLinked($journeyId, $stepId, $start, $end) {
     $db = $database = Connexion::getInstance()->getBdd();
 
-    $query = $db->prepare('SELECT * FROM compose WHERE journey_id = ? AND step_id = ?');
-    $query->execute([$journeyId, $stepId]);
+    $query = $db->prepare('SELECT * FROM compose WHERE journey_id = ? AND step_id = ? AND start = ? AND end = ?');
+    $query->execute([$journeyId, $stepId, $start, $end]);
     $result = $query->fetchAll();
     $query->closeCursor();
     return $result;

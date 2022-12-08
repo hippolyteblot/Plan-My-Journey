@@ -25,14 +25,14 @@ function sortPreferences($preferences) {
     return array('activities' => $activities, 'restaurants' => $restaurants);
 }
 
-function buildSchema($start, $end, $activities, $restaurants) {
+function buildSchema($start, $end, $activities, $restaurants, $wantRestaurant) {
 
     $journeySchema = array();
 
     $progression = $start;
     while ((compareDate($progression, "12:00") == 1 && compareDate($progression, "14:00") && compareDate(addTime($progression, "01:00"), $end) == -1 ) || compareDate(addTime($progression, "01:00"), $end) == -1) {
         // If its lunch time or dinner time
-        if (compareDate($progression, "12:00") == 1 && compareDate($progression, "14:00") == -1) {
+        if ($wantRestaurant && compareDate($progression, "12:00") == 1 && compareDate($progression, "14:00") == -1) {
             // We select a type and delete it from the restaurants array
             $restaurant = $restaurants[array_rand($restaurants)];
             unset($restaurants[array_search($restaurant, $restaurants)]);
@@ -177,5 +177,22 @@ function getCandidates($journeySchema, $activities, $restaurants, $location) {
 // Get data from local (for testing)
 function getCandidatesFromJSON($filePath) {
     $journeySchema = json_decode(file_get_contents($filePath), true);
+    return $journeySchema;
+}
+
+function filterFromConstraints($journeySchema, $budget) {
+    // For each place, we check if it is in the budget (1 or 2 or 3 $)
+    for($i = 0; $i < count($journeySchema); $i++){
+        if($journeySchema[$i]['type'] != 'D'){
+            $candidates = $journeySchema[$i]['candidates'];
+            $newCandidates = array();
+            for($j = 0; $j < count($candidates); $j++){
+                if(!isset($candidates[$j]['price_level']) || $candidates[$j]['price_level'] <= $budget){
+                    array_push($newCandidates, $candidates[$j]);
+                }
+            }
+            $journeySchema[$i]['candidates'] = $newCandidates;
+        }
+    }
     return $journeySchema;
 }

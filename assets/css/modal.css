@@ -227,3 +227,8 @@
     color: white;
   }
 }
+
+.body-80 {
+  width: 80%;
+  margin: auto;
+}

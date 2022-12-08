@@ -4,10 +4,14 @@
     <link rel="stylesheet" href="<?= PATH_CSS ?>parametersSelection.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>generateJourney.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>notation.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>modal.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>step.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>generateJourney.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>modal.js"></script>
 
 </head>
 <div id="background-img">
@@ -110,14 +114,38 @@
         </div>
         
     </div>
-    <div class="button-container">
-            <button id="re-generate" class="journey-button">Re-générer</button>
-            <button type="submit" class="journey-button">Partager</button>
-            <button id="save-journey" type="submit" class="journey-button">Enregistrer</button>
-        </div>
     </form>
+    <div class="button-container">
+        <button id="re-generate" class="journey-button">Re-générer</button>
+        <button id="btn-modal-share" onclick="openModal('save'); changeValue('public', 1); changeText('btn-save-journey', 'Partager')" class="journey-button">Partager</button>    
+        <button id="btn-modal-save" onclick="openModal('save')" class="journey-button">Enregistrer</button>
+    </div>
     <br />
   </div>
 </main>
 
+<!-- Modal for save journey -->
+<div id="modal-save" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span id="modal-colser" class="close" onclick="closeModal('save'); changeValue('public', 0); changeText('btn-save-journey', 'Enregistrer')">&times;</span>
+      <h2>Informations du parcours</h2>
+    </div>
+    <div class="modal-body body-80">
+      <form action="?page=saveJourney" method="post">
+        <div class="form-group group-column">
+            <label for="journey-name">Nom du parcours</label>
+            <input type="text" name="journey-name" id="journey-name" required>
+        </div>
+        <div class="form-group group-column">
+            <label for="journey-description">Description du parcours</label>
+            <textarea name="journey-description" id="journey-description" cols="30" rows="10" required></textarea>
+        </div>
+        <input type="hidden" name="public" id="public" value="0">
+        <button type="submit" class="black-text" id="btn-save-journey">Enregistrer</button>
+        </form>
+    </div>
+</div>
 
