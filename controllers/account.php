@@ -33,7 +33,7 @@ if (isset($_SESSION['email'])) {
     if (!empty($password) || !empty($passwordConfirm)) {
       if ($password != $passwordConfirm) {
         $alert['password'] = "Les mots de passe ne correspondent pas";
-      } elseif (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) { // A faire marcher
+      } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
         $alert['password'] = "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre";
       }
     }
@@ -42,11 +42,10 @@ if (isset($_SESSION['email'])) {
     if (empty($alert)) {
       $result = updateAccount($firstname, $lastname, $email, $password);
       if ($result) {
-        echo '<script>alert("Vos informations ont bien été modifiées")</script>';
         $_SESSION['firstname'] = $firstname;
         $_SESSION['lastname'] = $lastname;
         $_SESSION['email'] = $email;
-        // header('Location: index.php?page=account');
+        header('Location: index.php?page=account');
       } else {
         $alert['email'] = "Cet email est déjà utilisé";
       }

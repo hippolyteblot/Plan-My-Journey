@@ -15,6 +15,7 @@ const LANG = 'FR-fr';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'Matéo Guenot & Noah Heraud & Hippolyte Blot';
+const MAIL = 'planmyjourney@gmail.com';
 
 // Clé privé de l'API Google
 //const KEY = "AIzaSyDsSWpa4y-dsYA7BBA-I4xJq60be0qAHUI"; // <- Hippo
