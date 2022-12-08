@@ -78,3 +78,8 @@ function changeValue(id, value) {
 function changeText(id, value) {
 	document.getElementById(id).innerHTML = value;
 }
+
+var regenerateBtn = document.getElementById("re-generate");
+regenerateBtn.addEventListener("click", function(event) {
+    window.location.href = "./?page=generateJourney";
+});

@@ -116,9 +116,9 @@
     </div>
     </form>
     <div class="button-container">
+        <button id="btn-modal-share" class="journey-button">Partager</button>    
+        <button id="btn-modal-save" class="journey-button">Enregistrer</button>
         <button id="re-generate" class="journey-button">Re-générer</button>
-        <button id="btn-modal-share" onclick="openModal('save'); changeValue('public', 1); changeText('btn-save-journey', 'Partager')" class="journey-button">Partager</button>    
-        <button id="btn-modal-save" onclick="openModal('save')" class="journey-button">Enregistrer</button>
     </div>
     <br />
   </div>
