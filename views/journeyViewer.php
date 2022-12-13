@@ -31,7 +31,7 @@
                 <div class="step-container">
                     <div class="change-step arrow-left"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
                     <article class="step">
-                    <h2><?= $moment["type_name"] ?> - <?= $moment["candidates"][0]["start"] ?> à <?= $moment["candidates"][0]["end"] ?></h2>
+                    <h2><?= $moment["type_name"] ?> - <?= substr($moment["candidates"][0]["start"], 0, 5) ?> à <?= substr($moment["candidates"][0]["end"], 0, 5) ?></h2>
                     <div class="candidates">
                     <?php
                     foreach($moment["candidates"] as $candidate) {
