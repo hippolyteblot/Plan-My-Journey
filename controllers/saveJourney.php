@@ -32,9 +32,9 @@ foreach($journeySchema as $step){
             // if the candidate is selected
             if(in_array($candidate["place_id"], $ids)){
                 // We insert the candidate in the database
-                linkSteptoJourney($journeyId, $candidate["place_id"], 1, $step["start"], $step["end"]);
+                linkSteptoJourney($journeyId, $candidate["place_id"], 1, $step["start"], $step["end"], $step["id"]);
             } else {
-                linkSteptoJourney($journeyId, $candidate["place_id"], 0, $step["start"], $step["end"]);
+                linkSteptoJourney($journeyId, $candidate["place_id"], 0, $step["start"], $step["end"], $step["id"]);
             }
         }
     }

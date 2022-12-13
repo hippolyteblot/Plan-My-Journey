@@ -86,26 +86,27 @@ function getUserId($userEmail) {
     return $result[0]["user_id"];
 }
 
-function linkSteptoJourney($journeyId, $stepId, $iSelected, $start, $end) {
+function linkSteptoJourney($journeyId, $stepId, $iSelected, $start, $end, $typeId) {
     $db = $database = Connexion::getInstance()->getBdd();
-    if(stepAlreadyLinked($journeyId, $stepId, $start, $end)) {
+    if(stepAlreadyLinked($journeyId, $stepId, $start, $end, $typeId)) {
         return true;
     }
-    $query = $db->prepare('INSERT INTO compose (journey_id, step_id, start, end, isSelected) VALUES (?, ?, ?, ?, ?)');
+    $query = $db->prepare('INSERT INTO compose (journey_id, step_id, type_id, start, end, isSelected) VALUES (?, ?, ?, ?, ?, ?)');
     $result = $query->execute([
         $journeyId,
         $stepId,
+        $typeId,
         $start,
         $end,
         $iSelected
     ]);
 }
 
-function stepAlreadyLinked($journeyId, $stepId, $start, $end) {
+function stepAlreadyLinked($journeyId, $stepId, $start, $end, $typeId) {
     $db = $database = Connexion::getInstance()->getBdd();
 
-    $query = $db->prepare('SELECT * FROM compose WHERE journey_id = ? AND step_id = ? AND start = ? AND end = ?');
-    $query->execute([$journeyId, $stepId, $start, $end]);
+    $query = $db->prepare('SELECT * FROM compose WHERE journey_id = ? AND step_id = ? AND start = ? AND end = ? AND type_id = ?');
+    $query->execute([$journeyId, $stepId, $start, $end, $typeId]);
     $result = $query->fetchAll();
     $query->closeCursor();
     return $result;
