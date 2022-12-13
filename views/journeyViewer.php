@@ -16,6 +16,9 @@
 <main id="accueil">
     <div class="glass">
         <h1><?= $journey->getTitle() ?></h1>
+        <div id="description">
+            <p><?= $journey->getDescription() ?></p>
+        </div>
         <?php
             $journeySchema = $journey->getSchema();
             ?>
@@ -28,11 +31,10 @@
                 <div class="step-container">
                     <div class="change-step arrow-left"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
                     <article class="step">
-                    <h2>De <?= $moment[0]["start"] ?> à <?= $moment[0]["end"] ?></h2>
+                    <h2><?= $moment["type_name"] ?> - <?= $moment["candidates"][0]["start"] ?> à <?= $moment["candidates"][0]["end"] ?></h2>
                     <div class="candidates">
                     <?php
-                    foreach($moment as $candidate) { ?>
-                        <?php
+                    foreach($moment["candidates"] as $candidate) {
                         if($candidate["isSelected"] == 1) { ?>
                             <div class="step-infos active">
                                 <p><?= $candidate["step_name"] ?></p>
@@ -105,9 +107,17 @@
         </div>
         </form>
         <div class="button-container">
-            <button id="btn-modal-share" class="journey-button">Partager</button>    
-            <button id="btn-modal-save" class="journey-button">Enregistrer</button>
-            <button id="re-generate" class="journey-button">Re-générer</button>
+            <?php
+            if(!$journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
+                echo '<button id="btn-modal-share" class="journey-button">Partager</button>';
+            }
+            if($journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
+                echo '<button id="btn-modal-share" class="journey-button">Supprimer le partage</button>';
+            }
+            if($journey->isPublic() && !$journey->getCreator() == $_SESSION["id"]) {
+                echo '<button id="btn-modal-save" class="journey-button">Enregistrer</button>';
+            }
+            ?>
         </div>
         <br />
     </div>

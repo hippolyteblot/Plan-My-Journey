@@ -23,6 +23,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $_SESSION['email'] = $email;
         $_SESSION['firstname'] = $alert['firstname'];
         $_SESSION['lastname'] = $alert['lastname'];
+        $_SESSION['id'] = $alert['user_id'];
         header('Location: index.php?page=home');
     }
 }
