@@ -41,4 +41,5 @@ foreach($journeySchema as $step){
 }
 
 // Redirect to the journey page
-header('Location: index.php?page=myJourneys');
+echo 'Location: index.php?page=journeyViewer&id=' . $journeyId;
+header('Location: index.php?page=journeyViewer&id=' . $journeyId);

@@ -36,8 +36,8 @@ function stepAlreadyExist($step) {
 
 function insertNewPlaceInDatabase($place) {
     $db = $database = Connexion::getInstance()->getBdd();
-    if(placeAlreadyExist($place)) {
-        return true;
+    if($id = placeAlreadyExist($place)) {
+        return $id;
     }
     $query = $db->prepare('INSERT INTO place (place_name, place_fullname, place_lat, place_lng) VALUES (?, ?, ?, ?)');
     $result = $query->execute([
@@ -54,9 +54,9 @@ function placeAlreadyExist($place) {
 
     $query = $db->prepare('SELECT * FROM place WHERE place_fullname = ?');
     $query->execute([$place["formatted_address"]]);
-    $result = $query->fetchAll();
-    $query->closeCursor();
-    return $result;
+    $result = $query->fetch();
+    $query->closeCursor(); 
+    return $result["place_id"];
 }
 
 function insertNewJourneyInDatabase($journeySchema, $placeId, $userEmail, $budget, $title, $description, $public) {
