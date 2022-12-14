@@ -19,6 +19,7 @@ class GoogleMap {
             this.position = position;
             this.text = text;
             this.setMap(map);
+            this.onActivation = [];
           }
           onAdd() {
             this.div = document.createElement("div");
@@ -26,15 +27,10 @@ class GoogleMap {
             this.div.style.position = "absolute";
             this.div.innerHTML = this.text;
             this.getPanes().overlayImage.appendChild(this.div);
-            let test = false;
-            this.div.addEventListener("click", () => {
-              if (!test) {
-                this.div.innerHTML = this.html;
-                test = true;
-              } else {
-                this.div.innerHTML = this.text;
-                test = false;
-              }
+            this.div.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              this.activate();
             });
           }
           draw() {
@@ -48,15 +44,30 @@ class GoogleMap {
             this.div.parentNode.removeChild(this.div);
           }
 
-          activate() {
+          hover() {
             if (this.div !== null) {
               this.div.classList.add("is-active");
             }
           }
 
-          deactivate() {
+          out() {
             if (this.div !== null) {
               this.div.classList.remove("is-active");
+            }
+          }
+
+          activate() {
+            if (this.div !== null) {
+              this.div.innerHTML = this.html;
+            }
+            this.onActivation.forEach(function (cb) {
+              cb();
+            });
+          }
+
+          deactivate() {
+            if (this.div !== null) {
+              this.div.innerHTML = this.text;
             }
           }
 
@@ -73,6 +84,9 @@ class GoogleMap {
   addMarker(lat, lng, text) {
     let point = new google.maps.LatLng(lat, lng);
     let marker = new this.textMarker(point, this.map, text);
+    marker.onActivation.push(() => {
+      this.map.setCenter(marker.position);
+    });
     this.bounds.extend(point);
     return marker;
   }
@@ -97,6 +111,7 @@ if (map !== null) {
 function addMark() {
   let mapG = new GoogleMap();
   let activateMarker = null;
+  let enabledMarkers = null;
   mapG.load(map).then(() => {
     let items = document.querySelectorAll(".active");
     items.forEach((item) => {
@@ -106,15 +121,21 @@ function addMark() {
         item.dataset.text
       );
       marker.setContent(item.innerHTML);
+      marker.onActivation.push(() => {
+        if (enabledMarkers) {
+          enabledMarkers.deactivate();
+        }
+        enabledMarkers = marker;
+      });
       item.addEventListener("mouseover", function () {
-        marker.activate();
+        marker.hover();
         if (activateMarker) {
-          activateMarker.deactivate();
+          activateMarker.out();
         }
         activateMarker = marker;
       });
       item.addEventListener("mouseout", function () {
-        marker.deactivate();
+        marker.out();
         activateMarker = null;
       });
     });
