@@ -2,6 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>parametersSelection.css">
+  <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css">
   <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
 
 </head>
@@ -9,7 +10,7 @@
 </div>
 <main id="accueil">
     <h1>Quel genre de parcours voulez-vous ?</h1>
-  <div class="glass">
+  <div class="glass main-container">
     
     <form action="?page=preferencesSelection" method="post">
         <div class="formItem">

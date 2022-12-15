@@ -11,7 +11,6 @@ function getGeneratedJourneys($id) {
     ]);
     $journeys = $query->fetchAll();
     foreach ($journeys as $key => $journey) {
-        echo $journey['journey_id'];
         $journeys[$key] = new Journey($journey['journey_id']);
     }
     return $journeys;

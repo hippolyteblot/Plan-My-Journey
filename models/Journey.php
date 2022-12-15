@@ -12,6 +12,10 @@ class Journey {
     private $start;
     private $end;
     private $place;
+
+    private $longitude;
+    private $latitude;
+
     private $creator;
     private $public;
 
@@ -26,6 +30,8 @@ class Journey {
         $this->title = $journey['title'];
         $this->description = $journey['description'];
         $this->place = $journey['place_name'];
+        $this->longitude = $journey['step_lat'];
+        $this->latitude = $journey['step_lng'];
         $this->creator = $journey['user_id'];
         if($journey['public'] == 1)
             $this->public = true;
@@ -77,6 +83,22 @@ class Journey {
                 }
             }
         }
+        // Put the steps with the isSelected attribute to 1 in the first position of the array
+        foreach ($schema as $key => $step) {
+            $isSelected = false;
+            foreach ($step['candidates'] as $candidateKey => $candidate) {
+                if ($candidate['isSelected'] == 1) {
+                    $isSelected = true;
+                    $temp = $step['candidates'][0];
+                    $step['candidates'][0] = $candidate;
+                    $step['candidates'][$candidateKey] = $temp;
+                }
+            }
+            if (!$isSelected) {
+                $step['candidates'][0]['isSelected'] = 1;
+            }
+            $schema[$key] = $step;
+        }
         return $schema;
     }
 
@@ -98,6 +120,14 @@ class Journey {
 
     public function getPlace() {
         return $this->place;
+    }
+
+    public function getLongitude() {
+        return $this->longitude;
+    }
+
+    public function getLatitude() {
+        return $this->latitude;
     }
 
     public function getCreator() {

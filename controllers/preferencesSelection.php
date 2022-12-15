@@ -1,5 +1,7 @@
 <?php
 
+$pageName = "Séléction des préférences";
+
 require_once(PATH_MODELS . 'preferences.php');
 
 

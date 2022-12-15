@@ -7,6 +7,12 @@ main#accueil {
     margin-top: 80px;
     color: white;
 }
+
+.main-container {
+    width: 60%;
+}
+
+
 h1 {
     font-size: 40px;
     font-weight: 600;
@@ -135,4 +141,8 @@ button:hover {
 /* Color of the clock is white */
 input[type="time"]::-webkit-calendar-picker-indicator{
     filter: invert(100%) sepia(95%) saturate(0%) hue-rotate(151deg) brightness(106%) contrast(105%);
-  }
+}
+
+option {
+    color: black;
+}

@@ -21,7 +21,7 @@
 </div>
 <main id="accueil">
 
-    <div class="glass">
+    <div class="glass generatedJourney">
         <h1>Voici votre parcours touristique à <?= $_SESSION['candidates'][0]['formatted_address'] ?> !</h1>
         <form action="?page=saveJourney" method="post">
             <?php
