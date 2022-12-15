@@ -1,0 +1,23 @@
+.journey-preview {
+    padding: 10px;
+    margin: 10px;
+    width: 400px;
+    min-width: 400px;
+    cursor: pointer;
+}
+
+.journey-step {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    padding: 10px;
+    padding-top: 0px;
+    font-size: 1.5em;
+}
+
+.place-name {
+    padding-top: 0px;
+    font-size: 1.75em;
+}

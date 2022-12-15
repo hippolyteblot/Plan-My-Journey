@@ -37,7 +37,7 @@
       </label>
       <div class="right">
         <?php if (isset($_SESSION['email'])) { ?>
-          <li><a href="index.php?page=parcours">
+          <li><a href="index.php?page=myJourneys">
               <span class="material-symbols-outlined">signpost</span>
               <span>Mes parcours</span>
             </a></li>

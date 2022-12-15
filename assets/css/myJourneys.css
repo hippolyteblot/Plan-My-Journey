@@ -1,0 +1,14 @@
+.journey-container {
+    display: flex;
+    max-width: 70vw;
+    overflow-x: scroll;
+}
+
+.journey-container::-webkit-scrollbar {
+    display: none;
+}
+
+h2 {
+    padding: 20px;
+    font-size: 2em;
+}
