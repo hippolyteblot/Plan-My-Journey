@@ -4,7 +4,7 @@
     <div class="journey-header">
         <h3 class="place-name"><?= $journey->getPlace() ?></h3>
         <h3><?= $journey->getTitle() ?></h3>
-    </div>
+    </div> 
     <div class="journey-body">
         <?php
         foreach($journey->getSchema() as $moment) {
@@ -27,7 +27,13 @@
         ?>
     </div>
     <div class="journey-footer">
-        <p>Durée : <?= $journey->getDuration() ?> </p>
-        <p>Distance : <?= $journey->getDistance() ?> km</p>
+        <div>
+            <p>Durée : <?= $journey->getDuration() ?> </p>
+            <p>Distance : <?= $journey->getDistance() ?> km</p>
+        </div>
+        <div>
+            <p>Note : <?= $journey->getRating() ?></p>
+            <p>Créée par : <?= $journey->getCreator() ?></p>
+        </div>
     </div>
 </div>

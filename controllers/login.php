@@ -19,6 +19,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (isset($_POST['rememberMe'])) {
             setcookie('email', $alert['email'], time() + 365 * 24 * 3600, null, null, false, true);
             setcookie('password', $alert['password'], time() + 365 * 24 * 3600, null, null, false, true);
+            setcookie('id', $alert['user_id'], time() + 365 * 24 * 3600, null, null, false, true);
         }
         $_SESSION['email'] = $email;
         $_SESSION['firstname'] = $alert['firstname'];

@@ -1,11 +1,12 @@
 main#accueil {
 	position: relative;
 	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
     margin-top: 80px;
     color: white;
+    width: 80vw;
+    flex-direction: column;
 }
 
 .main-container {
@@ -145,4 +146,8 @@ input[type="time"]::-webkit-calendar-picker-indicator{
 
 option {
     color: black;
+}
+
+.journey-container {
+    min-width: 700px;
 }

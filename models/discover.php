@@ -6,7 +6,7 @@ include_once(PATH_MODELS . 'Connexion.php');
 function getDiscover()
 {
   $bdd = Connexion::getInstance()->getBdd();
-  $req = $bdd->prepare('SELECT * FROM journey INNER JOIN place ON journey.place_id = place.place_id WHERE public = true');
+  $req = $bdd->prepare('SELECT * FROM journey INNER JOIN place ON journey.place_id = place.place_id WHERE public = 1');
   $req->execute();
   $result = $req->fetchAll(PDO::FETCH_ASSOC);
   return $result;

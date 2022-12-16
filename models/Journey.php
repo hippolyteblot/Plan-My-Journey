@@ -12,11 +12,8 @@ class Journey {
     private $start;
     private $end;
     private $place;
-
-    private $longitude;
-    private $latitude;
-
     private $creator;
+    private $rating;
     private $public;
 
     public function __construct($id) {
@@ -30,9 +27,8 @@ class Journey {
         $this->title = $journey['title'];
         $this->description = $journey['description'];
         $this->place = $journey['place_name'];
-        $this->longitude = $journey['step_lat'];
-        $this->latitude = $journey['step_lng'];
         $this->creator = $journey['user_id'];
+        $this->rating = $journey['journey_rating'];
         if($journey['public'] == 1)
             $this->public = true;
         else
@@ -122,16 +118,12 @@ class Journey {
         return $this->place;
     }
 
-    public function getLongitude() {
-        return $this->longitude;
-    }
-
-    public function getLatitude() {
-        return $this->latitude;
-    }
-
     public function getCreator() {
         return $this->creator;
+    }
+
+    public function getRating() {
+        return $this->rating;
     }
 
     public function isPublic() {

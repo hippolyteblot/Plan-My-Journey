@@ -21,3 +21,14 @@ h3 {
     padding-top: 0px;
     font-size: 1.75em;
 }
+
+.journey-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.journey-footer div {
+    width: 45%;
+}
