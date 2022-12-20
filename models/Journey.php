@@ -137,6 +137,13 @@ class Journey {
     public function getEnd() {
         return $this->end;
     }
+    public function getSteps() {
+        $steps = [];
+        foreach ($this->schema as $step) {
+            $steps[] = $step['candidates'][0];
+        }
+        return $steps;
+    }
 
     public function getDuration() {
         return $this->soustractTime($this->end, $this->start);
