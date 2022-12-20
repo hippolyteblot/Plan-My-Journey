@@ -148,3 +148,7 @@ input {
     padding: 10px;
     border-radius: 10px;
 }
+
+.journey-container::-webkit-scrollbar {
+  display: none;
+}

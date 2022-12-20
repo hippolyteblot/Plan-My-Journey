@@ -1,7 +1,7 @@
 .journey-container {
     display: flex;
     max-width: 70vw;
-    overflow-x: scroll;
+    overflow-x: scroll; 
 }
 
 .journey-container::-webkit-scrollbar {
