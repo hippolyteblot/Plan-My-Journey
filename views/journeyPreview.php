@@ -1,6 +1,6 @@
 
 
-<div class="journey-preview glass" id="<?= $journey->getId() ?>">
+<div class="journey-preview glass" id="<?= $journey->getId() ?>" data-journey-id="<?= $journey->getId() ?>" data-date="<?= $journey->getDate() ?>" data-rating="<?= $journey->getRating() ?>">
     <div class="journey-header">
         <h3 class="place-name"><?= $journey->getPlace() ?></h3>
         <h3><?= $journey->getTitle() ?></h3>

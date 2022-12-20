@@ -9,6 +9,7 @@ class Journey {
     private $title;
     private $description;
     private $schema;
+    private $date;
     private $start;
     private $end;
     private $place;
@@ -24,6 +25,7 @@ class Journey {
             'id' => $id
         ]);
         $journey = $query->fetch();
+        $this->date = $journey['creation_date'];
         $this->title = $journey['title'];
         $this->description = $journey['description'];
         $this->place = $journey['place_name'];
@@ -112,6 +114,10 @@ class Journey {
 
     public function getSchema() {
         return $this->schema;
+    }
+
+    public function getDate() {
+        return $this->date;
     }
 
     public function getPlace() {

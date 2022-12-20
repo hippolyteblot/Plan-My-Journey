@@ -12,6 +12,17 @@ function getDiscover()
   return $result;
 }
 
+function getDiscoverFromLocation($location) {
+  $bdd = Connexion::getInstance()->getBdd();
+  $req = $bdd->prepare('SELECT * FROM journey INNER JOIN place ON journey.place_id = place.place_id WHERE public = 1 AND upper(place_name) LIKE upper(:location) OR upper(place_fullname) LIKE upper(:location)');
+  $req->execute(
+    array(
+      'location' => $location
+    )
+  );
+  $result = $req->fetchAll(PDO::FETCH_ASSOC);
+  return $result;
+}
 function getCompose($journey_id)
 {
   $bdd = Connexion::getInstance()->getBdd();

@@ -10,20 +10,29 @@
     <link rel="stylesheet" href="<?= PATH_CSS ?>parametersSelection.css" />
     <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
     <script defer src="<?= PATH_SCRIPTS ?>journey.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>sortJourneys.js"></script>
 </head>
 <div id="corps">
-    <div id="banner">
+    
         <h1>Découvrir</h1>
         <!-- Here is the filter options -->
-        <button class="filter-button glass" onclick="openModal('filter')">Filtrer</button>
+        
+    <div id="banner">
+      <div class="search-bar">
+          <form action="?page=discover" method="post">
+              <input type="text" name="location" placeholder="Rechercher une destination">
+              <button type="submit" class="search-button glass">
+                <span class="material-symbols-outlined">
+                  search
+                </span>
+              </button>
+          </form>
+        </div>
+      <!--<button class="filter-button glass" onclick="openModal('trier')">Trier</button>-->
+      <button class="filter-button glass" onclick="deleteJourneysFromDOM(); sortJourneysByDate(); addJourneysToDOM();">Date</button> <!-- Changer pour laisser le choix pour le tri -->
+      
     </div>
-    <h2>Les parcours les mieux notées</h2>
-    <div class="journey-container">
-        <?php foreach ($journeysArray as $journey) {
-            include(PATH_VIEWS . 'journeyPreview.php');
-        } ?>
-    </div>
-    <h2>Les parcours les plus récentes</h2>
+    <h2>Voici un ensemble de parcours partagés par la communauté</h2>
     <div class="journey-container">
         <?php foreach ($journeysArray as $journey) {
             include(PATH_VIEWS . 'journeyPreview.php');
@@ -33,7 +42,7 @@
 </div>
 
 
-<div id="modal-filter" class="modal">
+<div id="modal-trier" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">

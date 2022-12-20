@@ -1,12 +1,21 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+
 
 $pageName = "Découvrir";
 require_once(PATH_MODELS . 'discover.php');
 require_once(PATH_MODELS . 'Journey.php');
+require_once(PATH_MODELS . 'locationQuery.php');
 
-$journey_id = getDiscover();
+if(isset($_POST['location'])) {
+    $location = $_POST['location'];
+    $location = str_replace(' ', '+', $location);
+    $candidates = getCandidates($location);
+    $journey_id = getDiscoverFromLocation($candidates[0]['name']);
+} else {
+    $journey_id = getDiscover();
+}
+
+
 
 
 

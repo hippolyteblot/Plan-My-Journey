@@ -150,4 +150,6 @@ option {
 
 .journey-container {
     min-width: 700px;
+    max-width: 1700px;
+    overflow: scroll;
 }

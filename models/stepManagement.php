@@ -111,6 +111,3 @@ function stepAlreadyLinked($journeyId, $stepId, $start, $end, $typeId) {
     $query->closeCursor();
     return $result;
 }
-
-// q: Comment garder les n premieres lettres d'une chaine de caractères ?
-// r: substr($string, 0, $n);
