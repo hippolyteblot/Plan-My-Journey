@@ -163,3 +163,37 @@ h2 {
     border: 2px solid #e1e1e1;
     border-radius: 5px;
 }
+
+.journey-container-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    color: black;
+}
+
+.modal-body button {
+    color: black;
+}
+
+button.selected {
+    background-color: black;
+    color: white;
+}
+button.selected:hover {
+    background-color: black;
+    color: white;
+}
+
+.sort-button {
+    width: fit-content;
+    padding: 10px;
+}
