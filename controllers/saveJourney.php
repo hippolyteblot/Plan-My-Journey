@@ -24,7 +24,7 @@ $place = json_decode($place, true);
 
 $placeId = insertNewPlaceInDatabase($place);
 
-$journeyId = insertNewJourneyInDatabase($journeySchema, $placeId, $_SESSION['email'], 1, $_POST["journeyName"], $_POST["journeyDescription"], (int) $_POST["public"]);
+$journeyId = insertNewJourneyInDatabase($journeySchema, $placeId, $_SESSION['email'], (int) $_SESSION['parameters']['budget'], $_POST["journeyName"], $_POST["journeyDescription"], (int) $_POST["public"]);
 
 foreach($journeySchema as $step){
     if($step["type"] != "D"){
