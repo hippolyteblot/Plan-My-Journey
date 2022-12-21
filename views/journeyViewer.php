@@ -113,19 +113,19 @@
         <form method="post">
             <?php
             if(!$journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" value="share" name="share" id="btn-modal-share" class="journey-button"></button>';
+                echo '<input type="submit" value="Partager" name="share" id="btn-modal-share" class="journey-button"></button>';
             }
             if($journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" value="private" name="private" id="btn-modal-share" class="journey-button"></button>';
+                echo '<input type="submit" value="Annuler le partage" name="private" id="btn-modal-share" class="journey-button"></button>';
             }
             if($journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" value="delete" name="delete" id="btn-modal-share" class="journey-button"></button>';
+                echo '<input type="submit" value="Supprimer" name="delete" id="btn-modal-share" class="journey-button"></button>';
             }
             if($journey->isPublic() && !$journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" name="save" value="save" id="btn-modal-save" class="journey-button"></button>';
+                echo '<input type="submit" name="save" value="Enregistrer" id="btn-modal-save" class="journey-button"></button>';
             }
             if(!$journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" name="modify" value="modify" id="btn-modal-save" class="journey-button"></button>';
+                echo '<input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>';
             }
             ?>
         </form>

@@ -14,13 +14,15 @@ class Journey {
     private $end;
     private $place;
     private $creator;
+    private $creatorName;
     private $rating;
     private $public;
 
     public function __construct($id) {
         $this->id = $id;
         $db = Connexion::getInstance()->getBdd();
-        $query = $db->prepare("SELECT * FROM journey INNER JOIN place ON journey.place_id = place.place_id WHERE journey_id = :id");
+        $query = $db->prepare("SELECT * FROM journey INNER JOIN place ON journey.place_id = place.place_id INNER JOIN user ON journey.user_id = user.user_id
+            WHERE journey_id = :id");
         $query->execute([
             'id' => $id
         ]);
@@ -30,6 +32,7 @@ class Journey {
         $this->description = $journey['description'];
         $this->place = $journey['place_name'];
         $this->creator = $journey['user_id'];
+        $this->creatorName = $journey['firstname'] . " " . $journey['lastname'];
         $this->rating = $journey['journey_rating'];
         if($journey['public'] == 1)
             $this->public = true;
@@ -126,6 +129,10 @@ class Journey {
 
     public function getCreator() {
         return $this->creator;
+    }
+
+    public function getCreatorName() {
+        return $this->creatorName;
     }
 
     public function getRating() {

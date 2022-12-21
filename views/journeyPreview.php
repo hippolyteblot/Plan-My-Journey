@@ -30,10 +30,10 @@
         <div>
             <p>Durée : <?= $journey->getDuration() ?> </p>
             <p>Distance : <?= $journey->getDistance() ?> km</p>
-        </div>
+        </div> 
         <div>
             <p>Note : <?= $journey->getRating() ?></p>
-            <p>Créée par : <?= $journey->getCreator() ?></p>
+            <p>Crée par : <?= "<a class='profile-link' href='?page=profile&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
         </div>
     </div>
 </div>

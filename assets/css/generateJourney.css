@@ -152,3 +152,8 @@ input {
 .journey-container::-webkit-scrollbar {
   display: none;
 }
+
+.journey-button {
+  color: white;
+  cursor: pointer;
+}
