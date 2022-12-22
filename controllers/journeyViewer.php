@@ -30,6 +30,12 @@ if(array_key_exists('notationBtn', $_POST)) {
     $notation = $_POST['notation'];
     $journey->setNotation($notation, $_SESSION['id']);
 }
+if(array_key_exists('save', $_POST)) {
+    $journey->saveJourney($_SESSION['id']);
+}
+if(array_key_exists('unsave', $_POST)) {
+    $journey->unsaveJourney($_SESSION['id']);
+}
 
 $pageName = "Parcours";
 

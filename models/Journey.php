@@ -161,6 +161,39 @@ class Journey {
         }
     }
 
+    public function saveJourney($userId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("INSERT INTO save (journey_id, user_id) VALUES (:journeyId, :userId)");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+    }
+
+    public function unsaveJourney($userId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("DELETE FROM save WHERE journey_id = :journeyId AND user_id = :userId");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+    }
+
+    public function alreadySaved($userId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("SELECT * FROM save WHERE journey_id = :journeyId AND user_id = :userId");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+        $save = $query->fetch();
+        if ($save) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getId() {
         return $this->id;
     }

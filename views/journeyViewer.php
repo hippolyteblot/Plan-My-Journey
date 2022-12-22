@@ -143,8 +143,11 @@
             if($journey->getCreator() == $_SESSION["id"]) {
                 echo '<input type="submit" value="Supprimer" name="delete" id="btn-modal-share" class="journey-button"></button>';
             }
-            if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"])) {
+            if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && !$journey->alreadySaved($_SESSION["id"])) {
                 echo '<input type="submit" name="save" value="Enregistrer" id="btn-modal-save" class="journey-button"></button>';
+            }
+            if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && $journey->alreadySaved($_SESSION["id"])) {
+                echo '<input type="submit" name="unsave" value="Supprimer" id="btn-modal-save" class="journey-button"></button>';
             }
             if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
                 echo '<input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>';
