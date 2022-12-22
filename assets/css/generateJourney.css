@@ -176,6 +176,8 @@ input {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+.notation-interactive {
   flex-direction: row-reverse;
 }
 .notation input {

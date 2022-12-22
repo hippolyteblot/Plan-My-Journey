@@ -118,7 +118,7 @@
         <form method="post">
             <!-- Interactive notation with stars -->
             <div class="notation-container">
-                <div class="notation">
+                <div class="notation notation-interactive">
                     <button type="submit" name="notationBtn" id="btn-modal-share" class="journey-button">Noter</button>
                     <input type="radio" name="notation" id="etoile5" value="5">
                     <label for="etoile5" title="5 étoiles" class="fa fa-star"></label>
