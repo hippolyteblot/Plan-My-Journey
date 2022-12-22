@@ -18,20 +18,3 @@ function checkAccount($email, $password)
     ];
     return $alert;
 }
-
-function checkAccountCookie($email, $password)
-{
-    echo '<script>console.log("checkAccountCookie")</script>';
-    $database = Connexion::getInstance()->getBdd();
-    $query = $database->prepare('SELECT * FROM user WHERE email = ?');
-    $query->execute(array($email));
-    $result = $query->fetch();
-    if ($result && $password == $result['password']) {
-        return $result;
-    }
-    $alert = [
-        'messageAlert' => 'Email ou mot de passe incorrect',
-        'classAlert' => 'danger'
-    ];
-    return $alert;
-}

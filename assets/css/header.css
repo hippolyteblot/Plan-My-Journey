@@ -13,7 +13,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
 nav {
@@ -68,7 +67,7 @@ a {
 }
 
 ul.header-nav li span {
-  font-size: 25px;
+  font-size: clamp(1.25rem, 2vw, 2rem);
   font-weight: 600;
 }
 
@@ -84,11 +83,9 @@ ul.header-nav .right li + li a span.btn {
   font-size: 20px;
   margin: 10px;
 
-  background-color: black;
   border-radius: 25px;
   padding: 5px 15px;
 }
-
 
 /* Burger Menu */
 #check {
@@ -108,6 +105,12 @@ nav i {
   display: flex;
 }
 
+@media (min-width: 700px) {
+  ul.header-nav .right li + li a span.btn {
+    background-color: black;
+  }
+}
+
 @media (max-width: 700px) {
   ul.header-nav label {
     display: block;
@@ -117,14 +120,13 @@ nav i {
   nav ul.header-nav .right {
     position: fixed;
     top: 50px;
-    left: -100%;
+    left: -101%;
     height: 100vh;
-    width: 100%;
+    width: 101%;
     display: block;
     text-align: center;
-    background-color: grey;
     transition: 0.3s;
-    border-top: black 2px solid;
+    background: black;
   }
   #check:checked ~ .right {
     left: 0%;
@@ -137,8 +139,6 @@ nav i {
   }
 
   ul.header-nav .right li + li a span {
-    color: black;
-    background-color: grey;
     font-size: 25px;
   }
 }

@@ -40,9 +40,10 @@ function checkValidity($firstname, $lastname, $email, $password, $confirmPasswor
     }
 
     // Check if the password has a minimum of 8 characters, 1 uppercase, 1 lowercase and 1 number
-    // else if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
-    //     $alert['messageAlert'] = 'Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre';
-    // }
+    else if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
+        $alert['messageAlert'] = 'Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre';
+        echo '<script>alert("Mauvais mot de passe")</script>';
+    }
     return $alert;
 }
 

@@ -135,3 +135,68 @@ h1 {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .profile-information {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .profile-name,
+  .profile-disconnect,
+  .profile-parameters,
+  .profile-preferences {
+    width: 80vw;
+  }
+
+  main + #modal-information .modal-content {
+    width: 75%;
+  }
+
+  .modal-body .modal-side {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    top: 49%;
+    width: 100%;
+    height: 49%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+  }
+
+  .modal-content .modal-body {
+    width: 100%;
+  }
+
+  .modal-body .categories {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .categories .category {
+    width: 200px;
+  }
+
+  #modal-pref > .modal-content {
+    height: 100vh;
+  }
+
+  .modal-body .modal-footer {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .modal-body .modal-side > .modal-content {
+    height: 90%;
+  }
+}

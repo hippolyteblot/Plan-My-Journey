@@ -7,7 +7,7 @@ if (!isset($_SESSION['email'])) {
 
       $email = $_COOKIE['email'];
       $password = $_COOKIE['password'];
-      $alert = checkAccountCookie($email, $password);
+      $alert = checkAccount($email, $password);
       if (isset($alert['messageAlert'])) {
         $messageAlert = $alert['messageAlert'];
         $classAlert = $alert['classAlert'];
