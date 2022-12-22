@@ -14,6 +14,7 @@
     <script defer src="<?= PATH_SCRIPTS ?>modal.js"></script>    
     <script defer src="<?= PATH_SCRIPTS ?>libMap.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>interactiveMap.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>journeyViewer.js"></script>
 </head>
 <div id="background-img"></div>
 <main id="accueil">
@@ -106,30 +107,69 @@
             <?php
                 }
                 ?>
+                
             </div>
+            
         </div>
         </form>
         <div class="button-container">
+            
         <form method="post">
+            <!-- Interactive notation with stars -->
+            <div class="notation-container">
+                <div class="notation">
+                    <button type="submit" name="notationBtn" id="btn-modal-share" class="journey-button">Noter</button>
+                    <input type="radio" name="notation" id="etoile5" value="5">
+                    <label for="etoile5" title="5 étoiles" class="fa fa-star"></label>
+                    <input type="radio" name="notation" id="etoile4" value="4">
+                    <label for="etoile4" title="4 étoiles" class="fa fa-star"></label>
+                    <input type="radio" name="notation" id="etoile3" value="3">
+                    <label for="etoile3" title="3 étoiles" class="fa fa-star"></label>
+                    <input type="radio" name="notation" id="etoile2" value="2">
+                    <label for="etoile2" title="2 étoiles" class="fa fa-star"></label>
+                    <input type="radio" name="notation" id="etoile1" value="1">
+                    <label for="etoile1" title="1 étoile" class="fa fa-star"></label>
+                    <input type="hidden" name="oldNotation" value="<?= $journey->getUserNotation($_SESSION["id"]) ?>">
+                </div>
+                
+            </div>
             <?php
-            if(!$journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
+            if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
                 echo '<input type="submit" value="Partager" name="share" id="btn-modal-share" class="journey-button"></button>';
             }
-            if($journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
+            if($journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
                 echo '<input type="submit" value="Annuler le partage" name="private" id="btn-modal-share" class="journey-button"></button>';
             }
             if($journey->getCreator() == $_SESSION["id"]) {
                 echo '<input type="submit" value="Supprimer" name="delete" id="btn-modal-share" class="journey-button"></button>';
             }
-            if($journey->isPublic() && !$journey->getCreator() == $_SESSION["id"]) {
+            if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"])) {
                 echo '<input type="submit" name="save" value="Enregistrer" id="btn-modal-save" class="journey-button"></button>';
             }
-            if(!$journey->isPublic() && $journey->getCreator() == $_SESSION["id"]) {
+            if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
                 echo '<input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>';
             }
             ?>
         </form>
+        <div class="journey-footer">
+            <div>
+                <p>Durée : <?= $journey->getDuration() ?> </p>
+                <p>Distance : <?= $journey->getDistance() ?> km</p>
+
+                <p>Note : <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
+                <script>
+                    var rating = <?= $journey->getRating() ?>;
+                    var stars = document.querySelectorAll(".journey-footer p span");
+                    for(var i = 0; i < rating; i++) {
+                        stars[i].style.color = "orange";
+                    }
+                </script>
+                <p>Crée par : <?= "<a class='profile-link' href='?page=profile&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
+            </div>
         </div>
+        
+        </div>
+        
         <br />
     </div>
     <div class="map glass" id="map">

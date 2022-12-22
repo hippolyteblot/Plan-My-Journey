@@ -25,7 +25,10 @@ if(array_key_exists('modify', $_POST)) {
     //comparer ca aux steps sur le navigateur
     //si different de la bdd, modifier avec la fonction modifyJourney
     //si pas de difference, ne rien faire
-    
+}
+if(array_key_exists('notationBtn', $_POST)) {
+    $notation = $_POST['notation'];
+    $journey->setNotation($notation, $_SESSION['id']);
 }
 
 $pageName = "Parcours";

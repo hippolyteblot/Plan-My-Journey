@@ -47,7 +47,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close" onclick="closeModal('trier')">&times;</span>
-        <h2>Filtrer les parcours par :</h2>
+        <h2>Trier les parcours par :</h2>
     </div>
     <!-- Allow to filter from rating, location, corresponding preferences and date -->
     <div class="modal-body">

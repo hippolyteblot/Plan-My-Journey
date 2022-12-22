@@ -33,7 +33,15 @@ class Journey {
         $this->place = $journey['place_name'];
         $this->creator = $journey['user_id'];
         $this->creatorName = $journey['firstname'] . " " . $journey['lastname'];
-        $this->rating = $journey['journey_rating'];
+
+        $query = $db->prepare("SELECT AVG(value) as rating FROM rating WHERE journey_id = :id");
+        $query->execute([
+            'id' => $id
+        ]);
+        $rating = $query->fetch();
+        $this->rating = round($rating['rating'], 1);
+
+
         if($journey['public'] == 1)
             $this->public = true;
         else
@@ -101,6 +109,56 @@ class Journey {
             $schema[$key] = $step;
         }
         return $schema;
+    }
+
+    public function setNotation($value, $userId) {
+        $db = Connexion::getInstance()->getBdd();
+        // Check if the user has already rated the journey
+        $query = $db->prepare("SELECT * FROM rating WHERE journey_id = :journeyId AND user_id = :userId");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+        $rating = $query->fetch();
+        if ($rating) {
+            // Update the rating
+            $query = $db->prepare("UPDATE rating SET value = :value WHERE journey_id = :journeyId AND user_id = :userId");
+            $query->execute([
+                'journeyId' => $this->id,
+                'userId' => $userId,
+                'value' => $value
+            ]);
+        } else {
+            // Insert the rating
+            $query = $db->prepare("INSERT INTO rating (journey_id, user_id, value) VALUES (:journeyId, :userId, :value)");
+            $query->execute([
+                'journeyId' => $this->id,
+                'userId' => $userId,
+                'value' => $value
+            ]);
+        }
+        // Update the journey rating
+        $query = $db->prepare("SELECT AVG(value) as rating FROM rating WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $rating = $query->fetch();
+        $this->rating = round($rating['rating'], 1);
+    }
+
+    public function getUserNotation($userId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("SELECT value FROM rating WHERE journey_id = :journeyId AND user_id = :userId");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+        $rating = $query->fetch();
+        if ($rating) {
+            return $rating['value'];
+        } else {
+            return null;
+        }
     }
 
     public function getId() {
