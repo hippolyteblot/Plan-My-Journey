@@ -58,11 +58,11 @@
                                                         for ($j = 0; $j < 5; $j++) {
                                                             if ($j < $step["candidates"][0]["rating"]) {
                                                     ?>
-                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star"></span>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star-o"></span>
                                                     <?php
                                                             }
                                                         }

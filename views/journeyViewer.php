@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>form.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>interactiveMap.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>journeyPreview.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>step.js"></script>
@@ -112,7 +113,7 @@
             
         </div>
         </form>
-        <div class="button-container">
+        <div class="info-container">
             
         <form method="post">
             <!-- Interactive notation with stars -->
@@ -133,40 +134,47 @@
                 </div>
                 
             </div>
-            <?php
-            if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" value="Partager" name="share" id="btn-modal-share" class="journey-button"></button>';
-            }
-            if($journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" value="Annuler le partage" name="private" id="btn-modal-share" class="journey-button"></button>';
-            }
-            if($journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" value="Supprimer" name="delete" id="btn-modal-share" class="journey-button"></button>';
-            }
-            if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && !$journey->alreadySaved($_SESSION["id"])) {
-                echo '<input type="submit" name="save" value="Enregistrer" id="btn-modal-save" class="journey-button"></button>';
-            }
-            if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && $journey->alreadySaved($_SESSION["id"])) {
-                echo '<input type="submit" name="unsave" value="Supprimer" id="btn-modal-save" class="journey-button"></button>';
-            }
-            if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                echo '<input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>';
-            }
-            ?>
+            <div class="button-container">
+                <?php
+                if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
+                    echo '<input type="submit" value="Partager" name="share" id="btn-modal-share" class="journey-button"></button>';
+                }
+                if($journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
+                    echo '<input type="submit" value="Annuler le partage" name="private" id="btn-modal-share" class="journey-button"></button>';
+                }
+                if($journey->getCreator() == $_SESSION["id"]) {
+                    echo '<input type="submit" value="Supprimer" name="delete" id="btn-modal-share" class="journey-button"></button>';
+                }
+                if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && !$journey->alreadySaved($_SESSION["id"])) {
+                    echo '<input type="submit" name="save" value="Enregistrer" id="btn-modal-save" class="journey-button"></button>';
+                }
+                if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && $journey->alreadySaved($_SESSION["id"])) {
+                    echo '<input type="submit" name="unsave" value="Supprimer" id="btn-modal-save" class="journey-button"></button>';
+                }
+                if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
+                    echo '<input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>';
+                }
+                ?>
+            </div>
         </form>
         <div class="journey-footer">
             <div>
                 <p>Durée : <?= $journey->getDuration() ?> </p>
                 <p>Distance : <?= $journey->getDistance() ?> km</p>
 
-                <p>Note : <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-                <script>
-                    var rating = <?= $journey->getRating() ?>;
-                    var stars = document.querySelectorAll(".journey-footer p span");
-                    for(var i = 0; i < rating; i++) {
-                        stars[i].style.color = "orange";
+                <p>Note :
+                    <?php
+                    $count = 0;
+                    for($i =0; $i < $journey->getRating(); $i++) {
+                        echo "<span class='fa fa-star'></span>";
+                        $count++;
                     }
-                </script>
+                    for($i = 0; $i < 5 - $count; $i++) {
+                        echo "<span class='fa fa-star-o'></span>";
+                    }
+                    ?>
+                </p>
+                    
                 <p>Crée par : <?= "<a class='profile-link' href='?page=profile&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
             </div>
         </div>

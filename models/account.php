@@ -9,6 +9,14 @@ function getAccount($email)
   $result = $query->fetch();
   return $result;
 }
+function getAccountFromId($id)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT * FROM user WHERE user_id = ?');
+  $query->execute(array($id));
+  $result = $query->fetch();
+  return $result;
+}
 
 function updateAccount($firstname, $lastname, $email, $password)
 {
@@ -35,4 +43,45 @@ function emailExists($email)
   $query->execute(array($email));
   $result = $query->fetch();
   return $result;
+}
+
+function getNumberOfGeneratedJourneys($userId)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT COUNT(*) FROM journey WHERE user_id = ?');
+  $query->execute(array($userId));
+  $result = $query->fetch();
+  return $result[0];
+}
+
+function getNumberOfSavedJourneys($userId)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT COUNT(*) FROM save WHERE user_id = ?');
+  $query->execute(array($userId));
+  $result = $query->fetch();
+  return $result[0];
+}
+
+function getNumberOfRatings($userId)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT COUNT(*) FROM rating WHERE user_id = ?');
+  $query->execute(array($userId));
+  $result = $query->fetch();
+  return $result[0];
+}
+
+function getNumberOfPreferences($userId)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT COUNT(*) FROM primary_preferences WHERE user_id = ?');
+  $query->execute(array($userId));
+  $result = $query->fetch();
+  $count = $result[0];
+  $query = $database->prepare('SELECT COUNT(*) FROM secondary_preferences WHERE user_id = ?');
+  $query->execute(array($userId));
+  $result = $query->fetch();
+  $count += $result[0];
+  return $count;
 }

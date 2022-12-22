@@ -98,15 +98,23 @@ body, .container {
   color: white;
   cursor: pointer;
 }
-.button-container {
+.info-container {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
   margin: 10px;
 }
-.button-container .journey-footer {
+.info-container div, .info-container form {
+  width: 100%;
+}
+.info-container .journey-footer {
   font-size: 1.4rem;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 60px;
 }
 .vertical-line {
   border-left: 3px solid #ffffff;
@@ -174,12 +182,14 @@ input {
   display: none;
 }
 .notation label {
-  color: #ccc;
-  font-size: 2em;
+  font-size: 1.5em;
   transition: all .2s;
 }
 .notation label:hover,
 .notation label:hover ~ label,
 .notation input:checked ~ label {
   color: #f90;
+}
+.fa .fa-star {
+  color: white;
 }

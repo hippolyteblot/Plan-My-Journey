@@ -32,7 +32,7 @@
             <p>Distance : <?= $journey->getDistance() ?> km</p>
         </div> 
         <div>
-            <p>Note : <?= $journey->getRating() ?></p>
+            <p class="notation">Note : <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><input type="hidden" value="<?= $journey->getRating() ?>"></p>
             <p>Crée par : <?= "<a class='profile-link' href='?page=profile&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
         </div>
     </div>

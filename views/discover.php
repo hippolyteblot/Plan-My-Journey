@@ -11,6 +11,7 @@
     <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
     <script defer src="<?= PATH_SCRIPTS ?>journey.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>sortJourneys.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>journeyPreview.js"></script>
 </head>
 <div id="corps">
     
