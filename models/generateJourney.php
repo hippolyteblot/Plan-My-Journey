@@ -91,6 +91,30 @@ function addTime($a, $b) {
     return $splited[0] . ':' . $splited[1];
 }
 
+function soustractTime($time1, $time2) {
+    $time1 = explode(':', $time1);
+    $time2 = explode(':', $time2);
+    $hours = (int) $time1[0] - (int) $time2[0];
+    $minutes = $time1[1] - $time2[1];
+    if ($minutes < 0) {
+        $hours--;
+        $minutes += 60;
+    }
+    // Delete the char "-" if hours is negative
+    if ($hours < 0) {
+        $hours = substr($hours, 1);
+    }
+    // Add a 0 to minutes if it's less than 10
+    if ($minutes < 10) {
+        $minutes = '0' . $minutes;
+    }
+    // Same for hours
+    if ($hours < 10) {
+        $hours = '0' . $hours;
+    }
+    return $hours . ':' . $minutes;
+}
+
 function compareDate($a, $b) {
     // Date is "hh:mm"
     $a = explode(':', $a);

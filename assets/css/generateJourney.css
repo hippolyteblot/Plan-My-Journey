@@ -93,10 +93,11 @@ body, .container {
   padding: 10px;
 }
 .journey-button {
-  width: fit-content;
+  width: max-content;
   padding: 10px;
   color: white;
   cursor: pointer;
+  font-size: 1.1rem;
 }
 .info-container {
   display: flex;
@@ -194,4 +195,9 @@ input {
 }
 .fa .fa-star {
   color: white;
+}
+
+.travel-info-text {
+  text-align: center;
+  font-size: 1.2rem;
 }

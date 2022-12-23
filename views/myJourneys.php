@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="<?= PATH_CSS . 'journeyPreview.css' ?>">
   <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
   <script defer src="<?= PATH_SCRIPTS ?>journeyPreview.js"></script>
+  <script defer src="<?= PATH_SCRIPTS ?>calculateDistance.js"></script>
 </head>
 <div id="background-img">
 </div>

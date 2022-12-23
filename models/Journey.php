@@ -111,6 +111,26 @@ class Journey {
         return $schema;
     }
 
+    public static function calculateDistance($step1, $step2) {
+        $x1 = $step1['step_lng'];
+        $y1 = $step1['step_lat'];
+        $x2 = $step2['step_lng'];
+        $y2 = $step2['step_lat'];
+        // Aversinus formula
+        $distance = 1.3 * 6371 * acos(cos(deg2rad($x1)) * cos(deg2rad($x2)) * cos(deg2rad($y2) - deg2rad($y1)) + sin(deg2rad($x1)) * sin(deg2rad($x2)));
+
+        $distance = round($distance, 2);
+        return $distance;
+    }
+
+    public static function calculateEachDistance($steps) {
+        $totalDistance = 0;
+        for ($i = 0; $i < count($steps) - 1; $i++) {
+            $totalDistance += Journey::calculateDistance($steps[$i], $steps[$i + 1]);
+        }
+        return $totalDistance;
+    }
+
     public function setNotation($value, $userId) {
         $db = Connexion::getInstance()->getBdd();
         // Check if the user has already rated the journey
@@ -254,7 +274,7 @@ class Journey {
     }
 
     public function getDistance() {
-        return 0;
+        return Journey::calculateEachDistance($this->getSteps());
     }
 
     private function soustractTime($time1, $time2) {

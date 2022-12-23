@@ -15,12 +15,13 @@
     <script defer src="<?= PATH_SCRIPTS ?>modal.js"></script>    
     <script defer src="<?= PATH_SCRIPTS ?>libMap.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>interactiveMap.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>calculateDistance.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>journeyViewer.js"></script>
 </head>
 <div id="background-img"></div>
 <main id="accueil">
     <div class="glass journey-container">
-        <h1><?= $journey->getTitle() ?></h1>
+        <h1><?= $journey->getTitle() ?> - <?= $journey->getPlace() ?></h1>
         <div id="description">
             <p><?= $journey->getDescription() ?></p>
         </div>
@@ -31,14 +32,22 @@
             <div class="vertical-line"></div>
             <div style="display: flex; flex-direction: column; width: 100%">
             <?php
+            $iter = 0;
             foreach($journeySchema as $moment) {
             ?>
+                <?php if($iter != 0) { ?>
+                <div class="travel-info">
+                    <p class="travel-info-text">Distance : <span class="distance" id="distance-<?= $iter ?>"></span></p>
+                    <p class="travel-info-text">Durée : <span class="duration" id="duration-<?= $iter ?>"></span></p>
+                </div>
+                <?php } ?>
                 <div class="step-container">
                     <div class="change-step arrow-left"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
                     <article class="step">
                     <h2><?= $moment["type_name"] ?> - <?= substr($moment["candidates"][0]["start"], 0, 5) ?> à <?= substr($moment["candidates"][0]["end"], 0, 5) ?></h2>
                     <div class="candidates">
                     <?php
+                    $lastStep = null;
                     foreach($moment["candidates"] as $candidate) {
                         if($candidate["isSelected"] == 1) { ?>
                             <div class="step-infos active" data-lat="<?= $candidate["step_lat"] ?>" data-lng="<?= $candidate["step_lng"] ?>" data-text="<?= $candidate["step_name"] ?>">
@@ -53,10 +62,10 @@
                                     for($j = 0; $j < 5; $j++) {
                                         if($j < $candidate["step_rating"]) {
                                             ?>
-                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
                                             <?php
                                         } else { ?>
-                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-o"></span>
                                         <?php
                                         }
                                     }
@@ -66,10 +75,9 @@
                                 ?>
                             </span>
                         </div>
-                                
                         <?php
                         } else { ?>
-                            <div class="step-infos">
+                            <div class="step-infos" data-lat="<?= $candidate["step_lat"] ?>" data-lng="<?= $candidate["step_lng"] ?>" data-text="<?= $candidate["step_name"] ?>">
                                 <p><?= $candidate["step_name"] ?></p>
                                 <p><?= $candidate["step_vicinity"] ?></p>
                                 <input type="hidden" name="candidate-id" value="<?= $candidate["candidates"][0]["place_id"] ?>">                             
@@ -81,10 +89,10 @@
                                     for($j = 0; $j < 5; $j++) {
                                         if($j < $candidate["step_rating"]) {
                                             ?>
-                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
                                             <?php
                                         } else { ?>
-                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-o"></span>
                                         <?php
                                         }
                                     }
@@ -105,7 +113,9 @@
                     </article>
                     <button class="change-step arrow-right"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></button>
                 </div>
+
             <?php
+            $iter++;
                 }
                 ?>
                 
@@ -160,12 +170,12 @@
         <div class="journey-footer">
             <div>
                 <p>Durée : <?= $journey->getDuration() ?> </p>
-                <p>Distance : <?= $journey->getDistance() ?> km</p>
+                <p id="total-distance">Distance : <?= $journey->getDistance() ?> km</p>
 
                 <p>Note :
                     <?php
                     $count = 0;
-                    for($i =0; $i < $journey->getRating(); $i++) {
+                    for($i = 0; $i < $journey->getRating(); $i++) {
                         echo "<span class='fa fa-star'></span>";
                         $count++;
                     }

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>step.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>calculateDistance.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>generateJourney.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>libMap.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>interactiveMap.js"></script>
@@ -31,11 +32,18 @@
                 <div class="vertical-line"></div>
                 <div style="display: flex; flex-direction: column; width: 100%">
                     <?php
+                    $iter = 0;
                     foreach ($journeySchema as $step) {
                         if ($step["type"] == "D") {
                     ?>
-                            <article class="straight">
-                            </article>
+                    <?php if($iter != 0) { ?>
+                        <div class="travel-info">
+                            <p class="travel-info-text">Distance : <span class="distance" id="distance-<?= $iter ?>"></span></p>
+                            <p class="travel-info-text">Durée : <span class="duration" id="duration-<?= $iter ?>"></span></p>
+                        </div>
+                    <?php } ?>
+                        <article class="straight">
+                        </article>
                         <?php
                         } else if ($step["type"] == "A" || $step["type"] == "R") {
                         ?>
@@ -111,16 +119,26 @@
                             </div>
                     <?php
                         }
+                        $iter++;
                     }
                     ?>
                 </div>
 
             </div>
         </form>
-        <div class="button-container">
-            <button id="btn-modal-share" class="journey-button">Partager</button>
-            <button id="btn-modal-save" class="journey-button">Enregistrer</button>
-            <button id="re-generate" class="journey-button">Re-générer</button>
+        <div class="info-container">
+            
+            <div class="button-container">
+                <button id="btn-modal-share" class="journey-button">Partager</button>
+                <button id="btn-modal-save" class="journey-button">Enregistrer</button>
+                <button id="re-generate" class="journey-button">Re-générer</button>
+            </div>
+            <div class="journey-footer">
+                <div>
+                    <p>Durée : <?= soustractTime($journeySchema[0]["start"], $journeySchema[count($journeySchema) - 1]["end"]) ?></p>
+                    <p id="total-distance">Distance : 0 km</p>
+                </div>
+            </div>
         </div>
         <br />
     </div>
