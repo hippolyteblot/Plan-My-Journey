@@ -21,7 +21,14 @@
 <div id="background-img"></div>
 <main id="accueil">
     <div class="glass journey-container">
-        <h1><?= $journey->getTitle() ?> - <?= $journey->getPlace() ?></h1>
+        <div class="journey-header">
+            <h1><?= $journey->getTitle() ?> - <?= $journey->getPlace() ?></h1>
+            <?php $fav = $journey->alreadyFavorite($_SESSION['id']) ? "" : "-o"; ?>
+            <form action="?page=journeyViewer&id=<?= $journey->getId() ?>" method="post">
+                <button type="submit" class="fav-btn fa fa-heart<?= $fav ?>" id="fav-btn"></button>
+                <input type="hidden" name="favorite" value="<?= $journey->getId() ?>">
+            </form>
+        </div>
         <div id="description">
             <p><?= $journey->getDescription() ?></p>
         </div>

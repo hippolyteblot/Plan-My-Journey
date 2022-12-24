@@ -36,7 +36,12 @@ if(array_key_exists('save', $_POST)) {
 if(array_key_exists('unsave', $_POST)) {
     $journey->unsaveJourney($_SESSION['id']);
 }
-
+if(array_key_exists('favorite', $_POST)) {
+    if($journey->alreadyFavorite($_SESSION['id']))
+        $journey->removeFavorite($_SESSION['id']);
+    else
+        $journey->addFavorite($_SESSION['id']);
+}
 $pageName = "Parcours";
 
 require_once(PATH_VIEWS . 'journeyViewer.php');
