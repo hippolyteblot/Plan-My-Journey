@@ -12,3 +12,10 @@ h2 {
     padding: 20px;
     font-size: 2em;
 }
+
+summary {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 10px;
+}

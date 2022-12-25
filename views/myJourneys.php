@@ -15,25 +15,44 @@
 <main id="accueil">
   <div>
     <h1>Mes journées</h1>
-    <h2>Parcours générés</h2>
-    <article class="journey-container">
-        <?php
-        foreach ($generatedJourneys as $journey) {
-            include(PATH_VIEWS . 'journeyPreview.php');
-        }
-        ?>
-    
-    </article>
 
-    <h2>Parcours enregistrés</h2>
-    <article class="journey-container">
-        <?php
-        foreach ($savedJourneys as $journey) {
-            include(PATH_VIEWS . 'journeyPreview.php');
-        }
-        ?>
-    
-    </article>
+    <details>
+        <summary>Parcours favoris</summary>
+        <article class="journey-container">
+            <?php
+            foreach ($favoriteJourneys as $journey) {
+                include(PATH_VIEWS . 'journeyPreview.php');
+            }
+            ?>
+        </article>
+    </details>
+
+
+    <details>
+        <summary>Parcours générés</summary>
+
+      <article class="journey-container">
+          <?php
+          foreach ($generatedJourneys as $journey) {
+              include(PATH_VIEWS . 'journeyPreview.php');
+          }
+          ?>
+      
+      </article>
+    </details>
+
+    <details>
+        <summary>Parcours enregistrés</summary>
+
+      <article class="journey-container">
+          <?php
+          foreach ($savedJourneys as $journey) {
+              include(PATH_VIEWS . 'journeyPreview.php');
+          }
+          ?>
+      
+      </article>
+    </details>
     
     <br />
     <?php include_once(PATH_VIEWS . 'alert.php'); ?>

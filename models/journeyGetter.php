@@ -41,3 +41,16 @@ function getSharedJourneys($id) {
     }
     return $journeys;
 }
+
+function getFavoriteJourneys($id) {
+    $db = Connexion::getInstance()->getBdd();
+    $query = $db->prepare("SELECT journey_id FROM favorite WHERE user_id = :id");
+    $query->execute([
+        'id' => $id
+    ]);
+    $journeys = $query->fetchAll();
+    foreach ($journeys as $key => $journey) {
+        $journeys[$key] = new Journey($journey['journey_id']);
+    }
+    return $journeys;
+}
