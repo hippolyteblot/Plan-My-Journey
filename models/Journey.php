@@ -214,6 +214,39 @@ class Journey {
         }
     }
 
+    public function addFavorite($userId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("INSERT INTO favorite (journey_id, user_id) VALUES (:journeyId, :userId)");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+    }
+
+    public function removeFavorite($userId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("DELETE FROM favorite WHERE journey_id = :journeyId AND user_id = :userId");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+    }
+
+    public function alreadyFavorite($userId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("SELECT * FROM favorite WHERE journey_id = :journeyId AND user_id = :userId");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId
+        ]);
+        $favorite = $query->fetch();
+        if ($favorite) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getId() {
         return $this->id;
     }

@@ -21,7 +21,14 @@
 <div id="background-img"></div>
 <main id="accueil">
     <div class="glass journey-container">
-        <h1><?= $journey->getTitle() ?> - <?= $journey->getPlace() ?></h1>
+        <div class="journey-header">
+            <h1><?= $journey->getTitle() ?> - <?= $journey->getPlace() ?></h1>
+            <?php $fav = $journey->alreadyFavorite($_SESSION['id']) ? "" : "-o"; ?>
+            <form action="?page=journeyViewer&id=<?= $journey->getId() ?>" method="post">
+                <button type="submit" class="fav-btn fa fa-heart<?= $fav ?>" id="fav-btn"></button>
+                <input type="hidden" name="favorite" value="<?= $journey->getId() ?>">
+            </form>
+        </div>
         <div id="description">
             <p><?= $journey->getDescription() ?></p>
         </div>
@@ -40,6 +47,7 @@
                     <p class="travel-info-text">Distance : <span class="distance" id="distance-<?= $iter ?>"></span></p>
                     <p class="travel-info-text">Durée : <span class="duration" id="duration-<?= $iter ?>"></span></p>
                 </div>
+                <article class="straight"></article>
                 <?php } ?>
                 <div class="step-container">
                     <div class="change-step arrow-left"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>

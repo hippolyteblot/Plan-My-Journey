@@ -99,6 +99,25 @@ body, .container {
   cursor: pointer;
   font-size: 1.1rem;
 }
+.journey-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.journey-header button {
+  /* reset btn */
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  backdrop-filter: none;
+  margin-right: 35px;
+  cursor: pointer;
+  font-size: 3.5rem;
+  color: white;
+  
+}
 .info-container {
   display: flex;
   flex-direction: row-reverse;
@@ -141,6 +160,7 @@ body, .container {
   background: white;
   border-radius: 50%;
   margin-left: -18px;
+  top: -20px;
 }
 .hidden {
   opacity: 0;
