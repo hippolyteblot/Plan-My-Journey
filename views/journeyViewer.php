@@ -47,6 +47,7 @@
                     <p class="travel-info-text">Distance : <span class="distance" id="distance-<?= $iter ?>"></span></p>
                     <p class="travel-info-text">Durée : <span class="duration" id="duration-<?= $iter ?>"></span></p>
                 </div>
+                <article class="straight"></article>
                 <?php } ?>
                 <div class="step-container">
                     <div class="change-step arrow-left"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>

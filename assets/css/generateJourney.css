@@ -160,6 +160,7 @@ body, .container {
   background: white;
   border-radius: 50%;
   margin-left: -18px;
+  top: -20px;
 }
 .hidden {
   opacity: 0;
