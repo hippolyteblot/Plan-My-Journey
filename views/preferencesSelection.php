@@ -55,11 +55,12 @@
         </ul>
       </div>
     </div>
-
-    <form action="" method="post">
-      <button type="submit" value="Y" name="Y/N">Oui</button>
-      <button type="submit" value="N" name="Y/N">Non</button>
-    </form>
+    <div class="choice">
+      <form action="" method="post">
+        <button type="submit" value="Y" name="Y/N">Oui</button>
+        <button type="submit" value="N" name="Y/N">Non</button>
+      </form>
+    </div>
   </div>
 </main>
 

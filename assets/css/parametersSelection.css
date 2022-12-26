@@ -163,6 +163,10 @@ option {
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-preferences-list {
@@ -194,6 +198,11 @@ option {
   cursor: pointer;
 }
 
+.choice {
+  width: 100%;
+}
+
 form {
   display: flex;
+  width: 100%;
 }
