@@ -102,7 +102,8 @@ h1 {
 
 .profile-disconnect span,
 .profile-parameters-modify span,
-.profile-preferences-modify span {
+.profile-preferences-modify span,
+.profile-generate span {
   margin: 5px;
   border: 2px solid black;
   border-radius: 25px;
@@ -168,4 +169,27 @@ h1 {
 
 #account .notation {
   flex-direction: row;
+}
+
+.profile-generate {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  height: 30px;
+}
+
+.profile-generate button {
+  position: absolute;
+  right: -135px;
+  top: 20px;
+  border: none;
+  background: none;
+}
+
+.profile-generate button span {
+  color: white;
+}
+
+.profile-generate button:hover {
+  cursor: pointer;
 }

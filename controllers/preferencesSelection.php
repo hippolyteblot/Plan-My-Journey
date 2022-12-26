@@ -4,13 +4,18 @@ $pageName = "Séléction des préférences";
 
 require_once(PATH_MODELS . 'preferences.php');
 
+if (isset($_SESSION['email'])) {
+    $primaryPreferences = getPrimaryPreferences($_SESSION['email']);
 
-if(isset($_POST['submitParameters'])) {
+    $secondaryPreferences = getSecondaryPreferences($_SESSION['email']);
+}
+
+if (isset($_POST['submitParameters'])) {
 
     $selectedPlace = null;
-    foreach($_SESSION["candidates"] as $place){
+    foreach ($_SESSION["candidates"] as $place) {
         // If the formatted address is not in the database
-        if($place["formatted_address"] == $_POST["place"]){
+        if ($place["formatted_address"] == $_POST["place"]) {
             $selectedPlace = $place;
         }
     }
@@ -24,16 +29,20 @@ if(isset($_POST['submitParameters'])) {
         'restaurant' => $_POST['restaurant'],
         'place' => $selectedPlace
     );
-} else if(isset($_POST['Y/N'])){
-    if($_POST['Y/N'] == 'N'){
+} else if (isset($_POST['Y/N'])) {
+    if ($_POST['Y/N'] == 'N') {
         // $preferences = getPrimaryPreferences($_SESSION['user']) + getSecondaryPreferences($_SESSION['user']);
         $preferences = getPrimaryPreferences($_SESSION['email']);
         $preferences = array_merge($preferences, getSecondaryPreferences($_SESSION['email']));
         // Store the preferences in the session
         $_SESSION['preferences'] = $preferences;
-        
+
         // Redirect to the generateJourney page
         header('Location: ?page=generateJourney');
+    } else {
+        // Redirect to the preferences page
+        $_SESSION['goToGen'] = true;
+        header('Location: ?page=account');
     }
 }
 require_once(PATH_VIEWS . 'preferencesSelection.php');

@@ -52,7 +52,6 @@ if (isset($_SESSION['email'])) {
     }
   }
 
-  // TEST DE LA FONCTION getPreferences()
   $primaryPreferences = array();
   $primaryPreferences = getPrimaryPreferences($user['email']);
 
@@ -66,6 +65,21 @@ if (isset($_SESSION['email'])) {
   $secondaryPreferencesId = getSecondaryPreferencesId($secondaryPreferences);
 
   managePreferencesUpdate($user);
+
+  if (isset($_SESSION['goToGen']) && $_SESSION['goToGen'] == true) {
+
+    if (isset($_POST['confirm']) && $_POST['confirm'] == 'Y') {
+
+      $preferences = getPrimaryPreferences($_SESSION['email']);
+      $preferences = array_merge($preferences, getSecondaryPreferences($_SESSION['email']));
+      // Store the preferences in the session
+      $_SESSION['preferences'] = $preferences;
+
+      $_SESSION['goToGen'] = false;
+
+      header('Location: index.php?page=generateJourney');
+    }
+  }
 
   require_once(PATH_VIEWS . 'account.php');
 } else {
