@@ -64,6 +64,12 @@ body, .container {
   border: unset;
   backdrop-filter: unset;
 }
+.for-modif {
+  padding-right: 65px;
+}
+.change-step.hidden {
+  display: none;
+}
 
 .arrow-right {
   transform: rotate(90deg);

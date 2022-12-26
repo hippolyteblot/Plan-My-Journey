@@ -40,6 +40,7 @@
             <div style="display: flex; flex-direction: column; width: 100%">
             <?php
             $iter = 0;
+            $hide = $journey->canModify($_SESSION['id']) ? "" : "hidden";
             foreach($journeySchema as $moment) {
             ?>
                 <?php if($iter != 0) { ?>
@@ -50,7 +51,7 @@
                 <article class="straight"></article>
                 <?php } ?>
                 <div class="step-container">
-                    <div class="change-step arrow-left"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
+                    <div class="change-step arrow-left <?= $hide ?>"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
                     <article class="step">
                     <h2><?= $moment["type_name"] ?> - <?= substr($moment["candidates"][0]["start"], 0, 5) ?> à <?= substr($moment["candidates"][0]["end"], 0, 5) ?></h2>
                     <div class="candidates">
@@ -119,7 +120,7 @@
                     }
                     ?>
                     </article>
-                    <button class="change-step arrow-right"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></button>
+                    <button class="change-step arrow-right <?= $hide ?>"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></button>
                 </div>
 
             <?php
@@ -172,8 +173,14 @@
                 if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
                     echo '<input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>';
                 }
+                
                 ?>
             </div>
+            <?php
+            if ($journey->getCreator() == $_SESSION["id"] && $journey->isPublic() == 1) {
+                echo '<p class="for-modif">Pour modifier votre parcours, annulez le partage</p>';
+            }
+            ?>
         </form>
         <div class="journey-footer">
             <div>
@@ -195,7 +202,9 @@
                     
                 <p>Crée par : <?= "<a class='profile-link' href='?page=profile&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
             </div>
+            
         </div>
+        
         
         </div>
         

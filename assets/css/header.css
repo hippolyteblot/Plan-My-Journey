@@ -70,6 +70,7 @@ a {
 ul.header-nav li span {
   font-size: 25px;
   font-weight: 600;
+  padding: 2px;
 }
 
 ul.header-nav .right li a {

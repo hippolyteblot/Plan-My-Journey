@@ -46,4 +46,6 @@ if(array_key_exists('favorite', $_POST)) {
 }
 $pageName = "Parcours";
 
+// Re-load the journey to get the updated data
+$journey = new Journey($_GET['id']);
 require_once(PATH_VIEWS . 'journeyViewer.php');

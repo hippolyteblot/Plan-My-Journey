@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="<?= PATH_CSS . 'journeyPreview.css' ?>">
   <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
   <script defer src="<?= PATH_SCRIPTS ?>journey.js"></script>
+  <script defer src="<?= PATH_SCRIPTS ?>journeyPreview.js"></script>
 
 </head>
 <main id="account">

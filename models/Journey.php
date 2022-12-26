@@ -247,6 +247,10 @@ class Journey {
         }
     }
 
+    public function canModify($userId) {
+        return ($this->creator == $userId) && ($this->public == 0);
+    }
+
     public function getId() {
         return $this->id;
     }
