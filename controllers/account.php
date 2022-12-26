@@ -52,7 +52,6 @@ if (isset($_SESSION['email'])) {
     }
   }
 
-  // TEST DE LA FONCTION getPreferences()
   $primaryPreferences = array();
   $primaryPreferences = getPrimaryPreferences($user['email']);
 

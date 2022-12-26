@@ -1,155 +1,199 @@
 main#accueil {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-    margin-top: 80px;
-    color: white;
-    width: 80vw;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+  color: white;
+  width: 80vw;
+  flex-direction: column;
 }
 
 .main-container {
-    width: 60%;
+  width: 60%;
 }
-
 
 h1 {
-    font-size: 40px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 10px;
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 h2 {
-    font-size: 25px;
-    font-weight: 600;
-
+  font-size: 25px;
+  font-weight: 600;
 }
 .formItem {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
 }
 .inputGroup {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  width: fit-content;
 }
 input {
-    color: white;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    margin: 5px;
-    font-size: 20px;
-    font-weight: 500;
-    
-    /* Glassmorphism */
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: 500;
+
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
 }
 select {
-    color: white;
-    width: 100%;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    font-size: 20px;
-    font-weight: 600;
-    
-    /* Glassmorphism */
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
+  color: white;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: 600;
+
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
 }
-input[type=checkbox] {
-    width: 20px;
-    height: 20px;
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 textarea {
-    color: black;
-    font-family: 'SF Pro Display', sans-serif;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    margin: 5px;
-    font-size: 20px;
-    
-    /* Glassmorphism */
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
+  color: black;
+  font-family: "SF Pro Display", sans-serif;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
 }
 #options {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-height: 500px;
-    overflow-y: auto;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 500px;
+  overflow-y: auto;
+  justify-content: space-between;
 }
 button {
-    color: white;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    margin: 5px;
-    font-size: 20px;
-    font-weight: 600;
+  color: white;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: 600;
 
-    /* Glassmorphism */
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
 
-    transition: all 0.3s ease;
-    cursor: pointer;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 button:hover {
-    /* Glassmorphism */
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
 }
 
 /* Color of the clock is white */
-input[type="time"]::-webkit-calendar-picker-indicator{
-    filter: invert(100%) sepia(95%) saturate(0%) hue-rotate(151deg) brightness(106%) contrast(105%);
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%) sepia(95%) saturate(0%) hue-rotate(151deg)
+    brightness(106%) contrast(105%);
 }
 
 option {
-    color: black;
+  color: black;
 }
 
 .journey-container {
-    min-width: 700px;
-    max-width: 1700px;
-    overflow: scroll;
+  min-width: 700px;
+  max-width: 1700px;
+  overflow: scroll;
+}
+
+.glass {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgb(31 135 78 / 37%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.profile-preferences-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.profile-preferences-list li {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.pref-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pref-list p {
+  font-size: clamp(10px, 2vw, 15px);
+  background-color: black;
+  color: white;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  cursor: pointer;
+}
+
+form {
+  display: flex;
 }
