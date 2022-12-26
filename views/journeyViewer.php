@@ -62,7 +62,7 @@
                             <div class="step-infos active" data-lat="<?= $candidate["step_lat"] ?>" data-lng="<?= $candidate["step_lng"] ?>" data-text="<?= $candidate["step_name"] ?>">
                                 <p><?= $candidate["step_name"] ?></p>
                                 <p><?= $candidate["step_vicinity"] ?></p>
-                                <input type="hidden" name="candidate-id" value="<?= $candidate["candidates"][0]["place_id"] ?>">                             
+                                <input type="hidden" name="candidate-id" value="<?= $candidate["step_id"] ?>">                           
                                 <span class="rating">
                                 <?php
                                 if(isset($candidate["step_rating"])) {
@@ -89,7 +89,7 @@
                             <div class="step-infos" data-lat="<?= $candidate["step_lat"] ?>" data-lng="<?= $candidate["step_lng"] ?>" data-text="<?= $candidate["step_name"] ?>">
                                 <p><?= $candidate["step_name"] ?></p>
                                 <p><?= $candidate["step_vicinity"] ?></p>
-                                <input type="hidden" name="candidate-id" value="<?= $candidate["candidates"][0]["place_id"] ?>">                             
+                                <input type="hidden" name="candidate-id" value="<?= $candidate["step_id"] ?>">                        
                                 <span class="rating">
                                 <?php
                                 if(isset($candidate["step_rating"])) {

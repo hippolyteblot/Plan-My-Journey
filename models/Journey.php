@@ -247,6 +247,54 @@ class Journey {
         }
     }
 
+    public function setPublic($value) {
+        $value = $value ? 1 : 0;
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("UPDATE journey SET public = :value WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id,
+            'value' => $value
+        ]);
+        $this->public = $value;
+    }
+
+    public function deleteJourney() {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("DELETE FROM journey WHERE id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+    }
+
+    public function modifyJourney($title, $description, $selectedArray) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("UPDATE journey SET title = :title, description = :description WHERE id = :id");
+        $query->execute([
+            'id' => $this->id,
+            'title' => $title,
+            'description' => $description
+        ]);
+        $this->title = $title;
+        $this->description = $description;
+
+        $query = $db->prepare("UPDATE compose SET isSelected = 0 WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        
+        foreach ($selectedArray as $selected) {
+            $query = $db->prepare("UPDATE compose SET isSelected = 1 WHERE journey_id = :journeyId AND step_id = :stepId");
+            $query->execute([
+                'journeyId' => $this->id,
+                'stepId' => $selected
+            ]);
+        }
+    }
+
+    public function canSee($userId) {
+        return ($this->public == 1) || ($this->creator == $userId);
+    }
+
     public function canModify($userId) {
         return ($this->creator == $userId) && ($this->public == 0);
     }

@@ -36,7 +36,15 @@
         <i class="fas fa-chevron-circle-down"></i>
       </label>
       <div class="right">
+
         <?php if (isset($_SESSION['email'])) { ?>
+          <li>
+            <a href="index.php?page=home">
+              <span class="material-symbols-outlined">build</span>
+              <span>Générer</span>
+            </a>
+          </li>
+
           <li><a href="index.php?page=myJourneys">
               <span class="material-symbols-outlined">signpost</span>
               <span>Mes parcours</span>
@@ -48,6 +56,7 @@
             <span>Découvrir</span>
           </a>
         </li>
+
         <?php if (isset($_SESSION['email'])) { ?>
           <li><a href="index.php?page=account"><span class="btn">Mon compte</span></a></li>
         <?php } else { ?>

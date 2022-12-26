@@ -7,17 +7,17 @@ require_once(PATH_MODELS . 'actionJourney.php');
 
 
 $journey = new Journey($_GET['id']);
-if($journey->getCreator() != $_SESSION['id'] && !$journey->isPublic()) {
+if($journey->canSee($_SESSION['id']) == false) {
     header('Location: index.php?page=home');
 }
 if(array_key_exists('share', $_POST)) {
-    setJourneyPublic($_GET['id']);
+    $journey->setPublic(true);
 }
 if(array_key_exists('private', $_POST)) {
-    setJourneyPrivate($_GET['id']);
+    $journey->setPublic(false);
 }
 if(array_key_exists('delete', $_POST)) {
-    deleteJourney($_GET['id']);
+    $journey->deleteJourney();
 }
 if(array_key_exists('modify', $_POST)) {
     $steps = $journey->getSteps();
