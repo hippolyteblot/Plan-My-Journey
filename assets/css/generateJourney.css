@@ -9,6 +9,16 @@ body, .container {
   width: 80%;
 }
 
+#journey-presentation {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  flex-direction: row;
+  width: 100%;
+}
+
 .generatedJourney {
   width: 50%;
   min-width: 600px;
@@ -64,8 +74,11 @@ body, .container {
   border: unset;
   backdrop-filter: unset;
 }
+#journey-presentation > div {
+  width: 40%;
+}
 .for-modif {
-  padding-right: 65px;
+  padding-right: 55px;
 }
 .change-step.hidden {
   display: none;

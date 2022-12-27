@@ -1,5 +1,4 @@
 function calculateDistance(x1, y1, x2, y2) {
-    console.log("x1: " + x1 + " y1: " + y1 + " x2: " + x2 + " y2: " + y2);
     // Use aversine formula to calculate distance between two points
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(y2-y1);  // deg2rad below

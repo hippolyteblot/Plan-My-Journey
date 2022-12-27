@@ -1,6 +1,6 @@
 #accueil {
-  flex-direction: row !important;
-  gap: 100px;
+  flex-direction: row;
+  gap: 50px;
 }
 
 .map {

@@ -291,6 +291,24 @@ class Journey {
         }
     }
 
+    public function addCommentary($userId, $commentary) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("INSERT INTO commentary (journey_id, user_id, content, date) VALUES (:journeyId, :userId, :content, NOW())");
+        $query->execute([
+            'journeyId' => $this->id,
+            'userId' => $userId,
+            'content' => $commentary
+        ]);
+    }
+
+    public function deleteCommentary($commentaryId) {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("DELETE FROM commentary WHERE commentary_id = :id");
+        $query->execute([
+            'id' => $commentaryId
+        ]);
+    }
+
     public function canSee($userId) {
         return ($this->public == 1) || ($this->creator == $userId);
     }
@@ -361,6 +379,22 @@ class Journey {
     public function getDistance() {
         return Journey::calculateEachDistance($this->getSteps());
     }
+
+    public function getCommentaries() {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("SELECT *, DATE_FORMAT(date, '%d/%m/%Y %H:%i') AS date
+            FROM commentary INNER JOIN user ON commentary.user_id = user.user_id 
+            WHERE journey_id = :journeyId ORDER BY date ASC");
+        $query->execute([
+            'journeyId' => $this->id
+        ]);
+        $commentaries = [];
+        while ($commentary = $query->fetch()) {
+            $commentaries[] = $commentary;
+        }
+        return $commentaries;
+    }
+
 
     private function soustractTime($time1, $time2) {
         $time1 = explode(':', $time1);

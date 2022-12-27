@@ -12,7 +12,7 @@
     <h1>Quel genre de parcours voulez-vous ?</h1>
   <div class="glass main-container">
     
-    <form action="?page=preferencesSelection" method="post">
+    <form action="?page=preferencesSelection" method="post" class="parameters-container">
         <div class="formItem">
             <h2>Lieux selectionné : </h2>
             <select name="place" id="lieux">

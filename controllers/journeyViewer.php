@@ -44,6 +44,13 @@ if(array_key_exists('favorite', $_POST)) {
     else
         $journey->addFavorite($_SESSION['id']);
 }
+if(array_key_exists('commentary', $_POST)) {
+    $commentary = htmlspecialchars($_POST['commentary']);
+    $journey->addCommentary($_SESSION['id'], $commentary);
+}
+if(array_key_exists('deleteCommentary', $_POST)) {
+    $journey->deleteCommentary($_POST['commentaryId']);
+}
 $pageName = "Parcours";
 
 // Re-load the journey to get the updated data
