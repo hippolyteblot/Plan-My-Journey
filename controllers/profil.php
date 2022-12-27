@@ -16,4 +16,4 @@ $registrationDate = explode('-', $user['registration_date']);
 $registrationDate = $registrationDate[2] . '/' . $registrationDate[1] . '/' . $registrationDate[0];
 $nbPreferences = getNumberOfPreferences($user['user_id']);
 
-require_once(PATH_VIEWS . 'profile.php');
+require_once(PATH_VIEWS . 'profil.php');
