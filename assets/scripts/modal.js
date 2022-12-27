@@ -82,15 +82,24 @@ function closeModal(id) {
       }
     }
 
-    window.location.href =
-      "?page=account&setPreferences=" +
-      selectedItemsArray.join(",") +
-      "&unSetPreferences=" +
-      unSelectedItemsArray.join(",") +
-      "&setSecondaryPreferences=" +
-      selectedSecondaryItemsArray.join(",") +
-      "&unSetSecondaryPreferences=" +
-      unSelectedSecondaryItemsArray.join(",");
+    var url = new URL(window.location.href);
+    var page = url.searchParams.get("page");
+
+    if (page == "account") {
+      window.location.href =
+        "?page=" +
+        page +
+        "&setPreferences=" +
+        selectedItemsArray.join(",") +
+        "&unSetPreferences=" +
+        unSelectedItemsArray.join(",") +
+        "&setSecondaryPreferences=" +
+        selectedSecondaryItemsArray.join(",") +
+        "&unSetSecondaryPreferences=" +
+        unSelectedSecondaryItemsArray.join(",");
+    } else if (page == "preferencesSelection") {
+      reloadPreferences();
+    }
   }
   document.getElementById("modal-" + id).style.display = "none";
 }

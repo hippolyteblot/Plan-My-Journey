@@ -5,9 +5,19 @@ $pageName = "Séléction des préférences";
 require_once(PATH_MODELS . 'preferences.php');
 
 if (isset($_SESSION['email'])) {
+    $primaryTypes = getPrimaryTypes();
+    $secondaryTypes = getSecondaryTypes();
+    $categories = getCategories();
+
     $primaryPreferences = getPrimaryPreferences($_SESSION['email']);
 
     $secondaryPreferences = getSecondaryPreferences($_SESSION['email']);
+
+    // Array of the primary type id
+    $primaryPreferencesId = getPrimaryPreferencesId($primaryPreferences);
+
+    // Array of the secondary type id
+    $secondaryPreferencesId = getSecondaryPreferencesId($secondaryPreferences);
 }
 
 if (isset($_POST['submitParameters'])) {
@@ -41,8 +51,8 @@ if (isset($_POST['submitParameters'])) {
         header('Location: ?page=generateJourney');
     } else {
         // Redirect to the preferences page
-        $_SESSION['goToGen'] = true;
-        header('Location: ?page=account');
+
+
     }
 }
 require_once(PATH_VIEWS . 'preferencesSelection.php');
