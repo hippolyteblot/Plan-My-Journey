@@ -268,7 +268,7 @@
             <p>Êtes-vous sûr de vouloir signaler ce commentaire ?</p>
         </div>
         <div class="modal-footer">
-            <form action="" method="post">
+            <form action="?page=journeyViewer" method="post">
                 <input type="hidden" name="commentaryIdForReport" value="">
                 <input type="submit" value="Oui" name="reportCommentary">
                 <input type="button" value="Non" onclick="closeModal('report')">

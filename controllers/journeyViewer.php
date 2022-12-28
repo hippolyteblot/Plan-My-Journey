@@ -3,6 +3,7 @@
 require_once(PATH_MODELS . 'journeyGetter.php');
 require_once(PATH_MODELS . 'Journey.php');
 require_once(PATH_MODELS . 'actionJourney.php');
+require_once(PATH_MODELS . 'commentary.php');
 
 
 
@@ -50,6 +51,9 @@ if(array_key_exists('commentary', $_POST)) {
 }
 if(array_key_exists('deleteCommentary', $_POST)) {
     $journey->deleteCommentary($_POST['commentaryId']);
+}
+if(array_key_exists('reportCommentary', $_POST)) {
+    reportCommentary($_POST['commentaryId']);
 }
 $pageName = "Parcours";
 
