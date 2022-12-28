@@ -49,9 +49,8 @@ if (isset($_POST['submitParameters'])) {
 
         // Redirect to the generateJourney page
         header('Location: ?page=generateJourney');
-    } else {
+    } else if ($_POST['Y/N'] == 'Y') {
         // Redirect to the preferences page
-
 
     }
 }

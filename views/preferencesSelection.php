@@ -46,14 +46,14 @@
               <?php
               foreach ($primaryTypes as $primaryType) {
                 if ($primaryType['structure_type'] == 'A') {
-                  $primaryType['primary_type_name'] = str_replace(' ', '-', $primaryType['primary_type_name']);
-                  echo '<p class="act ' . $primaryType['primary_type_name'] . '" >' . $primaryType['primary_type_name'] . '</p>';
+                  $test = str_replace(' ', '-', $primaryType['primary_type_name']);
+                  echo '<p class="act ' . $test . '" >' . $primaryType['primary_type_name'] . '</p>';
                 }
               }
               foreach ($secondaryTypes as $secondaryType) {
                 if ($secondaryType['structure_type'] == 'A') {
-                  $secondaryType['secondary_type_name'] = str_replace(' ', '-', $secondaryType['secondary_type_name']);
-                  echo '<p class="act ' . $secondaryType['secondary_type_name'] . '" >' . $secondaryType['secondary_type_name'] . '</p>';
+                  $test = str_replace(' ', '-', $secondaryType['secondary_type_name']);
+                  echo '<p class="act ' . $test . '" >' . $secondaryType['secondary_type_name'] . '</p>';
                 }
               }
               ?>
@@ -67,6 +67,7 @@
       <button onclick="openModal('pref')">Oui</button>
       <form action="" method="post">
         <button type="submit" value="N" name="Y/N">Non</button>
+        <button type="submit" value="Y" name="Y/N">Envoyer</button>
       </form>
     </div>
   </div>
