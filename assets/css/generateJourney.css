@@ -247,6 +247,11 @@ input {
   margin: 5px;
 }
 
+#modal-private input {
+  padding: 5px;
+  margin: 5px;
+}
+
 #modal-update textarea {
   height: 100px;
 }

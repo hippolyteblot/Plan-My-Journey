@@ -5,6 +5,10 @@ require_once(PATH_MODELS . 'journeyGetter.php');
 require_once(PATH_MODELS . 'Journey.php');
 
 $user = getAccountFromId($_GET['user']);
+if ($user == null || $user['user_id'] == 0) {
+    header('Location: ?page=404');
+    exit();
+}
 $pageName = 'Profile - ' . $user['firstname'] . ' ' . $user['lastname'];
 $journeys = getSharedJourneys($user['user_id']);
 

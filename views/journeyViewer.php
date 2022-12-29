@@ -160,19 +160,19 @@
                 <div class="button-container">
                     <?php
                     if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="submit" value="Partager" name="share" id="btn-modal-share" class="journey-button"></button>';
+                        echo '<input type="submit" value="Partager" name="share" class="journey-button"></button>';
                     }
                     if($journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="submit" value="Annuler le partage" name="private" id="btn-modal-share" class="journey-button"></button>';
+                        echo '<input type="button" value="Annuler le partage" onclick="openModal(\'private\')" class="journey-button"></button>';
                     }
                     if($journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="submit" value="Supprimer" name="delete" id="btn-modal-share" class="journey-button"></button>';
+                        echo '<input type="button" value="Supprimer" onclick="openModal(\'delete\')" class="journey-button"></button>';
                     }
                     if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && !$journey->alreadySaved($_SESSION["id"])) {
-                        echo '<input type="submit" name="save" value="Enregistrer" id="btn-modal-save" class="journey-button"></button>';
+                        echo '<input type="submit" name="save" value="Enregistrer" class="journey-button"></button>';
                     }
                     if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && $journey->alreadySaved($_SESSION["id"])) {
-                        echo '<input type="submit" name="unsave" value="Supprimer" id="btn-modal-save" class="journey-button"></button>';
+                        echo '<input type="submit" name="unsave" value="Supprimer" class="journey-button"></button>';
                     }
                     if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
                         echo '<input type="button" value="Modifier" class="journey-button" onclick="openModal(\'update\')"></button>';
@@ -204,7 +204,7 @@
                         ?>
                     </p>
                         
-                    <p>Crée par : <?= "<a class='profile-link' href='?page=profile&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
+                    <p>Crée par : <?= "<a class='profile-link' href='?page=profil&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
                 </div>
                 
             </div>
@@ -298,5 +298,43 @@
                     <input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>
             </div>
         </form>
+    </div>
+</div>
+
+<!-- Modal for private -->
+<div id="modal-private" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" onclick="closeModal('private')">&times;</span>
+            <h2>Passer le parcours en privé</h2>
+        </div>
+        <div class="modal-body">
+            <p>Êtes-vous sûr de vouloir passer le parcours en privé ? Si des gens ont enregistré ce parcours, une copie anonyme sera créée.</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post">
+                <input type="submit" value="Annuler le partage" name="private"></button>
+                <input type="button" value="Non" onclick="closeModal('private')">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for delete -->
+<div id="modal-delete" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" onclick="closeModal('delete')">&times;</span>
+            <h2>Supprimer le parcours</h2>
+        </div>
+        <div class="modal-body">
+            <p>Êtes-vous sûr de vouloir supprimer le parcours ? Cette action est irréversible.</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post">
+                <input type="submit" value="Oui" name="delete"></button>
+                <input type="button" value="Non" onclick="closeModal('delete')">
+            </form>
+        </div>
     </div>
 </div>

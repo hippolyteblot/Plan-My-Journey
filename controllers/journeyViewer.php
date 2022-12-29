@@ -16,9 +16,11 @@ if(array_key_exists('share', $_POST)) {
 }
 if(array_key_exists('private', $_POST)) {
     $journey->setPublic(false);
+    //$journey->printSchema();
 }
 if(array_key_exists('delete', $_POST)) {
     $journey->deleteJourney();
+    header('Location: index.php?page=home');
 }
 if(array_key_exists('modify', $_POST)) {
     $journey->modifyJourney($_POST['title'], $_POST['description'], $_POST['selectedArray']);

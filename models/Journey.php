@@ -13,6 +13,8 @@ class Journey {
     private $start;
     private $end;
     private $place;
+    private $placeId;
+    private $budget;
     private $creator;
     private $creatorName;
     private $rating;
@@ -31,6 +33,8 @@ class Journey {
         $this->title = $journey['title'];
         $this->description = $journey['description'];
         $this->place = $journey['place_name'];
+        $this->placeId = $journey['place_id'];
+        $this->budget = $journey['journey_budget'];
         $this->creator = $journey['user_id'];
         $this->creatorName = $journey['firstname'] . " " . $journey['lastname'];
 
@@ -249,6 +253,11 @@ class Journey {
 
     public function setPublic($value) {
         $value = $value ? 1 : 0;
+        if($value == 0) {
+            if($this->isSaved()) {
+                $this->copyJourney();
+            }
+        }
         $db = Connexion::getInstance()->getBdd();
         $query = $db->prepare("UPDATE journey SET public = :value WHERE journey_id = :id");
         $query->execute([
@@ -258,12 +267,155 @@ class Journey {
         $this->public = $value;
     }
 
+    private function copyJourney() {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("INSERT INTO journey (title, description, public, user_id, place_id, journey_start, journey_end, journey_budget, creation_date) VALUES (:title, :description, :public, :userId, :placeId, :journeyStart, :journeyEnd, :journeyBudget, :creationDate)");
+        $query->execute([
+            'title' => $this->title,
+            'description' => $this->description,
+            'public' => 1,
+            'userId' => 0,
+            'placeId' => $this->placeId,
+            'journeyStart' => $this->start,
+            'journeyEnd' => $this->end,
+            'journeyBudget' => $this->budget,
+            'creationDate' => $this->date
+        ]);
+        $newId = $db->lastInsertId();
+        echo $newId;
+        $query = $db->prepare("SELECT * FROM save WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $saves = $query->fetchAll();
+        foreach($saves as $save) {
+            $query = $db->prepare("INSERT INTO save (journey_id, user_id) VALUES (:journeyId, :userId)");
+            $query->execute([
+                'journeyId' => $newId,
+                'userId' => $save['user_id']
+            ]);
+        }
+        $query = $db->prepare("SELECT * FROM favorite WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $favorites = $query->fetchAll();
+        foreach($favorites as $favorite) {
+            $query = $db->prepare("INSERT INTO favorite (journey_id, user_id) VALUES (:journeyId, :userId)");
+            $query->execute([
+                'journeyId' => $newId,
+                'userId' => $favorite['user_id']
+            ]);
+        }
+        $query = $db->prepare("SELECT * FROM rating WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $ratings = $query->fetchAll();
+        foreach($ratings as $rating) {
+            $query = $db->prepare("INSERT INTO rating (journey_id, user_id, value) VALUES (:journeyId, :userId, :value)");
+            $query->execute([
+                'journeyId' => $newId,
+                'userId' => $rating['user_id'],
+                'value' => $rating['value']
+            ]);
+        }
+        foreach($this->getSchema() as $moment) {
+            $steps = $moment["candidates"];
+            foreach($steps as $step) {
+                $query = $db->prepare("INSERT INTO compose (journey_id, step_id, type_id, start, end, isSelected) VALUES (:journeyId, :stepId, :typeId, :start, :end, :isSelected)");
+                $query->execute([
+                    'journeyId' => $newId,
+                    'stepId' => $step["step_id"],
+                    'typeId' => $step["type_id"],
+                    'start' => $step["start"],
+                    'end' => $step["end"],
+                    'isSelected' => $step["isSelected"]
+                ]);
+            }
+        }
+        $query = $db->prepare("SELECT * FROM commentary WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $comentaries = $query->fetchAll();
+        foreach($comentaries as $comentary) {
+            $query = $db->prepare("INSERT INTO commentary (journey_id, user_id, content, date, is_reported) VALUES (:journeyId, :userId, :content, :date, :isReported)");
+            $query->execute([
+                'journeyId' => $newId,
+                'userId' => $comentary['user_id'],
+                'content' => $comentary['content'],
+                'date' => $comentary['date'],
+                'isReported' => $comentary['is_reported']
+            ]);
+        }
+        // Delete user interaction with the old journey
+        $query = $db->prepare("DELETE FROM save WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $query = $db->prepare("DELETE FROM favorite WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $query = $db->prepare("DELETE FROM rating WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $query = $db->prepare("DELETE FROM commentary WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+    }
+
+    public function printSchema() {
+        echo "<pre>";
+        print_r($this->getSchema());
+        echo "</pre>";
+    }
+
+    private function isSaved() {
+        $db = Connexion::getInstance()->getBdd();
+        $query = $db->prepare("SELECT * FROM save WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $save = $query->fetch();
+        if ($save) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function deleteJourney() {
         $db = Connexion::getInstance()->getBdd();
         $query = $db->prepare("DELETE FROM journey WHERE journey_id = :id");
         $query->execute([
             'id' => $this->id
         ]);
+        // Delete user interaction with the journey
+        $query = $db->prepare("DELETE FROM save WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $query = $db->prepare("DELETE FROM favorite WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $query = $db->prepare("DELETE FROM rating WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $query = $db->prepare("DELETE FROM commentary WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+        $query = $db->prepare("DELETE FROM compose WHERE journey_id = :id");
+        $query->execute([
+            'id' => $this->id
+        ]);
+
     }
 
     public function modifyJourney($title, $description, $selectedArray) {
