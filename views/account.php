@@ -87,17 +87,6 @@
         <span onclick="openModal('pref')">Modifier</span>
       </div>
     </div>
-    <?php
-    if (isset($_SESSION['goToGen']) && $_SESSION['goToGen'] == true) {
-    ?>
-      <div class="profile-generate">
-        <form action="" method="POST">
-          <button type="submit" name="confirm" value="Y"><span>Valider et générer un programme</span></button>
-        </form>
-      </div>
-    <?php
-    }
-    ?>
   </div>
 </main>
 

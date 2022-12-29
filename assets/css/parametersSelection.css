@@ -192,3 +192,28 @@ option {
 .choice {
   width: 100%;
 }
+
+form {
+  display: flex;
+  width: 100%;
+}
+
+.modal-content {
+  color: black;
+  height: clamp(250px, 50vh, 500px);
+}
+
+.glass .profile-preferences {
+  width: 100%;
+}
+
+#modal-pref .modal-content {
+  height: 90%;
+}
+
+.profile-preferences-modify span {
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 3px 6px;
+}

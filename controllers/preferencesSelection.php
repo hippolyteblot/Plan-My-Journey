@@ -5,9 +5,19 @@ $pageName = "Séléction des préférences";
 require_once(PATH_MODELS . 'preferences.php');
 
 if (isset($_SESSION['email'])) {
+    $primaryTypes = getPrimaryTypes();
+    $secondaryTypes = getSecondaryTypes();
+    $categories = getCategories();
+
     $primaryPreferences = getPrimaryPreferences($_SESSION['email']);
 
     $secondaryPreferences = getSecondaryPreferences($_SESSION['email']);
+
+    // Array of the primary type id
+    $primaryPreferencesId = getPrimaryPreferencesId($primaryPreferences);
+
+    // Array of the secondary type id
+    $secondaryPreferencesId = getSecondaryPreferencesId($secondaryPreferences);
 }
 
 if (isset($_POST['submitParameters'])) {
@@ -38,10 +48,28 @@ if (isset($_POST['submitParameters'])) {
 
         // Redirect to the generateJourney page
         header('Location: ?page=generateJourney');
-    } else {
-        // Redirect to the preferences page
-        $_SESSION['goToGen'] = true;
-        header('Location: ?page=account');
+    } else if ($_POST['Y/N'] == 'Y') {
+        $preferences = $_GET['preferences'];
+        $preferences = explode(',', $preferences);
+        $preferencesArrayPrimary = [];
+        $preferencesArraySecondary = [];
+        foreach ($preferences as $preference) {
+            $preferenceArray = getPrimaryPreferencesFromName($preference);
+            if ($preferenceArray) {
+                array_push($preferencesArrayPrimary, $preferenceArray[0]);
+            }
+        }
+        foreach ($preferences as $preference) {
+            $preferenceArray = getSecondaryPreferencesFromName($preference);
+            if ($preferenceArray) {
+                array_push($preferencesArraySecondary, $preferenceArray[0]);
+            }
+        }
+        $preferencesArray = array_merge($preferencesArrayPrimary, $preferencesArraySecondary);
+        $_SESSION['preferences'] = $preferencesArray;
+
+        // Redirect to the generateJourney page
+        header('Location: ?page=generateJourney');
     }
 }
 require_once(PATH_VIEWS . 'preferencesSelection.php');
