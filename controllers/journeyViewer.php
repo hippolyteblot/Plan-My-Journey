@@ -21,11 +21,7 @@ if(array_key_exists('delete', $_POST)) {
     $journey->deleteJourney();
 }
 if(array_key_exists('modify', $_POST)) {
-    $steps = $journey->getSteps();
-    echo '<pre>'; print_r($steps); echo '</pre>';
-    //comparer ca aux steps sur le navigateur
-    //si different de la bdd, modifier avec la fonction modifyJourney
-    //si pas de difference, ne rien faire
+    $journey->modifyJourney($_POST['title'], $_POST['description'], $_POST['selectedArray']);
 }
 if(array_key_exists('notationBtn', $_POST)) {
     $notation = $_POST['notation'];

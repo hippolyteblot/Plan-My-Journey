@@ -31,7 +31,6 @@ if (isset($_POST['submitParameters'])) {
     );
 } else if (isset($_POST['Y/N'])) {
     if ($_POST['Y/N'] == 'N') {
-        // $preferences = getPrimaryPreferences($_SESSION['user']) + getSecondaryPreferences($_SESSION['user']);
         $preferences = getPrimaryPreferences($_SESSION['email']);
         $preferences = array_merge($preferences, getSecondaryPreferences($_SESSION['email']));
         // Store the preferences in the session

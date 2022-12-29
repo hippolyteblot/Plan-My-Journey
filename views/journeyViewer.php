@@ -19,13 +19,14 @@
     <script defer src="<?= PATH_SCRIPTS ?>calculateDistance.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>journeyViewer.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>commentary.js"></script>
+    <script defer src="<?= PATH_SCRIPTS ?>modifyJourney.js"></script>
 </head>
 <div id="background-img"></div>
 <main id="accueil">
     <article id="journey-presentation">
         <div class="glass journey-container">
             <div class="journey-header">
-                <h1><?= $journey->getTitle() ?> - <?= $journey->getPlace() ?></h1>
+                <h1><span id="title"><?= $journey->getTitle() ?></span> - <?= $journey->getPlace() ?></h1>
                 <?php $fav = $journey->alreadyFavorite($_SESSION['id']) ? "" : "-o"; ?>
                 <form action="?page=journeyViewer&id=<?= $journey->getId() ?>" method="post">
                     <button type="submit" class="fav-btn fa fa-heart<?= $fav ?>" id="fav-btn"></button>
@@ -65,7 +66,7 @@
                                 <div class="step-infos active" data-lat="<?= $candidate["step_lat"] ?>" data-lng="<?= $candidate["step_lng"] ?>" data-text="<?= $candidate["step_name"] ?>">
                                     <p><?= $candidate["step_name"] ?></p>
                                     <p><?= $candidate["step_vicinity"] ?></p>
-                                    <input type="hidden" name="candidate-id" value="<?= $candidate["step_id"] ?>">                           
+                                    <input type="hidden" class="stepId" name="candidate-id" value="<?= $candidate["step_id"] ?>">                           
                                     <span class="rating">
                                     <?php
                                     if(isset($candidate["step_rating"])) {
@@ -92,7 +93,7 @@
                                 <div class="step-infos" data-lat="<?= $candidate["step_lat"] ?>" data-lng="<?= $candidate["step_lng"] ?>" data-text="<?= $candidate["step_name"] ?>">
                                     <p><?= $candidate["step_name"] ?></p>
                                     <p><?= $candidate["step_vicinity"] ?></p>
-                                    <input type="hidden" name="candidate-id" value="<?= $candidate["step_id"] ?>">                        
+                                    <input type="hidden" class="stepId" name="candidate-id" value="<?= $candidate["step_id"] ?>">                        
                                     <span class="rating">
                                     <?php
                                     if(isset($candidate["step_rating"])) {
@@ -174,7 +175,7 @@
                         echo '<input type="submit" name="unsave" value="Supprimer" id="btn-modal-save" class="journey-button"></button>';
                     }
                     if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>';
+                        echo '<input type="button" value="Modifier" class="journey-button" onclick="openModal(\'update\')"></button>';
                     }
                     
                     ?>
@@ -261,18 +262,41 @@
 <div id="modal-report" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <span class="close">&times;</span>
+            <span class="close" onclick="closeModal('report')">&times;</span>
             <h2>Signaler un commentaire</h2>
         </div>
         <div class="modal-body">
             <p>Êtes-vous sûr de vouloir signaler ce commentaire ?</p>
         </div>
         <div class="modal-footer">
-            <form action="?page=journeyViewer" method="post">
+            <form method="post">
                 <input type="hidden" name="commentaryIdForReport" value="">
                 <input type="submit" value="Oui" name="reportCommentary">
                 <input type="button" value="Non" onclick="closeModal('report')">
             </form>
         </div>
+    </div>
+</div>
+
+<!-- Modal for update -->
+<div id="modal-update" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" onclick="closeModal('update')">&times;</span>
+            <h2>Modifier le parcours</h2>
+        </div>
+        <form method="post">
+            <div class="modal-body">
+                <h2>Titre</h2>
+                <input type="text" name="title" id="title" value="<?= $journey->getTitle() ?>">
+                <h2>Description</h2>
+                <textarea name="description" id="description" placeholder="Description du parcours"><?= $journey->getDescription() ?></textarea>
+                <p>Les étapes seront enregistrées automatiquement comme vous les avez modifiées.</p>
+            </div>
+            <div class="modal-footer">
+                    <input type="hidden" id="candidatesUpdate" name="selectedArray" value="">
+                    <input type="submit" name="modify" value="Modifier" id="btn-modal-save" class="journey-button"></button>
+            </div>
+        </form>
     </div>
 </div>

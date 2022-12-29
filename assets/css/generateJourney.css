@@ -240,3 +240,18 @@ input {
   text-align: center;
   font-size: 1.2rem;
 }
+
+#modal-update input, #modal-update textarea {
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+}
+
+#modal-update textarea {
+  height: 100px;
+}
+
+#btn-modal-save {
+  color: black;
+  font-size: 1.5rem;
+}

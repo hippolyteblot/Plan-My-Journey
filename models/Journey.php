@@ -260,7 +260,7 @@ class Journey {
 
     public function deleteJourney() {
         $db = Connexion::getInstance()->getBdd();
-        $query = $db->prepare("DELETE FROM journey WHERE id = :id");
+        $query = $db->prepare("DELETE FROM journey WHERE journey_id = :id");
         $query->execute([
             'id' => $this->id
         ]);
@@ -268,7 +268,7 @@ class Journey {
 
     public function modifyJourney($title, $description, $selectedArray) {
         $db = Connexion::getInstance()->getBdd();
-        $query = $db->prepare("UPDATE journey SET title = :title, description = :description WHERE id = :id");
+        $query = $db->prepare("UPDATE journey SET title = :title, description = :description WHERE journey_id = :id");
         $query->execute([
             'id' => $this->id,
             'title' => $title,
@@ -281,8 +281,10 @@ class Journey {
         $query->execute([
             'id' => $this->id
         ]);
-        
-        foreach ($selectedArray as $selected) {
+
+        $array = explode(',', $selectedArray);
+
+        foreach ($array as $selected) {
             $query = $db->prepare("UPDATE compose SET isSelected = 1 WHERE journey_id = :journeyId AND step_id = :stepId");
             $query->execute([
                 'journeyId' => $this->id,

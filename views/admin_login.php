@@ -29,16 +29,6 @@
         <?php include_once(PATH_VIEWS . 'alert.php'); ?>
         <button type="submit">Se connecter</button>
       </form>
-
-      <!-- Hash the password admin and echo it here -->
-        <?php
-        if(password_verify('admin', ADMIN_PWD)) {
-          echo password_hash('admin', PASSWORD_DEFAULT);
-        } else {
-          echo 'Error';
-        }
-
-        ?>
     </div>
   </div>
 </main>
