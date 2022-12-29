@@ -76,7 +76,7 @@
     <!-- Modal content -->
     <div class="modal-content">
       <div class="modal-header">
-        <span class="close" onclick="closeModal('pref')">&times;</span>
+        <span class="close" onclick="closeModal('pref');sendAllPreferences()">&times;</span>
         <h2>Modification des préférences</h2>
       </div>
       <div class="modal-body">
@@ -114,7 +114,7 @@
 
         <div class="modal-footer">
           <!-- validation button -->
-          <span id="validate-modif-pref" onclick="closeModal('pref')">Valider</span>
+          <span id="validate-modif-pref" onclick="closeModal('pref');sendAllPreferences()">Valider</span>
         </div>
         <?php
         foreach ($categories as $category) {

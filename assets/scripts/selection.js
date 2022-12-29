@@ -60,13 +60,17 @@ function sendAllPreferences() {
   selectedPreferences = Array.from(selectedPreferences).map(
     (item) => item.innerHTML
   );
-  console.log(selectedPreferences);
 
   for (let i = 0; i < selectedPreferences.length; i++) {
     selectedPreferences[i] = selectedPreferences[i].replace("-", " ");
   }
-  console.log(selectedPreferences);
 
   let selectedPreferencesString = selectedPreferences.join(",");
-  console.log(selectedPreferencesString);
+
+  // put the string in the url without reloading the page
+  window.history.pushState(
+    {},
+    "",
+    `?page=preferencesSelection&preferences=${selectedPreferencesString}`
+  );
 }

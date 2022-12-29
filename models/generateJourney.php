@@ -2,20 +2,21 @@
 
 include_once(PATH_MODELS . 'placesQuery.php');
 
-function sortPreferences($preferences) {
+function sortPreferences($preferences)
+{
     $activities = array();
     $restaurants = array();
-    foreach($preferences as $preference){
+    foreach ($preferences as $preference) {
         // If its structure_type is A (Activity), we add it to the activities array
-        if($preference["structure_type"] == 'A'){
-            if(isset($preference["primary_type_name"])) {
+        if ($preference["structure_type"] == 'A') {
+            if (isset($preference["primary_type_name"])) {
                 array_push($activities, array('id' => $preference['type_id'], 'name' => $preference['primary_type_name'], 'P/S' => 'P'));
             } else {
                 array_push($activities, array('id' => $preference['type_id'], 'name' => $preference['secondary_type_name'], 'P/S' => 'S'));
             }
         } else {
             // Else, we add it to the restaurants array
-            if(isset($preference["primary_type_name"])) {
+            if (isset($preference["primary_type_name"])) {
                 array_push($restaurants, array('id' => $preference['type_id'], 'name' => $preference['primary_type_name'], 'P/S' => 'P'));
             } else {
                 array_push($restaurants, array('id' => $preference['type_id'], 'name' => $preference['secondary_type_name'], 'P/S' => 'S'));
@@ -25,18 +26,19 @@ function sortPreferences($preferences) {
     return array('activities' => $activities, 'restaurants' => $restaurants);
 }
 
-function buildSchema($start, $end, $activities, $restaurants, $wantRestaurant) {
+function buildSchema($start, $end, $activities, $restaurants, $wantRestaurant)
+{
 
     $journeySchema = array();
 
     $progression = $start;
-    while ((compareDate($progression, "12:00") == 1 && compareDate($progression, "14:00") && compareDate(addTime($progression, "01:00"), $end) == -1 ) || compareDate(addTime($progression, "01:00"), $end) == -1) {
+    while ((compareDate($progression, "12:00") == 1 && compareDate($progression, "14:00") && compareDate(addTime($progression, "01:00"), $end) == -1) || compareDate(addTime($progression, "01:00"), $end) == -1) {
         // If its lunch time or dinner time
         if ($wantRestaurant && compareDate($progression, "12:00") == 1 && compareDate($progression, "14:00") == -1) {
             // We select a type and delete it from the restaurants array
             $restaurant = $restaurants[array_rand($restaurants)];
             unset($restaurants[array_search($restaurant, $restaurants)]);
-            
+
             array_push($journeySchema, array('type' => 'R', 'id' => $restaurant['id'], 'name' => $restaurant['name'], 'start' => $progression, 'end' => addTime($progression, "01:00"), 'P/S' => $restaurant['P/S']));
             array_push($journeySchema, array('type' => 'D', 'id' => null, 'name' => null, 'start' => addTime($progression, "01:00"), 'end' => addTime($progression, "01:30"), 'P/S' => null));
             $progression = addTime($progression, "01:30");
@@ -56,7 +58,8 @@ function buildSchema($start, $end, $activities, $restaurants, $wantRestaurant) {
     return $journeySchema;
 }
 
-function addTime($a, $b) {
+function addTime($a, $b)
+{
     // Date is "hh:mm"
     $a = explode(':', $a);
     $b = explode(':', $b);
@@ -78,7 +81,7 @@ function addTime($a, $b) {
     $splited = explode(':', $newDate);
     if (strlen($splited[0]) == 1) {
         $splited[0] = '0' . $splited[0];
-    } 
+    }
     if (strlen($splited[0]) == 0) {
         $splited[0] = '00';
     }
@@ -91,7 +94,8 @@ function addTime($a, $b) {
     return $splited[0] . ':' . $splited[1];
 }
 
-function soustractTime($time1, $time2) {
+function soustractTime($time1, $time2)
+{
     $time1 = explode(':', $time1);
     $time2 = explode(':', $time2);
     $hours = (int) $time1[0] - (int) $time2[0];
@@ -115,7 +119,8 @@ function soustractTime($time1, $time2) {
     return $hours . ':' . $minutes;
 }
 
-function compareDate($a, $b) {
+function compareDate($a, $b)
+{
     // Date is "hh:mm"
     $a = explode(':', $a);
     $b = explode(':', $b);
@@ -136,17 +141,18 @@ function compareDate($a, $b) {
     }
 }
 
-function getCandidates($journeySchema, $activities, $restaurants, $location) {
+function getCandidates($journeySchema, $activities, $restaurants, $location)
+{
 
-    for($i = 0; $i < count($journeySchema); $i++){
-        if($journeySchema[$i]['type'] != 'D'){
-            if($journeySchema[$i]['P/S'] == 'P'){
+    for ($i = 0; $i < count($journeySchema); $i++) {
+        if ($journeySchema[$i]['type'] != 'D') {
+            if ($journeySchema[$i]['P/S'] == 'P') {
                 $journeySchema[$i]['candidates'] = getPlacesFromPrimaryType($journeySchema[$i]['id'], $location, 10000);
                 // Loop for avoiding an empty array -> we replace the type by a new one
                 $security = 0;
-                while(count($journeySchema[$i]['candidates']) == 0){
+                while (count($journeySchema[$i]['candidates']) == 0) {
                     $newType = null;
-                    if($journeySchema[$i]['type'] == 'A'){
+                    if ($journeySchema[$i]['type'] == 'A') {
                         $newType = $activities[array_rand($activities)];
                     } else {
                         $newType = $restaurants[array_rand($restaurants)];
@@ -155,13 +161,13 @@ function getCandidates($journeySchema, $activities, $restaurants, $location) {
                     $journeySchema[$i]['id'] = $newType['id'];
                     $journeySchema[$i]['name'] = $newType['name'];
                     $journeySchema[$i]['P/S'] = $newType['P/S'];
-                    if($journeySchema[$i]['P/S'] == 'P'){
+                    if ($journeySchema[$i]['P/S'] == 'P') {
                         $journeySchema[$i]['candidates'] = getPlacesFromPrimaryType($journeySchema[$i]['id'], $location, 10000);
                     } else {
                         $journeySchema[$i]['candidates'] = getPlacesFromSecondaryType($journeySchema[$i]['id'], $location, 10000);
                     }
                     $security++;
-                    if($security > 5){
+                    if ($security > 5) {
                         break;
                     }
                 }
@@ -169,9 +175,9 @@ function getCandidates($journeySchema, $activities, $restaurants, $location) {
                 $journeySchema[$i]['candidates'] = getPlacesFromSecondaryType($journeySchema[$i]['id'], $location, 10000);
                 // Loop for avoiding an empty array -> we replace the type by a new one
                 $security = 0;
-                while(count($journeySchema[$i]['candidates']) == 0){
+                while (count($journeySchema[$i]['candidates']) == 0) {
                     $newType = null;
-                    if($journeySchema[$i]['type'] == 'A'){
+                    if ($journeySchema[$i]['type'] == 'A') {
                         $newType = $activities[array_rand($activities)];
                     } else {
                         $newType = $restaurants[array_rand($restaurants)];
@@ -180,18 +186,17 @@ function getCandidates($journeySchema, $activities, $restaurants, $location) {
                     $journeySchema[$i]['id'] = $newType['id'];
                     $journeySchema[$i]['name'] = $newType['name'];
                     $journeySchema[$i]['P/S'] = $newType['P/S'];
-                    if($journeySchema[$i]['P/S'] == 'P'){
+                    if ($journeySchema[$i]['P/S'] == 'P') {
                         $journeySchema[$i]['candidates'] = getPlacesFromPrimaryType($journeySchema[$i]['id'], $location, 10000);
                     } else {
                         $journeySchema[$i]['candidates'] = getPlacesFromSecondaryType($journeySchema[$i]['id'], $location, 10000);
                     }
                     $security++;
-                    if($security > 5){
+                    if ($security > 5) {
                         break;
                     }
                 }
             }
-            
         }
     }
 
@@ -199,19 +204,21 @@ function getCandidates($journeySchema, $activities, $restaurants, $location) {
 }
 
 // Get data from local (for testing)
-function getCandidatesFromJSON($filePath) {
+function getCandidatesFromJSON($filePath)
+{
     $journeySchema = json_decode(file_get_contents($filePath), true);
     return $journeySchema;
 }
 
-function filterFromConstraints($journeySchema, $budget) {
+function filterFromConstraints($journeySchema, $budget)
+{
     // For each place, we check if it is in the budget (1 or 2 or 3 $)
-    for($i = 0; $i < count($journeySchema); $i++){
-        if($journeySchema[$i]['type'] != 'D'){
+    for ($i = 0; $i < count($journeySchema); $i++) {
+        if ($journeySchema[$i]['type'] != 'D') {
             $candidates = $journeySchema[$i]['candidates'];
             $newCandidates = array();
-            for($j = 0; $j < count($candidates); $j++){
-                if(!isset($candidates[$j]['price_level']) || $candidates[$j]['price_level'] <= $budget){
+            for ($j = 0; $j < count($candidates); $j++) {
+                if (!isset($candidates[$j]['price_level']) || $candidates[$j]['price_level'] <= $budget) {
                     array_push($newCandidates, $candidates[$j]);
                 }
             }

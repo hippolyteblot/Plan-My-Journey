@@ -50,8 +50,27 @@ if (isset($_POST['submitParameters'])) {
         // Redirect to the generateJourney page
         header('Location: ?page=generateJourney');
     } else if ($_POST['Y/N'] == 'Y') {
-        // Redirect to the preferences page
+        $preferences = $_GET['preferences'];
+        $preferences = explode(',', $preferences);
+        $preferencesArrayPrimary = [];
+        $preferencesArraySecondary = [];
+        foreach ($preferences as $preference) {
+            $preferenceArray = getPrimaryPreferencesFromName($preference);
+            if ($preferenceArray) {
+                array_push($preferencesArrayPrimary, $preferenceArray[0]);
+            }
+        }
+        foreach ($preferences as $preference) {
+            $preferenceArray = getSecondaryPreferencesFromName($preference);
+            if ($preferenceArray) {
+                array_push($preferencesArraySecondary, $preferenceArray[0]);
+            }
+        }
+        $preferencesArray = array_merge($preferencesArrayPrimary, $preferencesArraySecondary);
+        $_SESSION['preferences'] = $preferencesArray;
 
+        // Redirect to the generateJourney page
+        header('Location: ?page=generateJourney');
     }
 }
 require_once(PATH_VIEWS . 'preferencesSelection.php');
