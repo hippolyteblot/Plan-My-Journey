@@ -39,7 +39,8 @@ function insertDistance() {
     // Keep the number after -
     lastDistanceId = lastDistanceId.split("-")[1];
     console.log(lastDistanceId);
-    for(var i = 0; i < lastDistanceId-1; i++) {
+    for(var i = 0; i < lastDistanceId; i++) {
+        console.log(activeSteps[i]);
         var x1 = activeSteps[i].getAttribute("data-lat");
         var y1 = activeSteps[i].getAttribute("data-lng");
         var x2 = activeSteps[i+1].getAttribute("data-lat");

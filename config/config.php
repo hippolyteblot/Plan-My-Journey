@@ -18,8 +18,8 @@ const AUTEUR = 'Matéo Guenot & Noah Heraud & Hippolyte Blot';
 const MAIL = 'planmyjourney@gmail.com';
 
 // Clé privé de l'API Google
-//const KEY = "AIzaSyDsSWpa4y-dsYA7BBA-I4xJq60be0qAHUI"; // <- Hippo
-const KEY = "AIzaSyBAbAVbxk-8sF-HlDk92YeQ9wop5tH6yyc"; // <- Noah
+const KEY = "AIzaSyDsSWpa4y-dsYA7BBA-I4xJq60be0qAHUI"; // <- Hippo
+//const KEY = "AIzaSyBAbAVbxk-8sF-HlDk92YeQ9wop5tH6yyc"; // <- Noah
 
 
 const ADMIN_NAME = 'admin';

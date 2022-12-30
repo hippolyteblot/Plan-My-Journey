@@ -33,7 +33,7 @@
                 <div class="vertical-line"></div>
                 <div style="display: flex; flex-direction: column; width: 100%">
                     <?php
-                    $iter = 0;
+                    $iter = 1;
                     foreach ($journeySchema as $step) {
                         if ($step["type"] == "D") {
                     ?>
@@ -43,6 +43,11 @@
                             <p class="travel-info-text">Durée : <span class="duration" id="duration-<?= $iter ?>"></span></p>
                         </div>
                     <?php } ?>
+                    <?php
+                        
+                        $iter++;
+                    
+                    ?>
                         <article class="straight">
                         </article>
                         <?php
@@ -120,7 +125,6 @@
                             </div>
                     <?php
                         }
-                        $iter++;
                     }
                     ?>
                 </div>
