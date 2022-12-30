@@ -68,7 +68,7 @@ function getId(){
   $query = $database->prepare('SELECT user_id FROM user WHERE email = ?');
   $query->execute(array($_SESSION['email']));
   $result = $query->fetch();
-  return $result;
+  return $result['user_id'];
 }
 function getNumberOfGeneratedJourneys($userId)
 {
