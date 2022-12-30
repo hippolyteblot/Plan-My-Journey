@@ -6,10 +6,6 @@ require_once(PATH_MODELS . 'actionJourney.php');
 require_once(PATH_MODELS . 'commentary.php');
 
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-
 
 $journey = new Journey($_GET['id']);
 if($journey->canSee($_SESSION['id']) == false) {
@@ -30,7 +26,10 @@ if(array_key_exists('modify', $_POST)) {
     $journey->modifyJourney($_POST['title'], $_POST['description'], $_POST['selectedArray']);
 }
 if(array_key_exists('notationBtn', $_POST)) {
-    $notation = $_POST['notation'];
+    if(isset($_POST['notation']))
+        $notation = $_POST['notation'];
+    else
+        $notation = $journey->getUserNotation($_SESSION['id']);
     $journey->setNotation($notation, $_SESSION['id']);
 }
 if(array_key_exists('save', $_POST)) {
@@ -55,7 +54,7 @@ if(array_key_exists('deleteCommentary', $_POST)) {
     $journey->deleteCommentary($_POST['commentaryId']);
 }
 if(array_key_exists('reportCommentary', $_POST)) {
-    reportCommentary($_POST['commentaryId']);
+    reportCommentary($_POST['commentaryIdForReport']);
 }
 $pageName = "Parcours";
 
