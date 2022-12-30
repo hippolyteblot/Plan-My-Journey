@@ -22,13 +22,14 @@
 </div>
 <main id="accueil">
 
+    <article id="journey-presentation">
     <div class="glass generatedJourney">
         <h1>Voici votre parcours touristique à <?= $_SESSION['candidates'][0]['formatted_address'] ?> !</h1>
         <form action="?page=saveJourney" method="post">
             <?php
             $_SESSION['journeySchema'] = $journeySchema;
             ?>
-            <div style="display: flex">
+            <div class="steps">
                 <div class="vertical-line"></div>
                 <div style="display: flex; flex-direction: column; width: 100%">
                     <?php
@@ -136,15 +137,16 @@
             <div class="journey-footer">
                 <div>
                     <p>Durée : <?= soustractTime($journeySchema[0]["start"], $journeySchema[count($journeySchema) - 1]["end"]) ?></p>
-                    <p id="total-distance">Distance : 0 km</p>
+                    <p>Distance : <span id="total-distance">0 km</span></p>
                 </div>
             </div>
         </div>
         <br />
     </div>
-    <div class="map" id="map">
+    <div class="map glass" id="map">
 
     </div>
+</div>
 </main>
 
 <!-- Modal for save journey -->
@@ -157,7 +159,7 @@
             <h2>Informations du parcours</h2>
         </div>
         <div class="modal-body body-80">
-            <form action="?page=saveJourney" method="post">
+            <form action="?page=saveJourney" method="post" class="saver-form">
                 <div class="form-group group-column">
                     <label for="journey-name">Nom du parcours</label>
                     <input type="text" name="journey-name" id="journey-name" required>

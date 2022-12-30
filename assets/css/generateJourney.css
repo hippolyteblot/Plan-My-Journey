@@ -5,8 +5,18 @@ body, .container {
   justify-content: center;
 }
 
+#accueil #journey-presentation .generatedJourney {
+  width: 55%;
+  padding: 5px;
+}
+
 #accueil {
   width: 80%;
+}
+
+.steps {
+  display: flex;
+  width: inherit;
 }
 
 #journey-presentation {
@@ -77,9 +87,7 @@ body, .container {
 #journey-presentation > div {
   width: 40%;
 }
-.for-modif {
-  padding-right: 55px;
-}
+
 .change-step.hidden {
   display: none;
 }
@@ -144,16 +152,12 @@ body, .container {
   justify-content: space-between;
   margin: 10px;
 }
-.info-container div, .info-container form {
-  width: 100%;
-}
 .info-container .journey-footer {
   font-size: 1.4rem;
 }
 .button-container {
   display: flex;
   justify-content: flex-end;
-  padding-right: 60px;
 }
 .vertical-line {
   border-left: 3px solid #ffffff;
@@ -256,7 +260,10 @@ input {
   height: 100px;
 }
 
-#btn-modal-save {
-  color: black;
-  font-size: 1.5rem;
+.saver-form {
+  flex-direction: column;
+}
+
+#modal-save .modal-content {
+  height: auto;
 }

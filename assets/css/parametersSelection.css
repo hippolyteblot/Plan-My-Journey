@@ -78,9 +78,6 @@ input[type="checkbox"] {
   width: 20px;
   height: 20px;
 }
-button {
-  cursor: pointer;
-}
 textarea {
   color: black;
   font-family: "SF Pro Display", sans-serif;
@@ -108,6 +105,7 @@ textarea {
   justify-content: space-between;
 }
 button {
+  cursor: pointer;
   color: white;
   width: 100%;
   border-radius: 5px;
@@ -191,6 +189,7 @@ option {
 
 .choice {
   width: 100%;
+  display: flex;
 }
 
 form {
@@ -208,7 +207,11 @@ form {
 }
 
 #modal-pref .modal-content {
-  height: 90%;
+  height: auto;
+}
+
+#modal-pref .modal-content.pref-selec {
+  height: inherit;
 }
 
 .profile-preferences-modify span {

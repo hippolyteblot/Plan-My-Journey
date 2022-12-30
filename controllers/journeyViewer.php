@@ -6,6 +6,10 @@ require_once(PATH_MODELS . 'actionJourney.php');
 require_once(PATH_MODELS . 'commentary.php');
 
 
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
 
 $journey = new Journey($_GET['id']);
 if($journey->canSee($_SESSION['id']) == false) {

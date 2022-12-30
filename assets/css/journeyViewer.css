@@ -1,0 +1,91 @@
+#accueil {
+    width: 100%;
+    padding-top: 30px;
+}
+
+#accueil #journey-presentation {
+    padding-bottom: 30px;
+}
+
+#accueil #journey-presentation .journey-container {
+    width: 55%;
+    padding: 5px;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+#accueil .journey-footer {
+    width: 100%;
+}
+
+#accueil .journey-footer div {
+    width: max-content;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    width: fit-content;
+}
+
+input.journey-button {
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+button, input {
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+textarea {
+    color: black;
+    font-family: "SF Pro Display", sans-serif;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    font-size: 20px;
+  
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+}
+
+.modal-footer input {
+    color: black;
+}

@@ -1,6 +1,5 @@
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 <head>
-    <link rel="stylesheet" href="<?= PATH_CSS ?>parametersSelection.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>generateJourney.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>notation.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>modal.css">
@@ -9,6 +8,7 @@
     <link rel="stylesheet" href="<?= PATH_CSS ?>interactiveMap.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>journeyPreview.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>commentary.css">
+    <link rel="stylesheet" href="<?= PATH_CSS ?>journeyViewer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>step.js"></script>
@@ -160,22 +160,22 @@
                 <div class="button-container">
                     <?php
                     if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="submit" value="Partager" name="share" class="journey-button"></button>';
+                        echo '<button type="submit" name="share" class="journey-button">Partager</button>';
                     }
                     if($journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="button" value="Annuler le partage" onclick="openModal(\'private\')" class="journey-button"></button>';
+                        echo '<button type="button" onclick="openModal(\'private\')" class="journey-button">Annuler le partage</button>';
                     }
                     if($journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="button" value="Supprimer" onclick="openModal(\'delete\')" class="journey-button"></button>';
+                        echo '<button type="button" onclick="openModal(\'delete\')" class="journey-button">Supprimer</button>';
                     }
                     if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && !$journey->alreadySaved($_SESSION["id"])) {
-                        echo '<input type="submit" name="save" value="Enregistrer" class="journey-button"></button>';
+                        echo '<button type="submit" name="save" class="journey-button">Enregistrer</button>';
                     }
                     if($journey->isPublic() == 1 && !($journey->getCreator() == $_SESSION["id"]) && $journey->alreadySaved($_SESSION["id"])) {
-                        echo '<input type="submit" name="unsave" value="Supprimer" class="journey-button"></button>';
+                        echo '<button type="submit" name="unsave" class="journey-button">Supprimer</button>';
                     }
                     if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
-                        echo '<input type="button" value="Modifier" class="journey-button" onclick="openModal(\'update\')"></button>';
+                        echo '<button type="button" class="journey-button" onclick="openModal(\'update\')">Modifier</button>';
                     }
                     
                     ?>
@@ -252,7 +252,7 @@
         </div>
         <form class="footer-commentary" method="post">
             <textarea name="commentary" id="commentary" placeholder="Votre commentaire"></textarea>
-            <input type="submit" value="Envoyer" name="commentaryBtn" id="btn-modal-share" class="journey-button">
+            <button type="submit" name="commentaryBtn" id="btn-modal-share" class="journey-button">Envoyer</button>
         </form>
     </article>
 </main>

@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="<?= PATH_CSS ?>parametersSelection.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>modal.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>account.css" />
+  <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css" />
   <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
   <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
   <script src="<?= PATH_SCRIPTS ?>selection.js" defer></script>
@@ -12,9 +13,9 @@
 <div id="background-img">
 </div>
 <main id="accueil">
-  <h1>Voulez-vous affiner vos préférences pour ce parcours ?</h1>
+  <h1>Voulez-vous affiner vos préférences pour ce parcours uniquement ?</h1>
   <div class="glass">
-    <div class="profile-preferences glass">
+    <div class="profile-preferences">
       <div class="profile-preferences-title">
         <h2>Mes préférences</h2>
       </div>
@@ -64,9 +65,8 @@
       </div>
     </div>
     <div class="choice">
-      <button onclick="openModal('pref')">Oui</button>
+      <button onclick="openModal('pref')">Modifier</button>
       <form action="" method="post">
-        <button type="submit" value="N" name="Y/N">Non</button>
         <button type="submit" value="Y" name="Y/N">Envoyer</button>
       </form>
     </div>
@@ -120,7 +120,7 @@
         foreach ($categories as $category) {
         ?>
           <div class="modal-side category-modal" id="modal-<?= $category["category_id"] ?>">
-            <div class="modal-content">
+            <div class="modal-content pref-selec">
               <div class="modal-header">
                 <span class="close" onclick="closeModal(<?= $category['category_id'] ?>)">&times;</span>
                 <h2>Liste des préférences liées au terme : <?= $category["category_name"] ?></h2>
