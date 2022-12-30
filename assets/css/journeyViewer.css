@@ -89,3 +89,11 @@ textarea {
 .modal-footer input {
     color: black;
 }
+
+.div-notation {
+    display: flex;
+    flex-direction: row;
+}
+.number-notation{
+    margin-left: 15px;
+}

@@ -32,7 +32,7 @@
             <p>Distance : <?= $journey->getDistance() ?> km</p>
         </div> 
         <div class="div-info">
-            <p class="number-notation"> <?php echo '('.$journey->getNumberRatings().')'  ?> </p>
+            <p class="number-notation"> <?= '('.$journey->getNumberRatings().')'  ?> </p>
             <p class="notation">Note : <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><input type="hidden" value="<?= $journey->getRating() ?>"></p>
             
             
