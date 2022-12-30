@@ -1,5 +1,6 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
 $pageName = "Découvrir";
 require_once(PATH_MODELS . 'discover.php');
@@ -20,9 +21,32 @@ if(isset($_POST['location'])) {
 
 
 $journeysArray = array();
-foreach ($journey_id as $journey) {
-    $journeysArray[] = new Journey($journey['journey_id']);
+if(array_key_exists('mostTouristic', $_POST)) {
+    $compareArray = array();
+    foreach ($journey_id as $journey) {
+        $journeys = new Journey($journey['journey_id']);
+        $compareArray[] = $journeys->getPlace();
+        
+    }
+    //prends la valeur la plus grande de l'array
+    $mostTouristic = array_search(max(array_count_values($compareArray)), array_count_values($compareArray));
+
+
+    foreach ($journey_id as $journey) {
+        $currentJourney = new Journey($journey['journey_id']);
+        if($currentJourney->getPlace() == $mostTouristic) {
+            $journeysArray[] = $currentJourney;
+        }
+    }
+
+} else {
+    foreach ($journey_id as $journey) {
+        $journeysArray[] = new Journey($journey['journey_id']);
+    }
 }
+
+
+
 
 /*
 $i = 0;

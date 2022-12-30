@@ -197,3 +197,8 @@ button.selected:hover {
     width: fit-content;
     padding: 10px;
 }
+
+.button-list {
+    display: flex;
+    flex-direction: row;
+}

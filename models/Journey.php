@@ -19,6 +19,7 @@ class Journey {
     private $creatorName;
     private $rating;
     private $public;
+    private $numberRatings;
 
     public function __construct($id) {
         $this->id = $id;
@@ -44,7 +45,13 @@ class Journey {
         ]);
         $rating = $query->fetch();
         $this->rating = round($rating['rating'], 1);
-
+        $query = $db->prepare("SELECT count(value) as rating FROM rating WHERE journey_id = :id");
+        $query->execute([
+            'id' => $id
+        ]);
+        $numberRatings = $query->fetch();
+        $this->numberRatings = $numberRatings['rating'];
+        echo $this->numberRatings;
 
         if($journey['public'] == 1)
             $this->public = true;
@@ -505,6 +512,10 @@ class Journey {
 
     public function getRating() {
         return $this->rating;
+    }
+
+    public function getNumberRatings() {
+        return $this->numberRatings;
     }
 
     public function isPublic() {

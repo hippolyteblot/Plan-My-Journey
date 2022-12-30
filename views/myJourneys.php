@@ -15,7 +15,11 @@
 <main id="accueil">
   <div>
     <h1>Mes journées</h1>
-
+    <?php if (count($favoriteJourneys)==0){
+              echo "<br> Vous n'avez pas encore de parcours favoris <br>";
+          }
+          else {
+            ?> 
     <details>
         <summary>Parcours favoris</summary>
         <article class="journey-container">
@@ -26,8 +30,14 @@
             ?>
         </article>
     </details>
+    <?php
+          } ?>
 
-
+    <?php if (count($generatedJourneys)==0){
+              echo "<br> Vous n'avez pas encore généré de parcours <br>";
+          }
+          else {
+            ?> 
     <details>
         <summary>Parcours générés</summary>
 
@@ -37,11 +47,17 @@
               include(PATH_VIEWS . 'journeyPreview.php');
           }
           ?>
+           <?php
+          } ?>
       
       </article>
     </details>
-
-    <details>
+          <?php if (count($savedJourneys)==0){
+              echo "<br> Vous n'avez pas encore sauvegarder de parcours <br>";
+          }
+          else {
+            ?> 
+            <details>
         <summary>Parcours enregistrés</summary>
 
       <article class="journey-container">
@@ -51,8 +67,11 @@
           }
           ?>
       
-      </article>
+      </article> 
     </details>
+            <?php
+          } ?>
+    
     
     <br />
     <?php include_once(PATH_VIEWS . 'alert.php'); ?>

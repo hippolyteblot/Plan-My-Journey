@@ -1,6 +1,4 @@
-<?php require_once(PATH_VIEWS . 'header.php');
-
-?> 
+<?php require_once PATH_VIEWS . 'header.php'; ?> 
 
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>discover.css"> 
@@ -33,10 +31,15 @@
       <!--<button class="filter-button glass" onclick="deleteJourneysFromDOM(); sortJourneysByDate(); addJourneysToDOM();">Date</button> Changer pour laisser le choix pour le tri -->
       
     </div>
+    <div class="button-list">
+    <form method="post">
+      <?php echo '<button type="submit" name="mostTouristic" class="journey-button">Ville la plus visité</button>'; ?>
+</form>
+    </div>
     <h2>Voici un ensemble de parcours partagés par la communauté</h2>
     <div class="journey-container-grid">
         <?php foreach ($journeysArray as $journey) {
-            include(PATH_VIEWS . 'journeyPreview.php');
+            include PATH_VIEWS . 'journeyPreview.php';
         } ?>
     </div>
 

@@ -1,3 +1,14 @@
+.div-info{
+    /*creer une grid avec deux lignes, la premiere fait 80/20 la deuxieme fait 100%*/
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: auto;
+    
+    grid-template-areas: 
+    "note number"
+    "footer footer";
+}
+
 .journey-preview {
     padding: 10px;
     margin: 10px;
@@ -36,4 +47,11 @@ h3 {
 .profile-link {
     text-decoration: underline;
     color: #81baff;
+    grid-area: footer;
+}
+.notation {
+    grid-area: note;
+}
+.number-notation {
+    grid-area: number;
 }

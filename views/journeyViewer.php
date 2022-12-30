@@ -189,8 +189,8 @@
             <div class="journey-footer">
                 <div>
                     <p>Durée : <?= $journey->getDuration() ?> </p>
-                    <p>Distance : <span id="total-distance"><?= $journey->getDistance() ?> km</span></p>
-
+                    <p id="total-distance">Distance : <?= $journey->getDistance() ?> km</p>
+                    <div class='div-notation'>
                     <p>Note :
                         <?php
                         $count = 0;
@@ -203,6 +203,8 @@
                         }
                         ?>
                     </p>
+                    <p class="number-notation"> <?= '('.$journey->getNumberRatings().')'  ?></p>
+                    </div>
                         
                     <p>Crée par : <?= "<a class='profile-link' href='?page=profil&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
                 </div>
