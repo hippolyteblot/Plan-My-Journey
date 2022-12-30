@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1);
 $pageName = "Mon compte";
 
 require_once(PATH_MODELS . 'account.php');
@@ -16,6 +16,8 @@ if (isset($_SESSION['email'])) {
   $primaryTypes = getPrimaryTypes();
   $secondaryTypes = getSecondaryTypes();
   $categories = getCategories();
+  $id = getId();
+  
 
   // Informations
   if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email'])) {
@@ -65,6 +67,12 @@ if (isset($_SESSION['email'])) {
   $secondaryPreferencesId = getSecondaryPreferencesId($secondaryPreferences);
 
   managePreferencesUpdate($user);
+
+  if (array_key_exists('delete', $_POST)) {
+    deleteAccount($id);
+    session_destroy();
+    header('Location: index.php?page=login');
+  }
 
   require_once(PATH_VIEWS . 'account.php');
 } else {

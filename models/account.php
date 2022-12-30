@@ -45,6 +45,31 @@ function emailExists($email)
   return $result;
 }
 
+function deleteAccount($id){
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('DELETE FROM user WHERE user_id = ?');
+  $query->execute(array($id));
+  //suprrimer les parcours générés
+  $query = $database->prepare('DELETE FROM journey WHERE user_id = ?');
+  $query->execute(array($id));
+  //supprimer les parcours sauvegardés
+  $query = $database->prepare('DELETE FROM save WHERE user_id = ?');
+  $query->execute(array($id));
+  //supprimer les parcours favoris
+  $query = $database->prepare('DELETE FROM favorite WHERE user_id = ?');
+  $query->execute(array($id));
+  //supprimer les notes
+  $query = $database->prepare('DELETE FROM rating WHERE user_id = ?');
+  $query->execute(array($id));
+}
+
+function getId(){
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT user_id FROM user WHERE email = ?');
+  $query->execute(array($_SESSION['email']));
+  $result = $query->fetch();
+  return $result;
+}
 function getNumberOfGeneratedJourneys($userId)
 {
   $database = Connexion::getInstance()->getBdd();

@@ -93,16 +93,21 @@ h1 {
   list-style: none;
   margin-bottom: 1rem;
 }
-
+.profile-delete{
+  grid-area: 2 / 3 / 3 / 3;
+  margin-right: 30px;
+}
 .profile-preferences-modify,
+.profile-delete,
 .profile-parameters-modify {
   align-self: flex-end;
   margin-top: clamp(10px, 2vw, 20px);
 }
 
 .profile-disconnect span,
+.profile-delete span,
+.inputbtn,
 .profile-parameters-modify span,
-.profile-preferences-modify span,
 .profile-generate span {
   margin: 5px;
   border: 2px solid black;
@@ -112,8 +117,13 @@ h1 {
 
 .profile-disconnect span:hover,
 .profile-parameters-modify span:hover,
+.inputbtn:hover,
 .profile-preferences-modify span:hover {
   background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+}
+.profile-delete span:hover{
+  background: rgba(207, 7, 7, 0.25);
   cursor: pointer;
 }
 
