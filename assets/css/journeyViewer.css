@@ -19,6 +19,8 @@ h1 {
 
 #accueil .journey-footer {
     width: 100%;
+    display: flex;
+    justify-content: flex-start;
 }
 
 #accueil .journey-footer div {

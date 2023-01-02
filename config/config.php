@@ -25,6 +25,8 @@ const KEY = "AIzaSyDsSWpa4y-dsYA7BBA-I4xJq60be0qAHUI"; // <- Hippo
 const ADMIN_NAME = 'admin';
 const ADMIN_PWD = '$2y$10$NMTcSu5NDY9RffCJBNTYJuH2d1fpQzX3SPPzSaAnQZSRs00FllPCq';
 
+const MAX_QUERY = 10;
+
 //dossiers racines du site
 define('PATH_CONTROLLERS', './controllers/');
 define('PATH_ENTITY', './entities/');

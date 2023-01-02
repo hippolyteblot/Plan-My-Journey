@@ -1,6 +1,7 @@
 <?php
 
-include_once(PATH_MODELS . 'placesQuery.php');
+require_once(PATH_MODELS . 'placesQuery.php');
+require_once(PATH_MODELS . 'Connexion.php');
 
 function sortPreferences($preferences)
 {
@@ -200,7 +201,27 @@ function getCandidates($journeySchema, $activities, $restaurants, $location)
         }
     }
 
+    $db = Connexion::getInstance()->getBdd();
+    $query = $db->prepare('UPDATE user set query_counter = query_counter + 1 WHERE user_id = :user_id');
+    $query->execute(array(
+        'user_id' => $_SESSION['id']
+    ));
+
     return $journeySchema;
+}
+
+function maxQueryReached($id) {
+    $db = Connexion::getInstance()->getBdd();
+    $query = $db->prepare('SELECT query_counter FROM user WHERE user_id = :user_id');
+    $query->execute(array(
+        'user_id' => $id
+    ));
+    $result = $query->fetch();
+    if ($result['query_counter'] >= MAX_QUERY) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // Get data from local (for testing)

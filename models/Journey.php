@@ -51,7 +51,6 @@ class Journey {
         ]);
         $numberRatings = $query->fetch();
         $this->numberRatings = $numberRatings['rating'];
-        echo $this->numberRatings;
 
         if($journey['public'] == 1)
             $this->public = true;
@@ -289,7 +288,6 @@ class Journey {
             'creationDate' => $this->date
         ]);
         $newId = $db->lastInsertId();
-        echo $newId;
         $query = $db->prepare("SELECT * FROM save WHERE journey_id = :id");
         $query->execute([
             'id' => $this->id
