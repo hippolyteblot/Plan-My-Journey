@@ -137,8 +137,11 @@
             </div>
             </form>
             <div class="info-container">
-                
+            
             <form method="post">
+            <?php
+            if($journey->isPublic() == 1) {
+                ?>
                 <!-- Interactive notation with stars -->
                 <div class="notation-container">
                     <div class="notation notation-interactive">
@@ -155,8 +158,12 @@
                         <label for="etoile1" title="1 étoile" class="fa fa-star"></label>
                         <input type="hidden" name="oldNotation" value="<?= $journey->getUserNotation($_SESSION["id"]) ?>">
                     </div>
-                    
                 </div>
+
+                <?php
+            }
+            ?>
+                
                 <div class="button-container">
                     <?php
                     if(!$journey->isPublic() == 1 && $journey->getCreator() == $_SESSION["id"]) {
@@ -190,21 +197,23 @@
                 <div>
                     <p>Durée : <?= $journey->getDuration() ?> </p>
                     <p>Distance : <span id="total-distance"><?= $journey->getDistance() ?> km</span></p>
+                    <?php if($journey->isPublic() == 1) { ?>
                     <div class='div-notation'>
-                    <p>Note :
-                        <?php
-                        $count = 0;
-                        for($i = 0; $i < $journey->getRating(); $i++) {
-                            echo "<span class='fa fa-star'></span>";
-                            $count++;
-                        }
-                        for($i = 0; $i < 5 - $count; $i++) {
-                            echo "<span class='fa fa-star-o'></span>";
-                        }
-                        ?>
-                    </p>
-                    <p class="number-notation"> <?= '('.$journey->getNumberRatings().')'  ?></p>
+                        <p>Note :
+                            <?php
+                            $count = 0;
+                            for($i = 0; $i < $journey->getRating(); $i++) {
+                                echo "<span class='fa fa-star'></span>";
+                                $count++;
+                            }
+                            for($i = 0; $i < 5 - $count; $i++) {
+                                echo "<span class='fa fa-star-o'></span>";
+                            }
+                            ?>
+                        </p>
+                        <p class="number-notation"> <?= '('.$journey->getNumberRatings().')'  ?></p>
                     </div>
+                    <?php } ?>
                         
                     <p>Crée par : <?= "<a class='profile-link' href='?page=profil&user=" . $journey->getCreator() . "'>" . $journey->getCreatorName() . "</a>" ?></p>
                 </div>
@@ -220,46 +229,48 @@
         </div>
     </article>
     
-    <article id="commentary-container" class="glass">
-        <h2>Commentaires</h2>
-        <div class="commentaries-list">
-            <?php
-            foreach($journey->getCommentaries() as $commentary) {
-                ?>
-                <div class="commentary glass">
-                    <div class="info">
-                        <p class="content"><?= $commentary['content'] ?></p>
-                        <p class="author">Par <a class="profile-link" href="?page=profil&user=<?= $commentary['user_id'] ?>"><?= $commentary['firstname'] . " " . $commentary['lastname'] ?></a> le <?= $commentary['date'] ?></p>
-                    </div>
-
-                    <div class="actions">
-                        <?php if($commentary['user_id'] != $_SESSION["id"]) { ?>
-                            <button class="report-btn" name="reportCommentary" class="journey-button" title="Signaler" onclick="openModal('report')" value="<?= $commentary["commentary_id"] ?>"><i class="fa fa-warning"></i></button>                            
-                        <?php } ?>
-
-                        <?php if($journey->getCreator() == $_SESSION["id"] || $commentary['user_id'] == $_SESSION["id"]) { ?>
-                            <form method="post">
-                                <input type="hidden" name="commentaryId" value="<?= $commentary['commentary_id'] ?>">
-                                <button type="submit" name="deleteCommentary" class="journey-button" title="Supprimer"><i class="fa fa-trash-o"></i></button>
-                            </form>
-                        <?php } ?>
-                    </div>
-                </div>
+    <?php if($journey->isPublic() == 1) { ?>
+        <article id="commentary-container" class="glass">
+            <h2>Commentaires</h2>
+            <div class="commentaries-list">
                 <?php
-            }
-            if(count($journey->getCommentaries()) == 0) {
-                echo "<p>Aucun commentaire pour le moment</p>";
-            }
-            ?>
-        </div>
-        <form class="footer-commentary" method="post">
-            <textarea name="commentary" id="commentary" placeholder="Votre commentaire"></textarea>
-            <button type="submit" name="commentaryBtn" id="btn-modal-share" class="journey-button">Envoyer</button>
-        </form>
-    </article>
+                foreach($journey->getCommentaries() as $commentary) {
+                    ?>
+                    <div class="commentary glass">
+                        <div class="info">
+                            <p class="content"><?= $commentary['content'] ?></p>
+                            <p class="author">Par <a class="profile-link" href="?page=profil&user=<?= $commentary['user_id'] ?>"><?= $commentary['firstname'] . " " . $commentary['lastname'] ?></a> le <?= $commentary['date'] ?></p>
+                        </div>
+
+                        <div class="actions">
+                            <?php if($commentary['user_id'] != $_SESSION["id"]) { ?>
+                                <button class="report-btn" name="reportCommentary" class="journey-button" title="Signaler" onclick="openModal('report')" value="<?= $commentary["commentary_id"] ?>"><i class="fa fa-warning"></i></button>                            
+                            <?php } ?>
+
+                            <?php if($journey->getCreator() == $_SESSION["id"] || $commentary['user_id'] == $_SESSION["id"]) { ?>
+                                <form method="post">
+                                    <input type="hidden" name="commentaryId" value="<?= $commentary['commentary_id'] ?>">
+                                    <button type="submit" name="deleteCommentary" class="journey-button" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+                                </form>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <?php
+                }
+                if(count($journey->getCommentaries()) == 0) {
+                    echo "<p>Aucun commentaire pour le moment</p>";
+                }
+                ?>
+            </div>
+            <form class="footer-commentary" method="post">
+                <textarea name="commentary" id="commentary" placeholder="Votre commentaire"></textarea>
+                <button type="submit" name="commentaryBtn" id="btn-modal-share" class="journey-button">Envoyer</button>
+            </form>
+        </article>
+    <?php } ?>
 </main>
 
-
+<?php if($journey->isPublic() == 1) { ?>
 <!-- Modal for report -->
 <div id="modal-report" class="modal">
     <div class="modal-content">
@@ -279,6 +290,28 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal for private -->
+<div id="modal-private" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" onclick="closeModal('private')">&times;</span>
+            <h2>Passer le parcours en privé</h2>
+        </div>
+        <div class="modal-body">
+            <p>Êtes-vous sûr de vouloir passer le parcours en privé ? Si des gens ont enregistré ce parcours, une copie anonyme sera créée.</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post">
+                <input type="submit" value="Annuler le partage" name="private"></button>
+                <input type="button" value="Non" onclick="closeModal('private')">
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php } ?>
 
 <!-- Modal for update -->
 <div id="modal-update" class="modal">
@@ -303,24 +336,6 @@
     </div>
 </div>
 
-<!-- Modal for private -->
-<div id="modal-private" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close" onclick="closeModal('private')">&times;</span>
-            <h2>Passer le parcours en privé</h2>
-        </div>
-        <div class="modal-body">
-            <p>Êtes-vous sûr de vouloir passer le parcours en privé ? Si des gens ont enregistré ce parcours, une copie anonyme sera créée.</p>
-        </div>
-        <div class="modal-footer">
-            <form method="post">
-                <input type="submit" value="Annuler le partage" name="private"></button>
-                <input type="button" value="Non" onclick="closeModal('private')">
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- Modal for delete -->
 <div id="modal-delete" class="modal">
