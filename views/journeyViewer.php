@@ -189,7 +189,7 @@
             <div class="journey-footer">
                 <div>
                     <p>Durée : <?= $journey->getDuration() ?> </p>
-                    <p id="total-distance">Distance : <?= $journey->getDistance() ?> km</p>
+                    <p>Distance : <span id="total-distance"><?= $journey->getDistance() ?> km</span></p>
                     <div class='div-notation'>
                     <p>Note :
                         <?php

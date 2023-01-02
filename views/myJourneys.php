@@ -13,14 +13,14 @@
 <div id="background-img">
 </div>
 <main id="accueil">
-  <div>
+  <div id="myJourneys">
     <h1>Mes journées</h1>
     <?php if (count($favoriteJourneys)==0){
               echo "<br> Vous n'avez pas encore de parcours favoris <br>";
           }
           else {
             ?> 
-    <details>
+    <details open>
         <summary>Parcours favoris</summary>
         <article class="journey-container">
             <?php

@@ -1,6 +1,5 @@
 .journey-container {
     display: flex;
-    max-width: 70vw;
     overflow-x: scroll; 
 }
 
@@ -18,4 +17,14 @@ summary {
     font-weight: bold;
     font-size: 30px;
     margin: 10px;
+}
+
+details {
+    width: 100%;
+}
+
+#myJourneys {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
