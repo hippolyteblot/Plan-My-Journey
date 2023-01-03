@@ -88,10 +88,10 @@
       </div>
       
     </div>
-    <div class="profile-delete">
-        <span onclick="openModal('delete')">Supprimer le compte</span>
-      </div>
   </div>
+  <div class="profile-delete">
+      <span onclick="openModal('delete')">Supprimer le compte</span>
+    </div>
 </main>
 <div id="modal-delete" class="modal">
 <div class="modal-content">

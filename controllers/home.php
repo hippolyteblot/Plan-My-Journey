@@ -2,10 +2,17 @@
 
 $pageName = "Accueil";
 
-require_once(PATH_MODELS . 'generateJourney.php');
+if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 
-if(maxQueryReached($_SESSION['id'])) {
-    $tooMuchQuery = true;
+    require_once(PATH_MODELS . 'generateJourney.php');
+
+    if(maxQueryReached($_SESSION['id'])) {
+        $tooMuchQuery = true;
+    }
+
+    require_once(PATH_VIEWS . 'home.php');
+
+} else {
+    
+        require_once(PATH_VIEWS . 'presentation.php');
 }
-
-require_once(PATH_VIEWS . 'home.php');

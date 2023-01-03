@@ -2,12 +2,13 @@
 
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>login.css" />
+  <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css" />
   <script defer src="<?= PATH_SCRIPTS ?>form.js"></script>
 </head>
 
 <main id="connexion">
   <div class="login-card-container">
-    <div class="login-card">
+    <div class="login-card glass">
       <div class="login-card-logo">
         <img src="<?= PATH_IMAGES ?>logo.png" alt="">
       </div>

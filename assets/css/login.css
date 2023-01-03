@@ -79,6 +79,7 @@ main#connexion {
   left: 1.4rem;
   font-size: 1.3rem;
   opacity: 0.4;
+  filter: invert(1);
 }
 
 .form-item-icon-left {

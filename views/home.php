@@ -8,6 +8,8 @@
 </div>
 <main id="accueil">
   <div>
+    <br />
+    <br />
     <h1>Découvrez votre planning de rêve</h1>
     <h2>Utilisez notre moteur de recherche et trouvez votre journée de rêve en un clic</h2>
     <?php

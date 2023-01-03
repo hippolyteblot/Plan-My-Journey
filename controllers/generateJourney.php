@@ -19,7 +19,7 @@ $journeySchema = buildSchema($_SESSION['parameters']['start'], $_SESSION['parame
 
 $journeySchema = getCandidates($journeySchema, $activities, $restaurants, 
     $_SESSION["candidates"][0]["geometry"]["location"]);
-$journeySchema = getCandidatesFromJSON("journeySchemaExemple.json");
-//$journeySchema = filterFromConstraints($journeySchema, (int) $_SESSION['parameters']["budget"]);
+//$journeySchema = getCandidatesFromJSON("journeySchemaExemple.json");
+$journeySchema = filterFromConstraints($journeySchema, (int) $_SESSION['parameters']["budget"]);
 
 require_once(PATH_VIEWS . 'generateJourney.php');
