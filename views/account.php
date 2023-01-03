@@ -86,28 +86,28 @@
       <div class="profile-preferences-modify">
         <span onclick="openModal('pref')">Modifier</span>
       </div>
-      
+
     </div>
-  </div>
-  <div class="profile-delete">
+    <div class="profile-delete">
       <span onclick="openModal('delete')">Supprimer le compte</span>
     </div>
+  </div>
 </main>
 <div id="modal-delete" class="modal">
-<div class="modal-content">
+  <div class="modal-content">
     <div class="modal-header">
       <span class="close" onclick="closeModal('delete')">&times;</span>
       <h2>Supprimer le compte</h2>
     </div>
     <div class="modal-body">
-        <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
-        <form method="POST">
-            <input class="inputbtn" type="submit" name="delete" value="Supprimer">
-            <input class="inputbtn" type="submit" name="keep" value="Non">
-            
-        </form>
+      <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+      <form method="POST">
+        <input class="inputbtn" type="submit" name="delete" value="Supprimer">
+        <input class="inputbtn" type="submit" name="keep" value="Non">
+
+      </form>
     </div>
-</div>
+  </div>
 </div>
 <div id="modal-information" class="modal">
   <!-- Modal content -->
