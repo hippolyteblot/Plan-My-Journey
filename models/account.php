@@ -61,6 +61,13 @@ function deleteAccount($id){
   //supprimer les notes
   $query = $database->prepare('DELETE FROM rating WHERE user_id = ?');
   $query->execute(array($id));
+  $query = $database->prepare('DELETE FROM commentary WHERE user_id = ?');
+  $query->execute(array($id));
+  $query = $database->prepare('DELETE FROM secondary_preferences WHERE user_id = ?');
+  $query->execute(array($id));
+  $query = $database->prepare('DELETE FROM primary_preferences WHERE user_id = ?');
+  $query->execute(array($id));
+  
 }
 
 function getId(){
