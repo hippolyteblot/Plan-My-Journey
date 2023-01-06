@@ -116,6 +116,7 @@ h1 {
   border: 2px solid black;
   border-radius: 25px;
   padding: 3px 6px;
+  transition: 0.25s;
 }
 
 .profile-disconnect span:hover,
@@ -126,7 +127,7 @@ h1 {
   cursor: pointer;
 }
 .profile-delete span:hover {
-  background: rgba(207, 7, 7, 0.25);
+  background: rgba(255, 0, 0, 0.25);
   cursor: pointer;
 }
 

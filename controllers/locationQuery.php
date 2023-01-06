@@ -1,5 +1,6 @@
 <?php
 
+
 require_once(PATH_MODELS . 'locationQuery.php');
 
 $locationName = $_POST['locationName'];
@@ -11,11 +12,10 @@ $candidates = getCandidates($locationName);
 if (empty($candidates)) {
     $alert['classAlert'] = 'danger';
     $alert['messageAlert'] = 'Aucune ville trouvée';
+    $pageName = "Accueil";
     require_once(PATH_VIEWS . 'home.php');
 } else {
-    
     $_SESSION['candidates'] = $candidates;
-
-
+    $pageName = "Sélection des paramètres";
     header('Location: index.php?page=parametersSelection');
 }

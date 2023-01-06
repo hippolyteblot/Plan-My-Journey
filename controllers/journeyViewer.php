@@ -56,7 +56,7 @@ if(array_key_exists('deleteCommentary', $_POST)) {
 if(array_key_exists('reportCommentary', $_POST)) {
     reportCommentary($_POST['commentaryIdForReport']);
 }
-$pageName = "Parcours";
+$pageName = $journey->getTitle();
 
 // Re-load the journey to get the updated data
 $journey = new Journey($_GET['id']);

@@ -3,7 +3,10 @@
 <head>
   <link rel="stylesheet" href="<?= PATH_CSS ?>accueil.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css">
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
   <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
+  <script defer src="<?= PATH_SCRIPTS ?>earth.js"></script>
 </head>
 <div id="background-img">
 </div>
@@ -13,6 +16,14 @@
     <h2>Utilisez notre moteur de recherche et générez votre parcours de rêve en un clic</h2>
     <br />
     <article id="explain">
+
+        
+        <section id="turnglobe">
+            <img src="<?= PATH_IMAGES ?>logo_no_earth.png" alt="earth" id="earth">
+            <div id="worldmap"></div>
+            
+        </section>
+
         <div id="explain-container">
             <div><span class="number" id="nb1">1</span><div class="glass">Créez votre compte et renseignez vos préférences</div></div>
             <div><span class="number" id="nb2">2</span><div class="glass">Rentrez votre destination et saisissez les paramètres de votre parcours</div></div>
