@@ -1,3 +1,4 @@
+<?php require_once(PATH_VIEWS . 'loader.php'); ?>
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>generateJourney.css">
@@ -41,21 +42,21 @@
                 ?>
             <div style="display: flex">
                 <div class="vertical-line"></div>
-                <div style="display: flex; flex-direction: column; width: 100%">
+                <div class="data-container">
                 <?php
                 $iter = 0;
                 $hide = $journey->canModify($_SESSION['id']) ? "" : "hidden";
                 foreach($journeySchema as $moment) {
                 ?>
                     <?php if($iter != 0) { ?>
-                    <div class="travel-info">
+                    <div class="travel-info moment">
                         <p class="travel-info-text">Distance : <span class="distance" id="distance-<?= $iter ?>"></span></p>
                         <p class="travel-info-text">Durée : <span class="duration" id="duration-<?= $iter ?>"></span></p>
                     </div>
                     <article class="straight"></article>
                     <?php } ?>
-                    <div class="step-container">
-                        <div class="change-step arrow-left <?= $hide ?>"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
+                    <div class="step-container moment">
+                        <div class="change-step arrow-left moment <?= $hide ?>"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></div>
                         <article class="step">
                         <h2><?= $moment["type_name"] ?> - <?= substr($moment["candidates"][0]["start"], 0, 5) ?> à <?= substr($moment["candidates"][0]["end"], 0, 5) ?></h2>
                         <div class="candidates">
@@ -124,7 +125,7 @@
                         }
                         ?>
                         </article>
-                        <button class="change-step arrow-right <?= $hide ?>"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></button>
+                        <button class="change-step arrow-right moment <?= $hide ?>"><img src="<?= PATH_IMAGES ?>arrow.svg" alt="arrow-right"></button>
                     </div>
 
                 <?php

@@ -24,6 +24,10 @@ main#connexion {
 .login-card {
   margin-top: 10px;
 }
+.login-card a, .login-card label, .login-card p {
+  
+  font-size: 1.1rem;
+}
 
 .login-card-logo {
   margin-bottom: 1rem;
@@ -41,7 +45,7 @@ main#connexion {
 
 .login-card a {
   text-decoration: none;
-  color: #35339a;
+  color: #b7d8ff;
 }
 
 .login-card a:hover {
@@ -191,6 +195,7 @@ main#connexion {
   background: white;
   transform: scale(1.1);
 }
+
 
 @media screen and (max-width: 768px) {
   main#connexion {

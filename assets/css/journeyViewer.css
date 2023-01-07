@@ -99,3 +99,176 @@ textarea {
 .number-notation{
     margin-left: 15px;
 }
+
+.info-container button:hover, .info-container input:hover {
+    background: rgba(255, 255, 255, 0.253);
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 78, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+}
+
+.data-container {
+    display: flex; 
+    flex-direction: column; 
+    width: 100%
+}
+
+.step {
+    opacity: 1;
+}
+
+.data-container .moment:nth-child(1) {
+    animation: apparition 0.5s;
+    
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(2) {
+    animation: apparition 0.6s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(3) {
+    animation: apparition 0.7s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(4) {
+    animation: apparition 0.8s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(5) {
+    animation: apparition 0.9s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(6) {
+    animation: apparition 1s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(7) {
+    animation: apparition 1.1s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(8) {
+    animation: apparition 1.2s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(9) {
+    animation: apparition 1.3s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(10) {
+    animation: apparition 1.4s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(11) {
+    animation: apparition 1.5s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(12) {
+    animation: apparition 1.6s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(13) {
+    animation: apparition 1.7s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(14) {
+    animation: apparition 1.8s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(15) {
+    animation: apparition 1.9s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(16) {
+    animation: apparition 2s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(17) {
+    animation: apparition 2.1s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(18) {
+    animation: apparition 2.2s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(19) {
+    animation: apparition 2.3s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(20) {
+    animation: apparition 2.4s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(21) {
+    animation: apparition 2.5s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(22) {
+    animation: apparition 2.6s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(23) {
+    animation: apparition 2.7s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(24) {
+    animation: apparition 2.8s;
+    animation-delay: 1s;
+}
+.data-container .moment:nth-child(25) {
+    animation: apparition 2.9s;
+    animation-delay: 1s;
+}
+
+
+
+#accueil {
+    animation: apparition-long 1.5s;
+}
+
+
+@keyframes apparition {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes apparition-long {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes disparition {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes disparition-long {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
