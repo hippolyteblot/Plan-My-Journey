@@ -11,7 +11,15 @@ if(isset($_POST['location'])) {
     $location = $_POST['location'];
     $location = str_replace(' ', '+', $location);
     $candidates = getCandidates($location);
-    $journey_id = getDiscoverFromLocation($candidates[0]['name']);
+    if(count($candidates) > 0) {
+        $journey_id = getDiscoverFromLocation($candidates[0]['name']);
+    } else {
+        $alert = [
+            'messageAlert' => 'Aucun lieux correspondant',
+            'classAlert' => 'danger'
+        ];
+        $journey_id = getDiscover();
+    }
 } else {
     $journey_id = getDiscover();
 }

@@ -36,6 +36,7 @@
       <?php echo '<button type="submit" name="mostTouristic" class="journey-button">Ville la plus visité</button>'; ?>
 </form>
     </div>
+      <?php include_once PATH_VIEWS . 'alert.php'; ?>
     <h2>Voici un ensemble de parcours partagés par la communauté</h2>
     <div class="journey-container-grid">
         <?php foreach ($journeysArray as $journey) {
