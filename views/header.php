@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="<?= PATH_CSS ?>alert.css" />
   <link rel="stylesheet" href="<?= PATH_CSS ?>reset.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>header.css" />
-  
+
   <script src="https://kit.fontawesome.com/f06f56c2b1.js" crossorigin="anonymous"></script>
 </head>
 
@@ -30,9 +30,13 @@
           <li><img src="<?= PATH_IMAGES ?>logo.png" alt="logo"></li>
           <li><span>Plan My Journey</span></li>
         </a>
+        <label class="switch">
+          <input type="checkbox" class="checkbox">
+          <div class="slider"></div>
+        </label>
       </div>
       <input type="checkbox" id="check" />
-      <label for="check">
+      <label for="check" class="resp">
         <i class="fas fa-chevron-circle-down"></i>
       </label>
       <div class="right">
@@ -65,4 +69,4 @@
       </div>
     </ul>
   </nav>
-  <section class="container" style="margin-top: 50px;"> 
+  <section class="container" style="margin-top: 50px;">
