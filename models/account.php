@@ -50,7 +50,24 @@ function deleteAccount($id){
   $query = $database->prepare('DELETE FROM user WHERE user_id = ?');
   $query->execute(array($id));
   //suprrimer les parcours générés
-  $query = $database->prepare('DELETE FROM journey WHERE user_id = ?');
+  $query = $database->prepare('SELECT journey_id FROM journey WHERE user_id = ? AND public = 0');
+  $query->execute(array($id));
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+  foreach ($result as $journey) {
+    $query = $database->prepare('SELECT step_id FROM compose WHERE journey_id = ?');
+    $query->execute(array($journey['journey_id']));
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as $step) {
+      $query = $database->prepare('DELETE FROM step WHERE step_id = ?');
+      $query->execute(array($step['step_id']));
+    }
+    $query = $database->prepare('DELETE FROM compose WHERE journey_id = ?');
+    $query->execute(array($journey['journey_id']));
+    $query = $database->prepare('DELETE FROM journey WHERE user_id = ?');
+    $query->execute(array($journey['user_id']));
+  }
+
+  $query = $database->prepare('UPDATE journey SET user_id = 0 WHERE user_id = ? AND public = 1');
   $query->execute(array($id));
   //supprimer les parcours sauvegardés
   $query = $database->prepare('DELETE FROM save WHERE user_id = ?');
