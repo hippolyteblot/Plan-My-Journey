@@ -11,6 +11,7 @@
 
   <!-- icon of the website -->
   <link rel="icon" href="<?= PATH_IMAGES ?>logo.png" />
+
   <!-- For ios -->
   <link rel="apple-touch-icon" href="<?= PATH_IMAGES ?>logo.png" />
 
@@ -18,7 +19,10 @@
   <link rel="stylesheet" href="<?= PATH_CSS ?>reset.css">
   <link rel="stylesheet" href="<?= PATH_CSS ?>header.css" />
 
+  
   <script src="https://kit.fontawesome.com/f06f56c2b1.js" crossorigin="anonymous"></script>
+  <script defer src="<?= PATH_SCRIPTS ?>header.js"></script>
+  <script defer src="<?= PATH_SCRIPTS ?>darkmode.js"></script>
 </head>
 
 <body>
@@ -30,10 +34,13 @@
           <li><img src="<?= PATH_IMAGES ?>logo.png" alt="logo"></li>
           <li><span>Plan My Journey</span></li>
         </a>
+        <div class="darkmode">
+        <i class="fas fa-regular fa-lightbulb"></i>
         <label class="switch">
           <input type="checkbox" class="checkbox">
           <div class="slider"></div>
         </label>
+        </div>
       </div>
       <input type="checkbox" id="check" />
       <label for="check" class="resp">
