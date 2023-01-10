@@ -2,7 +2,7 @@
 var btn = document.getElementsByClassName("switch")[0];
 var body = document.body;
 var darkmode = false;
-var src = './assets/images/background.png';
+var src = '';
 console.log(src);
 var count = 0;
 btn.addEventListener("click", () => { 
@@ -18,11 +18,7 @@ btn.addEventListener("click", () => {
 
         }
         else if (darkmode == true){
-            body.style.background = 'url(./assets/images/background.png)';
-            
-            body.style.backgroundSize = 'cover';
-            body.style.backgroundRepeat = 'no-repeat';
-            body.style.backgroundAttachment = 'fixed';
+            changeBackground();
             darkmode = false;
             
         }
@@ -51,10 +47,7 @@ if (readCookie("darkmode") == "true"){
     
 }
 else if (readCookie("darkmode") == "false"){
-    document.body.style.background = 'url(./assets/images/background.png)';
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundRepeat = 'no-repeat';
-    document.body.style.backgroundAttachment = 'fixed';
+    changeBackground();
     btn.getElementsByTagName("input")[0].checked = false;
     darkmode = false;
 }
@@ -99,13 +92,50 @@ image.onload = () => {
     var glass = document.querySelectorAll(".glass");
 
     for (let i = 0; i < glass.length; i++) {
-        console.log(glass[i]);
         glass[i].style.boxShadow = str;
     }
 
 };
 }
 
-colorAVG(src);
 
 
+function hoursToInt(){
+    let heure = new Date().getHours();
+    let chiffre;
+    
+    if (heure >= 6 && heure < 10) {
+      chiffre = 1;
+    } else if (heure >= 10 && heure < 14) {
+      chiffre = 2;
+    } else if (heure >= 14 && heure < 18) {
+      chiffre = 3;
+    } else if (heure >= 18 && heure < 23) {
+      chiffre = 4;
+    } else {
+      chiffre = 5;
+    }
+    
+    return chiffre;
+}
+
+
+
+
+
+function changeBackground() {
+    var listebg = []
+    listebg[0] = "./assets/images/test.jpg";
+    listebg[1] = "./assets/images/background1.jpg";
+    listebg[2] = "./assets/images/background2.jpg";
+    listebg[3] = "./assets/images/background3.png";
+    listebg[4] = "./assets/images/background4.jpg";
+    listebg[5] = "./assets/images/background5.jpg";
+    var chiffre = hoursToInt();
+    console.log(listebg);
+    document.body.style.background = 'url('+ listebg[chiffre] +')';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    colorAVG(listebg[chiffre]);
+}
