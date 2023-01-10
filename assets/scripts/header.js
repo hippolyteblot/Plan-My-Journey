@@ -13,8 +13,10 @@ btn.addEventListener("click", () => {
             body.style.backgroundSize = 'cover';
             body.style.backgroundRepeat = 'no-repeat';
             body.style.backgroundAttachment = 'fixed';
-            
+            colorAVG('./assets/images/test.jpg');
+
             darkmode = true;
+            
 
         }
         else if (darkmode == true){
@@ -42,6 +44,7 @@ if (readCookie("darkmode") == "true"){
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
+    colorAVG('./assets/images/test.jpg');
     btn.getElementsByTagName("input")[0].checked = true;
     darkmode = true;
     
