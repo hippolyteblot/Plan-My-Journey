@@ -1,4 +1,5 @@
-var btn = document.getElementsByClassName("switch")[0];
+
+    var btn = document.getElementsByClassName("switch")[0];
 console.log()
 var body = document.body;
 var darkmode = false;
@@ -7,12 +8,20 @@ btn.addEventListener("click", () => {
     count++;
     if (count % 2 == 0){
         if (darkmode == false){
-            body.style.background = 'url(./assets/images/test.jpg)';
+            body.style.background = 'url(https://wallpaper.dog/large/10742519.jpg)';
+            body.style.backgroundSize = 'cover';
+            body.style.backgroundRepeat = 'no-repeat';
+            body.style.backgroundAttachment = 'fixed';
+            
             darkmode = true;
 
         }
         else if (darkmode == true){
             body.style.background = 'url(./assets/images/background.png)';
+            
+            body.style.backgroundSize = 'cover';
+            body.style.backgroundRepeat = 'no-repeat';
+            body.style.backgroundAttachment = 'fixed';
             darkmode = false;
             
         }
@@ -30,14 +39,21 @@ function readCookie(name) {
     }
     return null;
 }
+
 if (readCookie("darkmode") == "true"){
-    document.body.style.background = 'url(./assets/images/test.jpg)';
+    document.body.style.background = 'url(https://wallpaper.dog/large/10742519.jpg)';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
     btn.getElementsByTagName("input")[0].checked = true;
     darkmode = true;
     
 }
 else if (readCookie("darkmode") == "false"){
     document.body.style.background = 'url(./assets/images/background.png)';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
     btn.getElementsByTagName("input")[0].checked = false;
     darkmode = false;
 }
