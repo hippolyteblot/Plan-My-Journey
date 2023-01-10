@@ -1,8 +1,9 @@
 
-    var btn = document.getElementsByClassName("switch")[0];
-console.log()
+var btn = document.getElementsByClassName("switch")[0];
 var body = document.body;
 var darkmode = false;
+var src = './assets/images/background.png';
+console.log(src);
 var count = 0;
 btn.addEventListener("click", () => { 
     count++;
@@ -57,3 +58,54 @@ else if (readCookie("darkmode") == "false"){
     btn.getElementsByTagName("input")[0].checked = false;
     darkmode = false;
 }
+
+function colorAVG(source){
+// créer une nouvelle instance de l'objet Image()
+let image = new Image();
+image.src = source;
+
+let pixels = [];
+image.onload = () => {
+
+    let canvas = document.createElement("canvas");
+    canvas.width = image.width;
+    canvas.height = image.height;
+    let context = canvas.getContext("2d");
+    context.drawImage(image, 0, 0);
+    let imageData = context.getImageData(0, 0, image.width, image.height);
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        pixels.push([
+            imageData.data[i],
+            imageData.data[i + 1],
+            imageData.data[i + 2],
+        ]);
+    }
+    let sumRed = 0;
+    let sumGreen = 0;
+    let sumBlue = 0;
+    for (let i = 0; i < pixels.length; i++) {
+        sumRed += pixels[i][0];
+        sumGreen += pixels[i][1];
+        sumBlue += pixels[i][2];
+    }
+    let avgRed = Math.round(sumRed / pixels.length)+15;
+    let avgGreen = Math.round(sumGreen / pixels.length)+15;
+    let avgBlue = Math.round(sumBlue / pixels.length)+15;
+
+    // afficher le résultat
+    var str = (`0 10px 21px 0 rgb(${avgRed} ${avgGreen} ${avgBlue} / 33%)`);
+    console.log(str);
+    
+    var glass = document.querySelectorAll(".glass");
+
+    for (let i = 0; i < glass.length; i++) {
+        console.log(glass[i]);
+        glass[i].style.boxShadow = str;
+    }
+
+};
+}
+
+colorAVG(src);
+
+
