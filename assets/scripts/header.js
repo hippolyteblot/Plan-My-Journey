@@ -1,4 +1,5 @@
-var btn = document.getElementsByClassName("switch")[0];
+
+    var btn = document.getElementsByClassName("switch")[0];
 console.log()
 var body = document.body;
 var darkmode = false;
