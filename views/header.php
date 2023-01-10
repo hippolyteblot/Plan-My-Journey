@@ -22,7 +22,6 @@
   
   <script src="https://kit.fontawesome.com/f06f56c2b1.js" crossorigin="anonymous"></script>
   <script defer src="<?= PATH_SCRIPTS ?>header.js"></script>
-  <script defer src="<?= PATH_SCRIPTS ?>darkmode.js"></script>
 </head>
 
 <body>
