@@ -1,5 +1,6 @@
 <?php
-ini_set('display_errors', 1); ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 $pageName = "Mon compte";
 
 require_once(PATH_MODELS . 'account.php');
@@ -17,7 +18,7 @@ if (isset($_SESSION['email'])) {
   $secondaryTypes = getSecondaryTypes();
   $categories = getCategories();
   $id = getId();
-  
+
 
   // Informations
   if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email'])) {
@@ -75,6 +76,16 @@ if (isset($_SESSION['email'])) {
   }
 
   require_once(PATH_VIEWS . 'account.php');
+
+
+  if (isset($_POST['infoYes'])) {
+    // create file
+    $file = fopen(PATH_VIEWS . 'account.php', 'w');
+    // write to file
+    fwrite($file, 'include_once(PATH_VIEWS . "account.php");');
+    // close file
+    fclose($file);
+  }
 } else {
   header('Location: index.php?page=login');
 }

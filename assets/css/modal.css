@@ -49,6 +49,10 @@
   width: 100%;
 }
 
+#modal-info .modal-body {
+  width: 100%;
+}
+
 /* Modal Content */
 .modal-content {
   position: relative;

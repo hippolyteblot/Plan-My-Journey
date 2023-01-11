@@ -99,9 +99,16 @@ h1 {
   position: absolute;
   right: 25px;
 }
+.profile-request {
+  grid-area: 3 / 1 / 4 / 3;
+  margin-right: 30px;
+  position: absolute;
+  left: 25px;
+}
 .profile-preferences-modify,
 .profile-delete,
-.profile-parameters-modify {
+.profile-parameters-modify,
+.profile-request {
   align-self: flex-end;
   margin-top: clamp(10px, 2vw, 20px);
 }
@@ -111,7 +118,8 @@ h1 {
 .inputbtn,
 .profile-parameters-modify span,
 .profile-preferences-modify span,
-.profile-generate span {
+.profile-generate span,
+.profile-request span {
   margin: 5px;
   border: 2px solid black;
   border-radius: 25px;
@@ -122,7 +130,8 @@ h1 {
 .profile-disconnect span:hover,
 .profile-parameters-modify span:hover,
 .inputbtn:hover,
-.profile-preferences-modify span:hover {
+.profile-preferences-modify span:hover,
+.profile-request span:hover {
   background: rgba(255, 255, 255, 0.25);
   cursor: pointer;
 }

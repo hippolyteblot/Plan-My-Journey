@@ -91,6 +91,9 @@
     <div class="profile-delete">
       <span onclick="openModal('delete')">Supprimer le compte</span>
     </div>
+    <div class="profile-request">
+      <span onclick="openModal('info')">Informations sur le compte</span>
+    </div>
   </div>
 </main>
 <div id="modal-delete" class="modal">
@@ -162,7 +165,21 @@
     </div>
   </div>
 </div>
-
+<div id="modal-info" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="closeModal('info')">&times;</span>
+      <h2>Informations sur le compte</h2>
+    </div>
+    <div class="modal-body">
+      <p>Voulez-vous recevoir toutes les informations que nous possèdons sur vos informations personnelles ?</p>
+      <form method="POST">
+        <input class="inputbtn" type="submit" name="infoYes" value="Oui">
+        <input class="inputbtn" type="submit" name="infoNo" value="Non">
+      </form>
+    </div>
+  </div>
+</div>
 <!-- The Modal -->
 <div id="modal-pref" class="modal">
 
@@ -204,7 +221,6 @@
           </div>
         </div>
       </div>
-
       <div class="modal-footer">
         <!-- validation button -->
         <span id="validate-modif-pref" onclick="closeModal('pref')">Valider</span>
@@ -252,5 +268,5 @@
       }
       ?>
     </div>
-
   </div>
+</div>
