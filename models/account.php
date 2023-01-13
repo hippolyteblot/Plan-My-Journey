@@ -17,6 +17,14 @@ function getAccountFromId($id)
   $result = $query->fetch();
   return $result;
 }
+function getNbTokens($id)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT generation_token FROM user WHERE user_id = ?');
+  $query->execute(array($id));
+  $result = $query->fetch();
+  return $result['generation_token'];
+}
 
 function updateAccount($firstname, $lastname, $email, $password)
 {

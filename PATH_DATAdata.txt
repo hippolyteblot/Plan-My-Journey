@@ -1,0 +1,4 @@
+Firstname: Hippolyte
+Lastname: Blot
+Email: hippolytebl@gmail.com
+Password: $2y$10$ZAshSDEm/9RlqNc0yiGzMegCnqWwosN6SvOuqAlvwgNmFGc8Qe546

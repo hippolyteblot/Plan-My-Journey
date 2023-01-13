@@ -42,13 +42,29 @@ h1 {
 .profile-name,
 .profile-disconnect,
 .profile-parameters,
-.profile-preferences {
+.profile-preferences,
+.token_management {
   display: flex;
   justify-self: center;
 }
 
+.modal input {
+  font-size: 1.4rem;
+  border-radius: 25px;
+  padding: 5px;
+  border: 2px solid black;
+  color: black;
+}
+.modal input[type="submit"] {
+  cursor: pointer;
+}
+#modal-token .modal-body {
+  width: 100%;
+}
+
 .profile-parameters,
-.profile-preferences {
+.profile-preferences,
+.token_management {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -70,14 +86,43 @@ h1 {
   justify-content: flex-end;
   height: clamp(50px, 10vw, 100px);
   width: 40vw;
-  grid-area: 1 / 2 / 2 / 3;
 }
+
+.profile-informations {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.content-account {
+  display: flex;
+  /* gap */
+  gap: 20px;
+}
+.content-column {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.content-column div {
+  margin-bottom: 20px;
+}
+
+/*
 .profile-parameters {
   grid-area: 2 / 1 / 3 / 2;
 }
 .profile-preferences {
   grid-area: 2 / 2 / 3 / 3;
 }
+.token_management {
+  grid-area: 3 / 1 / 3 / 2;
+}
+*/
 
 .profile-preferences-list,
 .profile-parameters-list {
@@ -92,12 +137,6 @@ h1 {
 .profile-preferences-list li {
   list-style: none;
   margin-bottom: 1rem;
-}
-.profile-delete {
-  grid-area: 3 / 1 / 4 / 3;
-  margin-right: 30px;
-  position: absolute;
-  right: 25px;
 }
 .profile-preferences-modify,
 .profile-delete,
@@ -183,4 +222,30 @@ h1 {
 
 #account .notation {
   flex-direction: row;
+}
+
+#modal-token .form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  font-size: 1.3rem;
+  gap: 10px;
+}
+
+#modal-token .form-item {
+  display: flex;
+  flex-direction: column;
+}
+#modal-token .form-item label {
+  width: max-content;
+}
+#modal-token form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h2 {
+  font-size: 1.8rem;
 }

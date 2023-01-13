@@ -13,81 +13,100 @@
   <div class="profile-photo">
     <img src="<?= PATH_IMAGES ?>account.png" alt="Photo de profil" whidth="200" height="200" />
   </div>
-  <div class="profile-information glass">
-    <div class="profile-name">
-      <h1>Bonjour <?= $user['firstname'] . ' ' . $user['lastname'] ?></h1>
-    </div>
-    <div class="profile-disconnect">
-      <a href="index.php?page=disconnect"><span>Se déconnecter</span></a>
-    </div>
-    <div class="profile-parameters glass">
-      <div class="profile-parameters-title">
-        <h2>Informations</h2>
+  <div class="profile-informations glass">
+    <div class="header">
+      <div class="profile-name">
+        <h1>Bonjour <?= $user['firstname'] . ' ' . $user['lastname'] ?></h1>
+        <!-- Download  my data (return a json) -->
+        <a href="index.php?page=downloadData"><span>Télécharger mes données</span></a>
       </div>
-      <div class="profile-parameters-list">
-        <li class="profile-firstname">
-          <h3>Prénom : <?= $user['firstname'] ?></h3>
-        </li>
-        <li class="profile-lastname">
-          <h3>Nom : <?= $user['lastname'] ?></h3>
-        </li>
-        <li class="profile-email">
-          <h3>E-mail : <?= $user['email'] ?></h3>
-        </li>
-      </div>
-      <div class="profile-parameters-modify">
-        <span onclick="openModal('information')">Modifier</span>
+      <div class="profile-disconnect">
+        <a href="index.php?page=disconnect"><span>Se déconnecter</span></a>
       </div>
     </div>
-    <div class="profile-preferences glass">
-      <div class="profile-preferences-title">
-        <h2>Préférences</h2>
-      </div>
-      <div class="profile-preferences-list">
-        <ul>
-          <li>
-            <h3>Restaurant</h3>
-            <span class="pref-list">
-              <?php
-              foreach ($primaryPreferences as $preference) {
-                if ($preference['structure_type'] == 'R') {
-                  echo "<p>" . $preference['primary_type_name'] . "</p>";
-                }
-              }
-              foreach ($secondaryPreferences as $preference) {
-                if ($preference['structure_type'] == 'R') {
-                  echo "<p>" . $preference['secondary_type_name'] . "</p>";
-                }
-              }
-              ?>
-
-            </span>
+    <div class="content-account">
+      <div class="content-column">
+      <div class="profile-parameters glass">
+        <div class="profile-parameters-title">
+          <h2>Informations</h2>
+        </div>
+        <div class="profile-parameters-list">
+          <li class="profile-firstname">
+            <h3>Prénom : <?= $user['firstname'] ?></h3>
           </li>
-          <li>
-            <h3>Activités</h3>
-            <span class="pref-list">
-              <?php
-              foreach ($primaryPreferences as $preference) {
-                if ($preference['structure_type'] == 'A') {
-                  echo "<p>" . $preference['primary_type_name'] . "</p>";
-                }
-              }
-              foreach ($secondaryPreferences as $preference) {
-                if ($preference['structure_type'] == 'A') {
-                  echo "<p>" . $preference['secondary_type_name'] . "</p>";
-                }
-              }
-              ?>
-
-            </span>
+          <li class="profile-lastname">
+            <h3>Nom : <?= $user['lastname'] ?></h3>
           </li>
-        </ul>
+          <li class="profile-email">
+            <h3>E-mail : <?= $user['email'] ?></h3>
+          </li>
+        </div>
+        <div class="profile-parameters-modify">
+          <span onclick="openModal('information')">Modifier</span>
+        </div>
       </div>
-      <div class="profile-preferences-modify">
-        <span onclick="openModal('pref')">Modifier</span>
+      <div class="token_management glass">
+        <h2>Jetons</h2>
+        <div class="profile-parameters-list">
+          <h3>Vous possédez <?= getNbTokens($_SESSION['id']) ?> jetons</h3>
+        </div>
+        <div class="profile-parameters-modify">
+          <span onclick="openModal('token')">Acheter</span>
+        </div>
       </div>
+      </div>
+      <div class="content-column">
+      <div class="profile-preferences glass">
+        <div class="profile-preferences-title">
+          <h2>Préférences</h2>
+        </div>
+        <div class="profile-preferences-list">
+          <ul>
+            <li>
+              <h3>Restaurant</h3>
+              <span class="pref-list">
+                <?php
+                foreach ($primaryPreferences as $preference) {
+                  if ($preference['structure_type'] == 'R') {
+                    echo "<p>" . $preference['primary_type_name'] . "</p>";
+                  }
+                }
+                foreach ($secondaryPreferences as $preference) {
+                  if ($preference['structure_type'] == 'R') {
+                    echo "<p>" . $preference['secondary_type_name'] . "</p>";
+                  }
+                }
+                ?>
 
+              </span>
+            </li>
+            <li>
+              <h3>Activités</h3>
+              <span class="pref-list">
+                <?php
+                foreach ($primaryPreferences as $preference) {
+                  if ($preference['structure_type'] == 'A') {
+                    echo "<p>" . $preference['primary_type_name'] . "</p>";
+                  }
+                }
+                foreach ($secondaryPreferences as $preference) {
+                  if ($preference['structure_type'] == 'A') {
+                    echo "<p>" . $preference['secondary_type_name'] . "</p>";
+                  }
+                }
+                ?>
+
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="profile-preferences-modify">
+          <span onclick="openModal('pref')">Modifier</span>
+        </div>
+        </div>
+      </div>
     </div>
+
     <div class="profile-delete">
       <span onclick="openModal('delete')">Supprimer le compte</span>
     </div>
@@ -254,3 +273,48 @@
     </div>
 
   </div>
+</div>
+
+<!-- Modal for token -->
+<div id="modal-token" class="modal">
+    
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close" onclick="closeModal('token')">&times;</span>
+        <h2>Acheter des jetons</h2>
+      </div>
+      <div class="modal-body">
+        <form action="?page=account" method="post">
+          <div class="form-group">
+            <h3 for="token">Nombre de jetons</h3>
+            <div class="form-item">
+              <!-- Propose 10 token for 0.59€, 20 token for 0.99€, 50 token for 1.99€, 100 token for 3.99€. With a radio -->
+              <div class="token-radio">
+                <input type="radio" id="token-10" name="token" value="10" checked>
+                <label for="token-10">10 jetons pour 0.59€</label>
+              </div>
+              <div class="token-radio">
+                <input type="radio" id="token-20" name="token" value="20">
+                <label for="token-20">20 jetons pour 0.99€</label>
+              </div>
+              <div class="token-radio">
+                <input type="radio" id="token-50" name="token" value="50">
+                <label for="token-50">50 jetons pour 1.99€</label>
+              </div>
+              <div class="token-radio">
+                <input type="radio" id="token-100" name="token" value="100">
+                <label for="token-100">100 jetons pour 3.99€</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <br>
+            <input class="glass" type="submit" name="submit" value="Acheter" />
+            <br>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
