@@ -53,6 +53,10 @@ if (isset($_SESSION['email'])) {
       }
     }
   }
+  if(isset($_POST['token'])) {
+    $nb = $_POST['token'];
+    addToken($_SESSION['id'], $nb);
+  }
 
   $primaryPreferences = array();
   $primaryPreferences = getPrimaryPreferences($user['email']);

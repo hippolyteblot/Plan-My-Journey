@@ -170,3 +170,10 @@ function getNumberOfRestaurants($userId)
   $count += $result[0];
   return $count;
 }
+
+function addToken($id, $token)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('UPDATE user SET generation_token = generation_token + ? WHERE user_id = ?');
+  $query->execute(array($token, $id));
+}
