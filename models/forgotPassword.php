@@ -4,8 +4,8 @@ include_once(PATH_MODELS . 'Connexion.php');
 function sendMail($email)
 {
   $user = getUserByEmail($email);
+  require_once(PATH_CONTROLLERS . 'mail.php');
   if ($user) {
-    $token = uniqid();
     $link = "http://localhost:8080/index.php?page=resetPassword&token=" . $token;
     $message = "Bonjour " . $user['firstname'] . " " . $user['lastname'] . ",\n\n";
     $message .= "Vous avez demandé à réinitialiser votre mot de passe.\n";
@@ -22,7 +22,6 @@ function sendMail($email)
         'messageAlert' => "Un mail vous a été envoyé pour réinitialiser votre mot de passe.",
         'classAlert' => "success"
       ];
-      require_once(PATH_CONTROLLERS . 'mail.php');
       $token = password_hash($token, PASSWORD_DEFAULT);
       $id = $user['user_id'];
       $db = Connexion::getInstance()->getBdd();
