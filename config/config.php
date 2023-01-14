@@ -23,7 +23,7 @@ const KEY = "AIzaSyBAbAVbxk-8sF-HlDk92YeQ9wop5tH6yyc"; // <- Noah
 const ADMIN_NAME = 'admin';
 const ADMIN_PWD = '$2y$10$NMTcSu5NDY9RffCJBNTYJuH2d1fpQzX3SPPzSaAnQZSRs00FllPCq';
 
-const MAX_QUERY = 10;
+const MAX_QUERY = 0;
 
 //dossiers racines du site
 define('PATH_CONTROLLERS', './controllers/');

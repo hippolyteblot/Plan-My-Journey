@@ -67,7 +67,7 @@
     <div class="choice">
       <button onclick="openModal('pref')">Modifier</button>
       <form action="" method="post">
-        <button type="submit" value="Y" name="Y/N">Envoyer</button>
+        <button type="submit" value="Y" name="Y/N" onclick="sendAllPreferences()">Envoyer</button>
       </form>
     </div>
   </div>

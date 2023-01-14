@@ -2,6 +2,7 @@
 
 require_once(PATH_MODELS . 'placesQuery.php');
 require_once(PATH_MODELS . 'Connexion.php');
+require_once(PATH_MODELS . 'account.php');
 
 function sortPreferences($preferences)
 {
@@ -145,6 +146,23 @@ function compareDate($a, $b)
 function getCandidates($journeySchema, $activities, $restaurants, $location)
 {
 
+    $db = Connexion::getInstance()->getBdd();
+    // If the query counter is less than MAX_QUERY, we increment it
+    if (!maxQueryReached($_SESSION['id'])) {
+        $query = $db->prepare('UPDATE user set query_counter = query_counter + 1 WHERE user_id = :user_id');
+        $query->execute(array(
+            'user_id' => $_SESSION['id']
+        ));
+    } else if (getNbTokens($_SESSION['id']) > 0) {
+        // Use a generation_token to avoid the user to generate a new journey
+        $query = $db->prepare('UPDATE user set generation_token = generation_token - 1 WHERE user_id = :user_id');
+        $query->execute(array(
+            'user_id' => $_SESSION['id']
+        ));
+    } else {
+        header('Location: ?page=home');
+    }
+
     for ($i = 0; $i < count($journeySchema); $i++) {
         if ($journeySchema[$i]['type'] != 'D') {
             if ($journeySchema[$i]['P/S'] == 'P') {
@@ -200,12 +218,6 @@ function getCandidates($journeySchema, $activities, $restaurants, $location)
             }
         }
     }
-
-    $db = Connexion::getInstance()->getBdd();
-    $query = $db->prepare('UPDATE user set query_counter = query_counter + 1 WHERE user_id = :user_id');
-    $query->execute(array(
-        'user_id' => $_SESSION['id']
-    ));
 
     return $journeySchema;
 }

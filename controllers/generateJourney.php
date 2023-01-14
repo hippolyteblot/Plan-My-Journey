@@ -2,10 +2,6 @@
 
 require_once(PATH_MODELS . 'generateJourney.php');
 
-if(maxQueryReached($_SESSION['id'])) {
-    header('Location: index.php?page=home');
-}
-
 $pageName = "Génération du parcours";
 
 $tmp = sortPreferences($_SESSION['preferences']);

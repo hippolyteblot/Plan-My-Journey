@@ -177,3 +177,4 @@ function addToken($id, $token)
   $query = $database->prepare('UPDATE user SET generation_token = generation_token + ? WHERE user_id = ?');
   $query->execute(array($token, $id));
 }
+

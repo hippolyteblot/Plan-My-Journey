@@ -23,3 +23,9 @@
     border-color: rgba(255, 0, 0, 0.717);
     color: #ff0019;
 }
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
