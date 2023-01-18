@@ -133,7 +133,7 @@ function colorAVG(source){
         listebg[4] = "./assets/images/background4.jpg";
         listebg[5] = "./assets/images/background5.jpg";
         var chiffre = hoursToInt();
-        console.log(listebg);
+        console.log(listebg[chiffre]);
         document.body.style.background = 'url('+ listebg[chiffre] +')';
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundRepeat = 'no-repeat';
