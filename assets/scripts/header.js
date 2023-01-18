@@ -37,6 +37,7 @@ function readCookie(name) {
     }
     return null;
 }
+
 if (readCookie("dynamique") == "true"){
     document.body.style.background = 'url(./assets/images/background3.png)';
     document.body.style.backgroundSize = 'cover';
@@ -53,7 +54,10 @@ if (readCookie("darkmode") == "true"){
     darkmode = true;
     
 }
-else if (readCookie("darkmode") == "false" && readCookie("dynamique") == "false"){
+
+
+else if (readCookie("darkmode") == "false" && readCookie("dynamique") == "false" || readCookie("darkmode") == "false" && readCookie("dynamique") == null){
+    console.log("noaml");
     changeBackground();
     btn.getElementsByTagName("input")[0].checked = false;
     darkmode = false;
