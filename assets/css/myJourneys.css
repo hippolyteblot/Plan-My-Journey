@@ -34,5 +34,7 @@ details {
 }
 
 .scroll-btn-left, .scroll-btn-right {
-    width: 50px;
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
 }
