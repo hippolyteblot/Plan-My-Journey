@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="<?= PATH_CSS . 'generateJourney.css' ?>">
   <link rel="stylesheet" href="<?= PATH_CSS . 'journeyPreview.css' ?>">
   <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
-  <script defer src="<?= PATH_SCRIPTS ?>journey.js"></script>
   <script defer src="<?= PATH_SCRIPTS ?>journeyPreview.js"></script>
 
 </head>
@@ -39,14 +38,17 @@
     <div class="profile-name">
       <h1>Parcours partagés par <?= $user['firstname'] . ' ' . $user['lastname'] ?></h1>
     </div>
-    <article class="journey-container">
-        <?php
-        foreach ($journeys as $journey) {
-            include(PATH_VIEWS . 'journeyPreview.php');
-        }
-        ?>
-    
-    </article>
+    <article class="content-container">
+          <button class="scroll-btn-left" onclick="scrollLeftBtn('save-journeys')"><i class="fas fa-chevron-left"></i></button>
+            <div class="journey-container" id="save-journeys">
+              <?php
+              foreach ($journeys as $journey) {
+                  include(PATH_VIEWS . 'journeyPreview.php');
+              }
+              ?>
+            </div>
+          <button class="scroll-btn-right" onclick="scrollRightBtn('save-journeys')"><i class="fas fa-chevron-right"></i></button>
+        </article>
     
   </div>
 </main>

@@ -196,12 +196,20 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80vw;
   padding: 1.5rem;
   border-radius: 10px;
 }
 
+article .journey-container {
+  overflow-x: scroll;
+}
+
 .profile-sharing .profile-name {
+  width: 100%;
+}
+
+.content-container {
   width: 100%;
 }
 
