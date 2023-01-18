@@ -53,7 +53,8 @@ function emailExists($email)
   return $result;
 }
 
-function deleteAccount($id){
+function deleteAccount($id)
+{
   $database = Connexion::getInstance()->getBdd();
   $query = $database->prepare('DELETE FROM user WHERE user_id = ?');
   $query->execute(array($id));
@@ -92,16 +93,26 @@ function deleteAccount($id){
   $query->execute(array($id));
   $query = $database->prepare('DELETE FROM primary_preferences WHERE user_id = ?');
   $query->execute(array($id));
-  
 }
 
-function getId(){
+function getId()
+{
   $database = Connexion::getInstance()->getBdd();
   $query = $database->prepare('SELECT user_id FROM user WHERE email = ?');
   $query->execute(array($_SESSION['email']));
   $result = $query->fetch();
   return $result['user_id'];
 }
+
+function getIdWithEmail($email)
+{
+  $database = Connexion::getInstance()->getBdd();
+  $query = $database->prepare('SELECT user_id FROM user WHERE email = ?');
+  $query->execute(array($email));
+  $result = $query->fetch();
+  return $result['user_id'];
+}
+
 function getNumberOfGeneratedJourneys($userId)
 {
   $database = Connexion::getInstance()->getBdd();
@@ -177,4 +188,3 @@ function addToken($id, $token)
   $query = $database->prepare('UPDATE user SET generation_token = generation_token + ? WHERE user_id = ?');
   $query->execute(array($token, $id));
 }
-
