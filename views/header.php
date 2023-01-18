@@ -25,7 +25,7 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="glass">
     <ul class="header-nav">
 
       <div class="left">

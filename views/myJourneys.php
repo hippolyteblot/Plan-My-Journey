@@ -9,6 +9,7 @@
   <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
   <script defer src="<?= PATH_SCRIPTS ?>journeyPreview.js"></script>
   <script defer src="<?= PATH_SCRIPTS ?>calculateDistance.js"></script>
+  <script defer src="<?= PATH_SCRIPTS ?>scroll.js"></script>
 </head>
 <div id="background-img">
 </div>
@@ -22,12 +23,16 @@
             ?> 
     <details open>
         <summary>Parcours favoris</summary>
-        <article class="journey-container">
-            <?php
-            foreach ($favoriteJourneys as $journey) {
-                include(PATH_VIEWS . 'journeyPreview.php');
-            }
-            ?>
+        <article class="content-container">
+          <button class="scroll-btn-left" onclick="scrollLeftBtn('fav-journeys')"><i class="fas fa-chevron-left"></i></button>
+            <div class="journey-container" id="fav-journeys">
+              <?php
+              foreach ($favoriteJourneys as $journey) {
+                  include(PATH_VIEWS . 'journeyPreview.php');
+              }
+              ?>
+            </div>
+          <button class="scroll-btn-right" onclick="scrollRightBtn('fav-journeys')"><i class="fas fa-chevron-right"></i></button>
         </article>
     </details>
     <?php
@@ -40,18 +45,20 @@
             ?> 
     <details>
         <summary>Parcours générés</summary>
-
-      <article class="journey-container">
-          <?php
-          foreach ($generatedJourneys as $journey) {
-              include(PATH_VIEWS . 'journeyPreview.php');
-          }
-          ?>
-           <?php
-          } ?>
-      
-      </article>
+        <article class="content-container">
+          <button class="scroll-btn-left" onclick="scrollLeftBtn('gene-journeys')"><i class="fas fa-chevron-left"></i></button>
+            <div class="journey-container" id="gene-journeys">
+              <?php
+              foreach ($generatedJourneys as $journey) {
+                  include(PATH_VIEWS . 'journeyPreview.php');
+              }
+              ?>
+            </div>
+          <button class="scroll-btn-right" onclick="scrollRightBtn('gene-journeys')"><i class="fas fa-chevron-right"></i></button>
+        </article>
     </details>
+    <?php
+          } ?>
           <?php if (count($savedJourneys)==0){
               echo "<br> Vous n'avez pas encore sauvegarder de parcours <br>";
           }
@@ -60,14 +67,17 @@
             <details>
         <summary>Parcours enregistrés</summary>
 
-      <article class="journey-container">
-          <?php
-          foreach ($savedJourneys as $journey) {
-              include(PATH_VIEWS . 'journeyPreview.php');
-          }
-          ?>
-      
-      </article> 
+        <article class="content-container">
+          <button class="scroll-btn-left" onclick="scrollLeftBtn('save-journeys')"><i class="fas fa-chevron-left"></i></button>
+            <div class="journey-container" id="save-journeys">
+              <?php
+              foreach ($savedJourneys as $journey) {
+                  include(PATH_VIEWS . 'journeyPreview.php');
+              }
+              ?>
+            </div>
+          <button class="scroll-btn-right" onclick="scrollRightBtn('save-journeys')"><i class="fas fa-chevron-right"></i></button>
+        </article>
     </details>
             <?php
           } ?>
