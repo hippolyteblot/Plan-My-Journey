@@ -49,6 +49,12 @@ if (readCookie("darkmode") == "true"){
     darkmode = true;
     
 }
+else if (readCookie("dynamique") == "true"){
+    document.body.style.background = 'url(https://wallpaper.dog/large/10742519.jpg)';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+}
 else if (readCookie("darkmode") == "false"){
     changeBackground();
     btn.getElementsByTagName("input")[0].checked = false;

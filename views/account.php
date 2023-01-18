@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="<?= PATH_CSS ?>glassmorphism.css" />
   <script src="<?= PATH_SCRIPTS ?>modal.js" defer></script>
   <script src="<?= PATH_SCRIPTS ?>form.js" defer></script>
+  <script src="<?= PATH_SCRIPTS ?>account.js" defer></script>
 
 </head>
 <main id="account">
@@ -52,6 +53,15 @@
         </div>
         <div class="profile-parameters-modify">
           <span onclick="openModal('token')">Acheter</span>
+        </div>
+      </div>
+      <div class="change-background glass">
+        <h2> Fond d'ecran statique </h2>
+        <div class="btn-change-background">
+        <label class="switch">
+          <input type="checkbox" class="checkbox">
+          <div class="slider"></div>
+        </label>
         </div>
       </div>
       </div>
