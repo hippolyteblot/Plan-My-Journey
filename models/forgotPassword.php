@@ -13,16 +13,15 @@ function sendMail($email)
     $message .= "Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer ce mail.\n\n";
     $message .= "Cordialement,\n";
     $message .= "L'équipe de ProjetWeb";
-    $headers = "From: " . MAIL . "\r\n";
-    $headers .= "Reply-To: " . MAIL . "\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
+    $headers = "From: Website <postmaster@toodrunk.fr>\r\nReply-To: postmaster@toodrunk.fr";
     $subject = "Réinitialisation de votre mot de passe";
-    if (mail($email, $subject, $message, $headers)) {
+    echo '<script>alert("planmyjourney3@gmail.com")</script>';
+    if (mail('planmyjourney3@gmail.com', $subject, $message, $headers)) {
       $alert = [
         'messageAlert' => "Un mail vous a été envoyé pour réinitialiser votre mot de passe.",
         'classAlert' => "success"
       ];
-      require_once(PATH_CONTROLLERS . 'mail.php');
+      //require_once(PATH_CONTROLLERS . 'mail.php');
       $token = password_hash($token, PASSWORD_DEFAULT);
       $id = $user['user_id'];
       $db = Connexion::getInstance()->getBdd();

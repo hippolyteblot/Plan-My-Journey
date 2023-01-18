@@ -28,3 +28,11 @@ details {
     flex-direction: column;
     width: 100%;
 }
+
+.content-container {
+    display: flex;
+}
+
+.scroll-btn-left, .scroll-btn-right {
+    width: 50px;
+}

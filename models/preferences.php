@@ -29,7 +29,7 @@ function getSecondaryTypes()
 function getCategories()
 {
     $db = $database = Connexion::getInstance()->getBdd();
-    $query = $db->prepare('SELECT * FROM type_category');
+    $query = $db->prepare('SELECT * FROM type_category ORDER BY category_name');
     $query->execute();
     $result = $query->fetchAll();
     $query->closeCursor();
