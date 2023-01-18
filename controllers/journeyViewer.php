@@ -5,7 +5,9 @@ require_once(PATH_MODELS . 'Journey.php');
 require_once(PATH_MODELS . 'actionJourney.php');
 require_once(PATH_MODELS . 'commentary.php');
 
-
+if(!isset($_SESSION['id'])){
+    header('Location: index.php?page=discover');
+}
 
 $journey = new Journey($_GET['id']);
 if($journey->canSee($_SESSION['id']) == false) {
