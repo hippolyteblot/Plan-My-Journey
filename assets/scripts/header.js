@@ -9,7 +9,7 @@ btn.addEventListener("click", () => {
     count++;
     if (count % 2 == 0){
         if (darkmode == false){
-            body.style.background = 'url(https://wallpaper.dog/large/10742519.jpg)';
+            body.style.background = 'url(./assets/images/test.jpg)';
             body.style.backgroundSize = 'cover';
             body.style.backgroundRepeat = 'no-repeat';
             body.style.backgroundAttachment = 'fixed';
@@ -44,8 +44,8 @@ if (readCookie("dynamique") == "true"){
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
 }
-if (readCookie("darkmode") == "true" && readCookie("dynamique") == "false"){
-    document.body.style.background = 'url(https://wallpaper.dog/large/10742519.jpg)';
+if (readCookie("darkmode") == "true"){
+    document.body.style.background = 'url(./assets/images/test.jpg)';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
