@@ -19,7 +19,7 @@ btn.addEventListener("click", () => {
 
         }
         else if (darkmode == true){
-            changeBackground();
+            
             darkmode = false;
             
         }
