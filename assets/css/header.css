@@ -8,14 +8,11 @@
 
 body {
   font-family: "SF Pro Display", sans-serif;
-<<<<<<< HEAD
   background: url(../images/background3.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-=======
->>>>>>> 972e891ad4f18c5c7c98f54065e28ba59557d9c0
 }
 
 nav.glass {
