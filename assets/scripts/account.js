@@ -19,6 +19,7 @@ btn.addEventListener("click", () => {
 
         }
         else if (dynamique == true){
+            changeBackground();
             dynamique = false;
             
         }
