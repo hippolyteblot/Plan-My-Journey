@@ -1,5 +1,6 @@
 <?php require_once(PATH_VIEWS . 'loader.php'); ?>
 <?php require_once(PATH_VIEWS . 'header.php'); ?>
+
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>generateJourney.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>notation.css">
@@ -13,7 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="<?= PATH_SCRIPTS ?>script.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>step.js"></script>
-    <script defer src="<?= PATH_SCRIPTS ?>generateJourney.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>modal.js"></script>    
     <script defer src="<?= PATH_SCRIPTS ?>libMap.js"></script>
     <script defer src="<?= PATH_SCRIPTS ?>interactiveMap.js"></script>
