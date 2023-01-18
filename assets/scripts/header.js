@@ -8,7 +8,7 @@ btn.addEventListener("click", () => {
     count++;
     if (count % 2 == 0){
         if (darkmode == false){
-            body.style.background = 'url(./assets/images/background5.jpg)';
+            body.style.background = 'url(./assets/images/test.jpg)';
             body.style.backgroundSize = 'cover';
             body.style.backgroundRepeat = 'no-repeat';
             body.style.backgroundAttachment = 'fixed';
@@ -37,9 +37,14 @@ function readCookie(name) {
     }
     return null;
 }
-
+if (readCookie("dynamique") == "true"){
+    document.body.style.background = 'url(./assets/images/background3.png)';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+}
 if (readCookie("darkmode") == "true"){
-    document.body.style.background = 'url(./assets/images/background5.jpg)';
+    document.body.style.background = 'url(./assets/images/test.jpg)';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
@@ -48,7 +53,7 @@ if (readCookie("darkmode") == "true"){
     darkmode = true;
     
 }
-else if (readCookie("darkmode") == "false"){
+else if (readCookie("darkmode") == "false" && readCookie("dynamique") == "false"){
     changeBackground();
     btn.getElementsByTagName("input")[0].checked = false;
     darkmode = false;
