@@ -126,7 +126,7 @@ function hoursToInt(){
       chiffre = 5;
     }
     
-    return chiffre-1;
+    return chiffre;
 }
 
 
