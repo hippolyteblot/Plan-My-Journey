@@ -1,5 +1,6 @@
 <?php
-ini_set('display_errors', 1); ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 $pageName = "Mon compte";
 
 require_once(PATH_MODELS . 'account.php');
@@ -17,26 +18,35 @@ if (isset($_SESSION['email'])) {
   $secondaryTypes = getSecondaryTypes();
   $categories = getCategories();
   $id = getId();
-  
+
 
   // Informations
   if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email'])) {
     $firstname = htmlspecialchars($_POST['firstname']);
     $lastname = htmlspecialchars($_POST['lastname']);
     $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['password']);
-    $passwordConfirm = htmlspecialchars($_POST['password_confirm']);
     $alert = array();
 
     if (empty($firstname) || empty($lastname) || empty($email)) {
       $alert['empty'] = "Tous les champs doivent être remplis";
     }
 
-    if (!empty($password) || !empty($passwordConfirm)) {
-      if ($password != $passwordConfirm) {
-        $alert['password'] = "Les mots de passe ne correspondent pas";
-      } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
-        $alert['password'] = "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre";
+    if (isset($_POST['password']) && isset($_POST['password_confirm']) && isset($_POST['password_before'])) {
+      $passwordBefore = htmlspecialchars($_POST['password_before']);
+      $password = htmlspecialchars($_POST['password']);
+      $passwordConfirm = htmlspecialchars($_POST['password_confirm']);
+
+      // Verify if the passwordBefore is correct
+      if (!password_verify($passwordBefore, $user['password'])) {
+        $alert['password'] = "Le mot de passe actuel est incorrect";
+      } else {
+        if (!empty($password) || !empty($passwordConfirm)) {
+          if ($password != $passwordConfirm) {
+            $alert['password'] = "Les mots de passe ne correspondent pas";
+          } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
+            $alert['password'] = "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre";
+          }
+        }
       }
     }
 
@@ -53,7 +63,7 @@ if (isset($_SESSION['email'])) {
       }
     }
   }
-  if(isset($_POST['token'])) {
+  if (isset($_POST['token'])) {
     $nb = $_POST['token'];
     addToken($_SESSION['id'], $nb);
   }
