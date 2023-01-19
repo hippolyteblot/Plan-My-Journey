@@ -10,7 +10,7 @@ class GoogleMap {
   async load(element) {
     return new Promise((resolve, reject) => {
       //$script("https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbAVbxk-8sF-HlDk92YeQ9wop5tH6yyc", () => {
-        $script("https://maps.googleapis.com/maps/api/js?", () => {
+      $script("https://maps.googleapis.com/maps/api/js?", () => {
         // Ajouter la clé API
         this.textMarker = class TexteMarker extends google.maps.OverlayView {
           constructor(position, map, text) {

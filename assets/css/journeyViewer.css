@@ -18,6 +18,10 @@ h1 {
     text-align: center;
 }
 
+.modal input {
+    color: black;
+}
+
 #accueil .journey-footer {
     width: 100%;
     display: flex;

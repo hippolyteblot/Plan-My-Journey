@@ -1,14 +1,14 @@
 <?php
 
-const DEBUG = true; // production : false; dev : true
+const DEBUG = false; // production : false; dev : true
 
 // Accès base de données
-const BD_HOST = '35.181.153.68';
-//const BD_HOST = 'localhost';
+//const BD_HOST = '35.181.153.68';
+const BD_HOST = 'localhost';
 const BD_DBNAME = 'plan_my_journey';
 const BD_USER = 'root';
-const BD_PWD = 'Planmyjourney';
-//const BD_PWD = 'root';
+//const BD_PWD = 'Planmyjourney';
+const BD_PWD = 'root';
 
 
 // Paramètres du site : nom de l'auteur ou des auteurs

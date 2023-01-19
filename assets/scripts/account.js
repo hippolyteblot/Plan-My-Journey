@@ -19,7 +19,7 @@ btn.addEventListener("click", () => {
 
         }
         else if (dynamique == true){
-            changeBackground();
+            changeBackgroundd();
             dynamique = false;
             
         }
@@ -47,9 +47,9 @@ if (readCookie("dynamique") == "true"){
     dynamique = true;
     
 }
-else if (readCookie("dynamique") == "false"){
+else if (readCookie("dynamique") == "true"){
     btn.getElementsByTagName("input")[0].checked = false;
-    changeBackground();
+    changeBackgroundd();
     dynamique = false;
 }
 
@@ -124,7 +124,7 @@ function colorAVG(source){
     
     
     
-    function changeBackground() {
+    function changeBackgroundd() {
         var listebg = []
         listebg[0] = "./assets/images/test.jpg";
         listebg[1] = "./assets/images/background1.jpg";
