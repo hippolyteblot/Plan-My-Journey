@@ -19,7 +19,6 @@
       <div class="profile-name">
         <h1>Bonjour <?= $user['firstname'] . ' ' . $user['lastname'] ?></h1>
         <!-- Download  my data (return a json) -->
-        <a href="index.php?page=downloadData"><span>Télécharger mes données</span></a>
       </div>
       <div class="profile-disconnect">
         <a href="index.php?page=disconnect"><span>Se déconnecter</span></a>
